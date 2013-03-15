@@ -283,6 +283,8 @@ GEM
       pg
       rails (>= 3.0.0)
       responders
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -470,6 +472,7 @@ DEPENDENCIES
   pg
   pg_search
   postgres-copy
+  quiet_assets
   rack-timeout
   rails (= 3.2.12)
   rails_autolink (~> 1.0.7)

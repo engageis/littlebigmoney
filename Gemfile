@@ -92,6 +92,7 @@ gem 'thin'
 group :development do
   gem 'mailcatcher'
   gem 'foreman'
+  gem 'quiet_assets'
 end
 
 group :test, :development do
