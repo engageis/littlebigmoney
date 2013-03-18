@@ -169,20 +169,22 @@ describe Project do
       @project_03 = FactoryGirl.create(:project)
       @project_04 = FactoryGirl.create(:project)
     end
-    subject{ Project.by_country('colombia') }
-    it{ size.sould == 2 }
+    it{ Project.by_country('colombia').size == 2 }
   end
 
-  describe ".as_donacion" do
+  describe "kind scopes" do
     before do
       @project_01 = FactoryGirl.create(:project, kind: 'inversion')
       @project_02 = FactoryGirl.create(:project, kind: 'inversion')
       @project_03 = FactoryGirl.create(:project)
       @project_04 = FactoryGirl.create(:project)
     end
-    subject{ Project.as_donacion }
-    it{ size.sould == 2 }
-    it{ Project.as_inversion.size.should == 2 }
+    context ".as_donacion" do
+      it{ Project.as_donacion.size == 2 }
+    end
+    context ".as_inversion" do
+      it{ Project.as_inversion.size == 2 }
+    end
   end
 
   describe ".expired" do
