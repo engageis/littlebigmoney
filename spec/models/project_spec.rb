@@ -169,7 +169,9 @@ describe Project do
       @project_03 = FactoryGirl.create(:project)
       @project_04 = FactoryGirl.create(:project)
     end
-    it{ Project.by_country('colombia').size == 2 }
+    subject{ Project.by_country('colombia') }
+    it{ should include(@project_03, @project_04) }
+    it{ should_not include(@project_01, @project_02) }
   end
 
   describe "kind scopes" do
@@ -180,10 +182,14 @@ describe Project do
       @project_04 = FactoryGirl.create(:project)
     end
     context ".as_donacion" do
-      it{ Project.as_donacion.size == 2 }
+      subject{ Project.as_donacion }
+      it{ should include(@project_03, @project_04) }
+      it{ should_not include(@project_01, @project_02) }
     end
     context ".as_inversion" do
-      it{ Project.as_inversion.size == 2 }
+      subject{ Project.as_inversion }
+      it{ should include(@project_01, @project_02) }
+      it{ should_not include(@project_03, @project_04) }
     end
   end
 
