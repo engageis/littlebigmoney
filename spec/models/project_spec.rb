@@ -15,7 +15,7 @@ describe Project do
   end
 
   describe "validations" do
-    %w[name user category about headline goal permalink].each do |field|
+    %w[name user category about headline goal permalink country kind].each do |field|
       it{ should validate_presence_of field }
     end
     it{ should ensure_length_of(:headline).is_at_most(140) }
@@ -160,6 +160,29 @@ describe Project do
     end
 
     it{ should be_empty }
+  end
+
+  describe ".by_country" do
+    before do
+      @project_01 = FactoryGirl.create(:project, country: 'chile')
+      @project_02 = FactoryGirl.create(:project, country: 'peru')
+      @project_03 = FactoryGirl.create(:project)
+      @project_04 = FactoryGirl.create(:project)
+    end
+    subject{ Project.by_country('colombia') }
+    it{ size.sould == 2 }
+  end
+
+  describe ".as_donacion" do
+    before do
+      @project_01 = FactoryGirl.create(:project, kind: 'inversion')
+      @project_02 = FactoryGirl.create(:project, kind: 'inversion')
+      @project_03 = FactoryGirl.create(:project)
+      @project_04 = FactoryGirl.create(:project)
+    end
+    subject{ Project.as_donacion }
+    it{ size.sould == 2 }
+    it{ Project.as_inversion.size.should == 2 }
   end
 
   describe ".expired" do
