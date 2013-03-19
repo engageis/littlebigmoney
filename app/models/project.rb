@@ -101,6 +101,7 @@ class Project < ActiveRecord::Base
 
   # LBM SCOPES
   scope :by_country, ->(country) { where(country: country) }
+  scope :by_kind, ->(kind) { where(kind: kind) if kind.present? }
   scope :as_inversion, where(kind: :inversion)
   scope :as_donacion, where(kind: :donacion)
 

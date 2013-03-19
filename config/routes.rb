@@ -29,6 +29,9 @@ Catarse::Application.routes.draw do
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
 
+  match "/donacion" => "projects#index", kind: 'donacion'
+  match "/inversion" => "projects#index", kind: 'inversion'
+
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
@@ -39,7 +42,7 @@ Catarse::Application.routes.draw do
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
   end
-
+  
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
@@ -59,6 +62,11 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
+
+  scope ":kind" do
+    resources :projects
+  end
+
   resources :users do
     resources :backers, :only => [:index]
     resources :unsubscribes, :only => [:create]

@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
 
   inherit_resources
-  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
+  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :by_kind
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-        collection_projects = Project.recommended_for_home
+        collection_projects = Project.by_kind(params[:kind]).recommended_for_home
         unless collection_projects.empty?
           if current_user and current_user.recommended_project
             @recommended_project = current_user.recommended_project
@@ -26,13 +26,13 @@ class ProjectsController < ApplicationController
         project_ids = collection_projects.map{|p| p.id }
         project_ids << @recommended_project.id if @recommended_project
 
-        @expiring = Project.expiring_for_home(project_ids)
-        @recent = Project.recent_for_home(project_ids)
+        @expiring = Project.by_kind(params[:kind]).expiring_for_home(project_ids)
+        @recent = Project.by_kind(params[:kind]).recent_for_home(project_ids)
         @blog_posts = blog_posts
       end
 
       format.json do
-        @projects = apply_scopes(Project).visible.order_for_search
+        @projects = apply_scopes(Project).by_kind(params[:kind]).visible.order_for_search
         respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
