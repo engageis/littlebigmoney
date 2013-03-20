@@ -1,31 +1,11 @@
 # coding: utf-8
 
 [
-  { pt: 'Arte', en: 'Art' },
-  { pt: 'Artes plásticas', en: 'Visual Arts' },
-  { pt: 'Circo', en: 'Circus' },
-  { pt: 'Comunidade', en: 'Community' },
-  { pt: 'Feito à mão', en: 'Handmade' },
-  { pt: 'Humor', en: 'Humor' },
-  { pt: 'Quadrinhos', en: 'Comicbooks' },
-  { pt: 'Dança', en: 'Dance' },
-  { pt: 'Design', en: 'Design' },
-  { pt: 'Eventos', en: 'Events' },
-  { pt: 'Moda', en: 'Fashion' },
-  { pt: 'Comida', en: 'Food' },
-  { pt: 'Cinema & Vídeo', en: 'Film & Video' },
-  { pt: 'Jogos', en: 'Games' },
-  { pt: 'Jornalismo', en: 'Journalism' },
-  { pt: 'Música', en: 'Music' },
-  { pt: 'Fotografia', en: 'Photography' },
-  { pt: 'Tecnologia', en: 'Technology' },
-  { pt: 'Teatro', en: 'Theatre' },
-  { pt: 'Esporte', en: 'Sport' },
-  { pt: 'Graffiti', en: 'Graffiti' },
-  { pt: 'Web', en: 'Web' },
-  { pt: 'Carnaval', en: 'Carnival' },
-  { pt: 'Arquitetura & Urbanismo', en: 'Architecture & Urbanism' },
-  { pt: 'Literatura', en: 'Literature' }
+  { pt: 'Agricultura', en: 'Agricultura' },
+  { pt: 'Têxtil', en: 'Clothing' },
+  { pt: 'Alimentos', en: 'Food' },
+  { pt: 'Manufatura', en: 'Manufactoring' },
+  { pt: 'Varejo', en: 'Retail' }
 ].each do |name|
    category = Category.find_or_initialize_by_name_pt name[:pt]
    category.update_attributes({
@@ -42,18 +22,18 @@
 end
 
 {
-  company_name: 'Catarse',
-  host: 'catarse.me',
-  base_url: "http://catarse.me",
-  blog_url: "http://blog.catarse.me",
-  email_contact: 'contato@catarse.me',
-  email_payments: 'financeiro@catarse.me',
-  email_projects: 'projetos@catarse.me',
-  email_system: 'system@catarse.me',
-  email_no_reply: 'no-reply@catarse.me',
-  facebook_url: "http://facebook.com/catarse.me",
+  company_name: 'Little Big Money',
+  host: 'littlebigmoney.org',
+  base_url: "http://littlebigmoney.org",
+  blog_url: "http://littlebigmoney.blogspot.com.br",
+  email_contact: 'contact@littlebigmoney.org',
+  email_payments: 'finances@littlebigmoney.org',
+  email_projects: 'support@littlebigmoney.org',
+  email_system: 'system@littlebigmoney.org',
+  email_no_reply: 'no-reply@littlebigmoney.org',
+  facebook_url: "http://facebook.com/littlebigmoney",
   facebook_app_id: '173747042661491',
-  twitter_username: "Catarse_",
+  twitter_username: "LBigMoney",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13'
 }.each do |name, value|
