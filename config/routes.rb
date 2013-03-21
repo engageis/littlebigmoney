@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
   constraints check_user_admin do

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     elsif request.env["HTTP_REFERER"]
       redirect_to :back, alert: exception.message
     else
-      redirect_to root_path, alert: exception.message
+      redirect_to root_path, alert: exception.message rescue redirect_to '/', alert: exception.message
     end
   end
 

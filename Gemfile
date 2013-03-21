@@ -48,6 +48,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
 gem 'devise'
 
+# ADMIN
+gem 'rails_admin'
+
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
 # In resume: this version of cancan allow checking for authorization on specific fields on the model
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
@@ -110,7 +113,6 @@ group :production do
 end
 
 group :development do
-  gem 'mailcatcher'
   gem 'foreman'
   gem 'quiet_assets'
   gem 'better_errors'
