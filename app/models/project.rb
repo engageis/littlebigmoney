@@ -102,8 +102,8 @@ class Project < ActiveRecord::Base
   # LBM SCOPES
   scope :by_country, ->(country) { where(country: country) }
   scope :by_kind, ->(kind) { where(kind: kind) if kind.present? }
-  scope :as_inversion, where(kind: :inversion)
-  scope :as_donacion, where(kind: :donacion)
+  scope :as_invest, where(kind: :invest)
+  scope :as_donate, where(kind: :donate)
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink, :country, :kind

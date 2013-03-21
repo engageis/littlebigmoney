@@ -42,7 +42,7 @@ FactoryGirl.define do
     f.expires_at { 1.month.from_now }
     f.video_url 'http://vimeo.com/17298435'
     f.country 'colombia'
-    f.kind 'donacion'
+    f.kind 'donate'
   end
 
   factory :notification_type do |f|

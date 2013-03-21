@@ -29,8 +29,8 @@ Catarse::Application.routes.draw do
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
 
-  match "/donacion" => "projects#index", kind: 'donacion'
-  match "/inversion" => "projects#index", kind: 'inversion'
+  match "/donate" => "projects#index", kind: 'donate'
+  match "/invest" => "projects#index", kind: 'invest'
 
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick

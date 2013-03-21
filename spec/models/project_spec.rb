@@ -178,18 +178,18 @@ describe Project do
 
   describe "kind scopes" do
     before do
-      @project_01 = FactoryGirl.create(:project, kind: 'inversion')
-      @project_02 = FactoryGirl.create(:project, kind: 'inversion')
+      @project_01 = FactoryGirl.create(:project, kind: 'invest')
+      @project_02 = FactoryGirl.create(:project, kind: 'invest')
       @project_03 = FactoryGirl.create(:project)
       @project_04 = FactoryGirl.create(:project)
     end
-    context ".as_donacion" do
-      subject{ Project.as_donacion }
+    context ".as_donate" do
+      subject{ Project.as_donate }
       it{ should include(@project_03, @project_04) }
       it{ should_not include(@project_01, @project_02) }
     end
-    context ".as_inversion" do
-      subject{ Project.as_inversion }
+    context ".as_invest" do
+      subject{ Project.as_invest }
       it{ should include(@project_01, @project_02) }
       it{ should_not include(@project_03, @project_04) }
     end
