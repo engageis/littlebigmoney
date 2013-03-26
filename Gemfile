@@ -41,6 +41,7 @@ gem 'slim'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'initjs'
+gem 'zurb-foundation'
 
 # Authentication and Authorization
 gem 'omniauth'
@@ -139,7 +140,6 @@ group :assets do
   gem 'coffee-rails',       '~> 3.2.2'
   gem "compass-rails",      '~> 1.0.2'
   gem 'uglifier',           '~> 1.0.3'
-  gem 'compass-960-plugin', '~> 0.10.4'
 end
 
 
