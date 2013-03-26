@@ -389,6 +389,11 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    semantic-mixins (0.1.9)
+      compass-rails
+      rails (~> 3.1)
+      sass (>= 3.2.3)
+      sass-rails (>= 3.2.4)
     shoulda (3.4.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (~> 1.0, >= 1.4.1)
@@ -518,6 +523,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.5)
   schema_associations
   schema_plus
+  semantic-mixins (~> 0.1.9)
   shoulda
   sidekiq (~> 2.7.5)
   sinatra
@@ -529,4 +535,4 @@ DEPENDENCIES
   uglifier (~> 1.0.3)
   validation_reflection!
   weekdays
-  zurb-foundation
+  zurb-foundation (~> 4.0.0)
