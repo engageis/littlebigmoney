@@ -34,48 +34,15 @@
           = link_to t('layouts.header.submit_project'), guidelines_start_path, class:  'submit_project'
         li
           a href="#" Support
-.row.home_header
-  .large-6.columns
-    h1 Connect, share & empower
-    p.callout Little Big Money connects you with small business that are looking for help to growth. Do you want to be part of the change?
-    p
-      a.button href="#" Donate
-      a.button href="#" Follow up Businesses
 
-  .large-6.columns.vimeo
-    iframe{src="http://player.vimeo.com/video/54044367?title=0&amp;byline=0&amp;color=34495e" width="430" height="242" frameborder="0" class="right vimeo-iframe" webkitAllowFullScreen mozallowfullscreen allowFullScreen}
+- if current_page?('/')
+  .row.home_header
+    .large-6.columns
+      h1 Connect, share & empower
+      p.callout Little Big Money connects you with small business that are looking for help to growth. Do you want to be part of the change?
+      p
+        = link_to "Donate", url_for(kind: :donate, controller: :projects, action: :index), class: 'button'
+        = link_to "Follow up Businesses", url_for(kind: :invest, controller: :projects, action: :index), class: 'button'
 
-/ OLD CATARSE
-#header style="display:none"
-  /= render 'layouts/announcement'
-  
-  nav.actions
-    = link_to t('layouts.header.explore'), explore_path, class: 'explore'
-    = link_to t('layouts.header.submit_project'), guidelines_start_path, class:  'submit_project'
-  .search
-    = form_tag explore_path(anchor: "search"), method: 'GET', :class=>'search_input' do
-      = text_field_tag :search, nil, autocomplete: "off"
-      = submit_tag
-  nav.menu
-    = link_to t('layouts.header.help'), guidelines_start_path, id: 'guidelines_header_modal'
-    = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank if Configuration['blog_url'].present?
-    - if current_user
-      = link_to '#', class: 'my_profile_link' do
-        = image_tag(current_user.display_image, size: "30x30", class: 'profile_picture')
-        span.current_user_name= t('layouts.header.account')
-        = image_tag('dropdown.png', class: 'dropdown_arrow')
-      ul.dropdown.user
-        li= link_to t('layouts.header.profile'), current_user
-        li
-          = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
-          .small (#{current_user.display_credits})
-        li.divider
-        - if current_user.admin?
-          - for menu, path in Adm::BaseController.menu do
-            li= link_to menu, path
-        li.divider
-        li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
-    - else
-      = link_to t('layouts.header.signup'), new_user_session_path(active_register: true)
-      = link_to t('layouts.header.signin'), new_user_session_path
-  .clearfix
+    .large-6.columns.vimeo
+      iframe{src="http://player.vimeo.com/video/54044367?title=0&amp;byline=0&amp;color=34495e" width="430" height="242" frameborder="0" class="right vimeo-iframe" webkitAllowFullScreen mozallowfullscreen allowFullScreen}
