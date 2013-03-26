@@ -26,7 +26,7 @@ $asbestos:        #7f8c8d;
 // We use these to control various global styles
 // $body-bg: #fff;
 $body-font-color: $asbestos;
-$body-font-family: "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -47,7 +47,7 @@ $global-radius: 0px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
-// $shiny-edge-size: 0 1px 0;
+$shiny-edge-size: 0 0 0;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
@@ -265,10 +265,10 @@ $anchor-font-color-hover: $carrot;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: 10%;
+$button-function-factor: 30%;
 
 // We use these to control button border styles.
-// $button-border-width: 1px;
+$button-border-width: 0;
 // $button-border-style: solid;
 // $button-border-color: darken($primary-color, $button-function-factor);
 
