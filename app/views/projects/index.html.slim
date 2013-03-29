@@ -44,11 +44,10 @@
               li
                 h2
                   = link_to post.url, target: '__blank' do
-                    /= image_tag("catarse/post_title_image.png")
                     = truncate(post.title, length: 80)
                 p.author= "#{t('projects.box.by')} #{post.author}"
                 = link_to post.url, target: '__blank', class: 'resume' do
-                  = truncate(post.summary, length: 130).html_safe
+                  = strip_tags truncate(post.summary, length: 130)
 
         .facebook
           h3= t('sidebar.titles.facebook')
@@ -59,5 +58,3 @@
           = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
             = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
             = submit_tag t('sidebar.buttons.newsletter')
-    .clearfix
-

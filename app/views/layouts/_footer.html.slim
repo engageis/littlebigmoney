@@ -1,0 +1,44 @@
+#footer
+  .footer.row
+    .info.large-3.columns
+      ul
+        li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
+        li= link_to t('footer.links.policy'), t('footer.links.policy_link')
+        li= link_to t('footer.links.faq'), 'http://suporte.catarse.me/', :target => '_blank'
+        li= link_to t('footer.links.about'), about_path
+        / li= link_to t('footer.links.terms'), t('footer.links.terms_link')
+
+    .opendata.large-9.columns
+      .row.large-6.columns
+        ul
+          li
+            span.stat-number= statistics.total_backers
+            span.stat-description= t('footer.stats.backers')
+          li
+            span.stat-number= statistics.total_backs
+            span.stat-description= t('footer.stats.backs')
+          li
+            span.stat-number= number_to_currency statistics.total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
+            span.stat-description= t('footer.stats.total_backed')
+      .row
+        ul.large-6.columns
+          li
+            span.stat-number= statistics.total_users
+            span.stat-description= t('footer.stats.users')
+          li
+            span.stat-number= statistics.total_projects_success
+            span.stat-description= t('footer.stats.funded_projects')
+          li
+            span.stat-number= statistics.total_projects_online
+            span.stat-description= t('footer.stats.active_projects')
+
+      / .social
+      /   h3= t('footer.titles.social')
+      /   .twitter
+      /     = link_to "Follow @#{Configuration['twitter_username']}", "http://twitter.com/#{Configuration['twitter_username']}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+      /   .facebook
+      /     = render_facebook_like href: "#{Configuration['facebook_url']}", width: "171"
+      /   h3.newsletter= t('footer.titles.newsletter')
+      /   = form_tag "#{Configuration['mailchimp_url']}", id: 'mailee-form', method: 'post' do
+      /     = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
+      /     = submit_tag "#{t('newsletter_subscribe')}"

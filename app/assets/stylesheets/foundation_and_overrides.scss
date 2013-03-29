@@ -2,6 +2,7 @@
 @import "foundation/foundation-global";
 
 $iceblue:         #eef3f7;
+$lightblue:       #8ebcdb;
 $carrot:          #e67e22;
 $pumpkin:         #d35400;
 $wetasphalt:      #34495e;
@@ -104,8 +105,8 @@ $header-font-color: $wetasphalt;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
-$h1-font-size: 2em;
-$h2-font-size: emCalc(28px);
+$h1-font-size: emCalc(50px);
+// $h2-font-size: emCalc(28px);
 // $h3-font-size: emCalc(27px);
 // $h4-font-size: emCalc(23px);
 // $h5-font-size: emCalc(18px);
