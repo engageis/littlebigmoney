@@ -1,0 +1,25 @@
+.home_header
+  padding-top: 30px
+  h1
+    text-align: center
+    padding-bottom: 40px
+  .vimeo
+    margin-bottom: -30px
+    .vimeo-iframe
+      position: relative
+      z-index: 20
+    +decorative-content(after, false)
+      $img: "shadow-video.png"
+      +image-replace($img)
+      +move(22px, top)
+      right: -25px
+      z-index: 1
+  .button
+    margin-right: 40px
+
+
+  p.callout
+    color: $midnightblue
+    font-size: 1.2em
+    line-height: 1.3em
+    word-spacing: 1px
