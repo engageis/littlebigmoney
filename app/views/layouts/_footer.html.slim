@@ -32,13 +32,8 @@
             span.stat-number= statistics.total_projects_online
             span.stat-description= t('footer.stats.active_projects')
 
-      / .social
-      /   h3= t('footer.titles.social')
-      /   .twitter
-      /     = link_to "Follow @#{Configuration['twitter_username']}", "http://twitter.com/#{Configuration['twitter_username']}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
-      /   .facebook
-      /     = render_facebook_like href: "#{Configuration['facebook_url']}", width: "171"
-      /   h3.newsletter= t('footer.titles.newsletter')
-      /   = form_tag "#{Configuration['mailchimp_url']}", id: 'mailee-form', method: 'post' do
-      /     = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
-      /     = submit_tag "#{t('newsletter_subscribe')}"
+  footer.row
+    .copyrights.large-9.columns.large-offset-3
+      = link_to "Powered by Engage", "http://engage.is/", target: "_blank", class: "engage footer-logo"
+      = link_to "An Iniciative of Fundación Capital", "http://www.fundacioncapital.org/", target: "_blank", class: "fundacion-capital footer-logo"
+      = link_to "Sponsored by Ford Foundation", "http://www.fordfoundation.org/", target: "_blank", class: "ford-foundation footer-logo"

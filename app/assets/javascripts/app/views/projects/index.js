@@ -26,7 +26,7 @@ CATARSE.projects.index = Backbone.View.extend({
 
   populateTwitterBlock: function(data) {
     var data = data;
-    var name = $('<h3/>', { class: 'name'});
+    var name = $('<h4/>', { class: 'name'});
     var link = $('<a/>', {
       href: 'http://twitter.com/' + this.twitter_username,
       text: 'Follow ' + this.twitter_username,

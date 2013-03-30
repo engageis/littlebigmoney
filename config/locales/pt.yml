@@ -78,9 +78,9 @@ pt:
       recents: "explore mais projetos recentes"
   sidebar:
     titles:
-      blog: blog
-      facebook: "já curtiu nosso face?"
-      newsletter: "quer novidades?"
+      blog: Blog
+      facebook: "LBM no facebook"
+      newsletter: "Assine nossa newsletter"
       faq: "tá com dúvida?"
       schedule: agenda
     buttons:

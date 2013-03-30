@@ -69,9 +69,9 @@ en:
       recents: "explore more recent projects"
   sidebar:
     titles:
-      blog: blog
-      facebook: "have you liked our facebook page yet?"
-      newsletter: "do you want to receive our news?"
+      blog: Blog
+      facebook: "LBM in facebook"
+      newsletter: "Sign up our newsletter"
       faq: "have any doubt?"
       schedule: calendar
     buttons:
