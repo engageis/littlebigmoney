@@ -1,5 +1,5 @@
 #logo
-  +image-replace('logo.png')
+  +image-replace("logo.png")
   margin-top: 40px
 
 #personal_options
@@ -38,13 +38,10 @@
 
 .header_wrapper
   border-top: 6px solid $clouds
-  +context('.home_page')
-    background: $iceblue image_url('mountains.jpg') repeat-x bottom
+  +context(".home_page")
+    background: $iceblue image_url("mountains.jpg") repeat-x bottom
+    background: image_url("tree.png") 15px 100% no-repeat, image_url("mountains.jpg") center bottom repeat-x, $iceblue
     margin-bottom: 70px
-    +decorative-content
-      +image-replace('tree.png')
-      bottom: 15px
-      left: 0
 
 #personal_options
   padding: 5px 15px 10px

@@ -1,5 +1,5 @@
 #footer
-  .footer.row
+  nav.footer_menu
     .info
       ul
         li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
@@ -9,8 +9,8 @@
         / li= link_to t('footer.links.terms'), t('footer.links.terms_link')
 
     .opendata.large-9.columns
-      .row.large-6.columns
-        ul
+      .row
+        ul.large-6.columns
           li
             span.stat-number= statistics.total_backers
             span.stat-description= t('footer.stats.backers')
@@ -20,7 +20,6 @@
           li
             span.stat-number= number_to_currency statistics.total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
             span.stat-description= t('footer.stats.total_backed')
-      .row
         ul.large-6.columns
           li
             span.stat-number= statistics.total_users
