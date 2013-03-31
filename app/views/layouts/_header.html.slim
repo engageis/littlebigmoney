@@ -36,14 +36,5 @@
         li
           a href="#" Support
 
-- if current_page?('/')
-  .row.home_header
-    h1 Connect, share & empower
-    .large-6.columns
-      p.callout Little Big Money connects you with small business that are looking for help to growth. Do you want to be part of the change?
-      p
-        = link_to "Donate", url_for(kind: :donate, controller: :projects, action: :index), class: 'button'
-        = link_to "Follow up Businesses", url_for(kind: :invest, controller: :projects, action: :index), class: 'button'
-
-    .large-6.columns.vimeo
-      iframe{src="http://player.vimeo.com/video/54044367?title=0&amp;byline=0&amp" width="430" height="242" frameborder="0" class="right vimeo-iframe" webkitAllowFullScreen mozallowfullscreen allowFullScreen}
+- if content_for? :bellow_header
+  = yield :bellow_header

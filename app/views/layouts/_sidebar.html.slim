@@ -1,0 +1,21 @@
+.sidebar.large-3.columns
+  .blog
+    h4= t('sidebar.titles.blog')
+    ul.posts
+      - @blog_posts.each do |post|
+        li
+          h6
+            = link_to post.url, target: '__blank' do
+              = truncate(post.title, length: 80)
+          /p.author= "#{t('projects.box.by')} #{post.author}"
+          = strip_tags truncate(post.summary, length: 200)
+
+  .facebook
+    h4= t('sidebar.titles.facebook')
+    .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
+  #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
+  .newsletter
+    h4= t('sidebar.titles.newsletter')
+    = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
+      = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
+      = submit_tag t('sidebar.buttons.newsletter'), class: "button small"
