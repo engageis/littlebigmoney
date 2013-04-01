@@ -1,0 +1,25 @@
+.curated_project class="donate"
+  .project.columns.large-4
+    .box
+      .cover
+        = link_to "#", :target => ( defined?(embed_link) ? '__blank' : '' ) do
+          = image_tag 'cover.png'
+      .project_content
+        h4= link_to "#", :target => ( defined?(embed_link) ? '__blank' : '' ), :itemprop => 'url' do
+          span[itemprop="name"] MaréCheia de Cinema no Rio
+        p.description[itemprop="description"]
+          | Quando abrimos o Catarse, há pouco mais de 2 anos, o conceito de crowdfunding ainda era algo inédito no Brasil. Poucas pessoas [...]
+        p.where[itemprop="contentLocation"] Bogotá, Colômbia
+      .info_bar
+        .status_bar
+          .progress style="width: 40%;"
+        ul
+          li
+            h6= "20 days"
+            span.info_desc= "left"
+          li
+            h6= "40%"
+            span.info_desc= "reached"
+          li
+            h6= "$ 10.000"
+            span.info_desc= "backed"

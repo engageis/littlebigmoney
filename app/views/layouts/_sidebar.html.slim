@@ -1,6 +1,6 @@
 .sidebar.large-3.columns
   .blog
-    h4= t('sidebar.titles.blog')
+    h4= link_to t('sidebar.titles.blog'), Configuration['blog_url'], target: "_blank"
     ul.posts
       - @blog_posts.each do |post|
         li
@@ -11,7 +11,7 @@
           = strip_tags truncate(post.summary, length: 200)
 
   .facebook
-    h4= t('sidebar.titles.facebook')
+    h4= link_to t('sidebar.titles.facebook'), Configuration['facebook_url'], target: "_blank"
     .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
   #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
   .newsletter

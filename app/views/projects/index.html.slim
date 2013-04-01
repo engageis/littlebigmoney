@@ -13,38 +13,37 @@
 
 #page_content
   .main.large-9.columns
-    .selected_projects.list
+    .selected_projects.list_title.projects_list
+      = link_to "view all", explore_path()+"#recommended", class: "explore_link right"
       .list_title
         .title
-          h2= t('sections.selection.title')
-      .projects
-        = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
-        = render :partial => 'project', :locals => {:project => @second_project } if @second_project
-        = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
-      .explore_link
-        hr
-        = link_to t('main.links.selected'), explore_path()+"#recommended"
+          h2 Projects for donation
+      .projects.row
+        / = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
+        / = render :partial => 'project', :locals => {:project => @second_project } if @second_project
+        / = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
+        - 3.times do
+          = render 'layouts/static_donate'
 
-    .expiring_projects.list
+    .expiring_projects.list.projects_list
+      = link_to "view all", explore_path()+'#expiring', class: "explore_link right"
       .list_title
         .title
-          h2= t('sections.expiring.title')
-      .projects
-        - @expiring.each_with_index do |item,i|
-          == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-      .explore_link
-        hr
-        = link_to t('main.links.expiring'), explore_path()+'#expiring'
+          h2 Projects to watch for investment
+      .projects.row
+        / - @expiring.each_with_index do |item,i|
+          / = render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+        - 3.times do
+          = render 'layouts/static_invest'
 
-    .recents_projects.list
-      .list_title
-        .title
-          h2= t('sections.recents.title')
-      .projects
-        - @recent.each_with_index do |item,i|
-          = render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-      .explore_link
-        hr
-        = link_to t('main.links.recents'), explore_path()+'#recent'
+    / .recents_projects.list.projects_list
+    /   .list_title
+    /     .title
+    /       h2= t('sections.recents.title')
+    /   .projects.row
+    /     - @recent.each_with_index do |item,i|
+    /       = render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+    /   .explore_link
+    /     = link_to t('main.links.recents'), explore_path()+'#recent'
 
   = render 'layouts/sidebar'

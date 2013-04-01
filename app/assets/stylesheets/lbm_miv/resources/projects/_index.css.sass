@@ -21,3 +21,73 @@
     font-size: 1.2em
     line-height: 1.3em
     word-spacing: 1px
+
+#page_content
+  .project .box
+    padding: 0
+
+.project .box
+  border: 6px solid $clouds
+
+  h4
+    height: 3.4em
+  
+  .project_content
+    padding: 0 10px 10px
+
+  .info_bar
+    padding: 5px 10px
+    overflow: hidden
+    background: $lightgray
+    border-top: 1px solid $medgray
+
+    li
+      width: 33%
+      float: left
+
+    h6
+      margin-bottom: -3px
+
+    .status_bar
+      background: white
+      width: 100%
+      border-radius: 10px
+      height: 10px
+      margin: 5px 0 10px
+      overflow: hidden
+
+      .progress
+        border: none
+        background: $brightblue
+        min-width: 1%
+        height: 100%
+
+  p.where
+    margin-bottom: .2em
+    +inline-icon("where_pin.png", 5)
+
+.sidebar, .box
+  font-size: .8em
+  h4
+    border-bottom: 3px solid $clouds
+    padding-bottom: .5em
+    margin-bottom: 1.2em
+    +decorative-content
+      height: 10px
+      width: 60%
+      right: 0
+      bottom: -6px
+      background: white
+
+.projects_list
+  margin-bottom: 4em
+  
+  .list_title
+    margin-bottom: 2em
+
+  .explore_link
+    font-size: .8em
+    margin: 20px 10px 0 0
+    color: inherit
+    &:hover
+      color: $carrot

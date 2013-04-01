@@ -30,8 +30,26 @@
       border-right-width: 0
       
       &:hover, &:active
-        background: lighten(whitesmoke, 2%)
-        box-shadow: 0 0 5px rgba(black, .1) inset
+        background: whitesmoke
+    
+    ul.f-dropdown
+      padding: 0
+      background: none
+      margin: -1px 0 0
+      border-color: darken(whitesmoke, 10%)
+      border-top: none
+      &:before, &:after
+        display: none
+      li
+        float: none
+      a
+        padding: 10px 30px
+        float: none
+        display: block
+        width: auto
+        border-left: none
+        border-right: none
+        border-bottom: none
 
     li:last-child a
       border-right-width: 1px
