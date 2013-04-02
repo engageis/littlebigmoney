@@ -10,16 +10,8 @@
         p.description[itemprop="description"]
           | Quando abrimos o Catarse, há pouco mais de 2 anos, o conceito de crowdfunding ainda era algo inédito no Brasil. Poucas pessoas [...]
         p.where[itemprop="contentLocation"] Bogotá, Colômbia
-      .info_bar
-        .status_bar
-          .progress style="width: 40%;"
-        ul
-          li
-            h6= "20 days"
-            span.info_desc= "left"
-          li
-            h6= "40%"
-            span.info_desc= "reached"
-          li
-            h6= "$ 10.000"
-            span.info_desc= "backed"
+      .investors_bar
+        strong.investors_number 1200
+        span people would<br/> invest in this project
+      .invest_bar
+        = link_to "I want to invest", "#", class: "button secondary small"

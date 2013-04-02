@@ -11,3 +11,15 @@ h1, h2, h3, h4, h5, h6
   font-size: .9em
   &:hover
     box-shadow: 0 0 0 7px $clouds, 0 0 0 8px darken($clouds,10%)
+
+  &.small
+    box-shadow: 0 0 0 4px $clouds
+    margin: 4px
+    &:hover
+      box-shadow: 0 0 0 4px $clouds, 0 0 0 5px darken($clouds,10%)    
+
+  &.secondary
+    background-color: $carrot
+    border: 1px solid $pumpkin
+    &:hover
+      background-color: darken($carrot, 10%)

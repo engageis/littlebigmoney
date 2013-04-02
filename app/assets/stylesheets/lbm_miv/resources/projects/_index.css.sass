@@ -34,12 +34,19 @@
   
   .project_content
     padding: 0 10px 10px
+  
+  .info_bar, .invest_bar, .investors_bar
+    overflow: hidden
+    background: $lightgray
+    border-top: 1px solid $medgray
+
+  .invest_bar
+    text-align: center
+    padding: 10px
 
   .info_bar
     padding: 5px 10px
     overflow: hidden
-    background: $lightgray
-    border-top: 1px solid $medgray
 
     li
       width: 33%
@@ -91,3 +98,15 @@
     color: inherit
     &:hover
       color: $carrot
+
+.investors_bar
+  span
+    margin-top: .6em
+    display: block
+  .investors_number
+    float: left
+    padding: 13px 14px
+    font-size: 1.4em
+    color: $wetasphalt
+    background: #eee
+    margin-right: .5em
