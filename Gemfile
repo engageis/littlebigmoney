@@ -26,12 +26,15 @@ gem 'schema_associations'
 # Payment engine using Paypal
 gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'bce4d8c'
 
+# Payment engine using PagosOnline
+gem 'pagosonline', git: 'git://github.com/sagmor/pagosonline.git'
+
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: 'fdb0c2c'
+# gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: 'fdb0c2c'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 # TODO: Check the Catarse_Moip dependency
-gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
+# gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 # Decorators
 gem 'draper'
