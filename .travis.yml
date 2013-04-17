@@ -18,3 +18,9 @@ branches:
     - master
     - production
     - channels
+
+notifications:
+  email:
+    - maiz@lulk.in
+    - gustavoguichard@gmail.com
+    - barbara@barbaracones.me
