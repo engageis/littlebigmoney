@@ -37,6 +37,13 @@ GIT
     pagosonline (0.0.1)
       hashie
 
+PATH
+  remote: ../catarse_pagosonline
+  specs:
+    catarse_pagosonline (0.1.10)
+      pagosonline
+      rails (~> 3.2.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -464,6 +471,7 @@ DEPENDENCIES
   capybara (~> 2.0.2)
   carrierwave (~> 0.7.0)
   catarse_mailchimp!
+  catarse_pagosonline!
   catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-rails (~> 1.0.2)

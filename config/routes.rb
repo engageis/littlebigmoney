@@ -15,7 +15,8 @@ Catarse::Application.routes.draw do
   end
 
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
-  mount CatarseMoip::Engine => "/", :as => "catarse_moip"
+  mount CatarsePagosonline::Engine => "/", :as => "catarse_pagosonline"
+  # mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
   filter :locale, exclude: /\/auth\//
 
