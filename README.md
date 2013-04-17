@@ -1,4 +1,4 @@
-# Catarse [![Build Status](https://secure.travis-ci.org/catarse/catarse.png?branch=master)](https://travis-ci.org/catarse/catarse) 
+# LBM [![Build Status](https://secure.travis-ci.org/engageis/littlebigmoney?branch=master)](https://travis-ci.org/engageis/littlebigmoney) 
 
 ## Oficial repository changed!
 
