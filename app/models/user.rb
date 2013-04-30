@@ -240,6 +240,6 @@ class User < ActiveRecord::Base
   end
 
   def set_gravatar
-    self.image_url ||= avatar_url('email', auth['info']['email'])
+    self.image_url ||= avatar_url('email', self.email)
   end
 end

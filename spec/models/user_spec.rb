@@ -184,11 +184,25 @@ describe User do
         }
       }
       end
-      its(:image_url){ should == "https://graph.facebook.com/#{auth['uid']}/picture?type=large" }
+      its(:image_url){ should == "http://avatars.io/facebook/#{auth['info']['nickname']}" }
     end
 
     context "when user is from twitter" do
-      its(:image_url){ should == "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original" }
+      its(:image_url){ should == "http://avatars.io/twitter/#{auth['info']['nickname']}" }
+    end
+
+    context "when user is from linkedin" do
+      let(:auth)  do {
+        'provider' => "linkedin",
+        'info' => {
+          'name' => "Foo bar",
+          'email' => 'another_email@anotherdomain.com',
+          'nickname' => "foobar",
+          'description' => "Foo bar's bio".ljust(200)
+        }
+      }
+      end
+      its(:image_url){ should == "http://avatars.io/email/#{auth['info']['email']}" }
     end
   end
 
