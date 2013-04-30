@@ -76,6 +76,8 @@ class User < ActiveRecord::Base
   has_many :backs, class_name: "Backer"
   has_one :user_total
 
+  before_save :set_gravatar
+
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
@@ -133,17 +135,10 @@ class User < ActiveRecord::Base
       user.bio = (auth["info"]["description"][0..139] rescue nil)
       user.locale = I18n.locale.to_s
 
-      if auth["provider"] == "twitter"
-        user.image_url = avatar_url('twitter', auth['info']['nickname'])
+      if auth["provider"] == "twitter" || auth["provider"] == "facebook"
+        user.image_url = avatar_url(auth["provider"], auth['info']['nickname'])
       end
 
-      if auth["provider"] == "linkedin"
-        user.image_url = avatar_url('email', auth['info']['email'])
-      end
-
-      if auth["provider"] == "facebook"
-        user.image_url = avatar_url('facebook', auth['info']['nickname'])
-      end
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
@@ -242,5 +237,9 @@ class User < ActiveRecord::Base
   protected
   def password_required?
     is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
+  end
+
+  def set_gravatar
+    self.image_url ||= avatar_url('email', auth['info']['email'])
   end
 end
