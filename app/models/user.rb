@@ -134,7 +134,11 @@ class User < ActiveRecord::Base
       user.locale = I18n.locale.to_s
 
       if auth["provider"] == "twitter"
-        user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
+        user.image_url = "http://api.twitter.com/1/users/profile_image?size=original&user_id=#{auth['info']['id']}"
+      end
+
+      if auth["provider"] == "linkedin"
+        user.image_url = "http://api.linkedin.com/v1/people/#{auth['info']['id']}/picture-url"
       end
 
       if auth["provider"] == "facebook"

@@ -311,6 +311,8 @@ en:
   layouts:
     login:
       login_with_facebook: "sign in with your facebook account"
+      login_with_twitter: "sign in with your twitter account"
+      login_with_linkedin: "sign in with your linkedin account"
       remember_me: "Remember me and keep me connected."
     header:
       blog: blog
