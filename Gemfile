@@ -87,6 +87,7 @@ gem 'spectator-validates_email',  require: 'validates_email'
 gem 'has_vimeo_video',            '~> 0.0.5'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
+gem 'avatars.io'
 
 # Translations
 gem 'http_accept_language'

@@ -134,15 +134,15 @@ class User < ActiveRecord::Base
       user.locale = I18n.locale.to_s
 
       if auth["provider"] == "twitter"
-        user.image_url = "http://api.twitter.com/1/users/profile_image?size=original&user_id=#{auth['info']['id']}"
+        user.image_url = avatar_url('twitter', auth['info']['nickname'])
       end
 
       if auth["provider"] == "linkedin"
-        user.image_url = "http://api.linkedin.com/v1/people/#{auth['info']['id']}/picture-url"
+        user.image_url = avatar_url('email', auth['info']['email'])
       end
 
       if auth["provider"] == "facebook"
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+        user.image_url = avatar_url('facebook', auth['info']['nickname'])
       end
     end
     provider = OauthProvider.where(name: auth['provider']).first

@@ -84,6 +84,8 @@ GEM
       redcarpet
       rinku
       tag_helper
+    avatars.io (0.1.5)
+      httparty
     bcrypt-ruby (3.0.1)
     best_in_place (2.1.0)
       jquery-rails
@@ -459,6 +461,7 @@ DEPENDENCIES
   activemerchant (= 1.17.0)
   airbrake
   auto_html (= 1.4.2)
+  avatars.io
   best_in_place
   better_errors
   binding_of_caller
