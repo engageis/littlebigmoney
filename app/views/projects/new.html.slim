@@ -119,7 +119,8 @@
               = form.label :how_know, t('formtastic.labels.project.how_know')
               = form.text_area :how_know
 
-
+            / = s3_uploader_form callback_url: project_files_url, callback_param: "project_file[file]", id: "myS3Uploader" do
+              / = file_field_tag :file, multiple: true
 
             .clearfix
             .submit

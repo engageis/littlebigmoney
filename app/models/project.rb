@@ -24,10 +24,11 @@ class Project < ActiveRecord::Base
 
   schema_associations
   belongs_to :user
-  has_many :backers, :dependent => :destroy
-  has_many :rewards, :dependent => :destroy
-  has_many :updates, :dependent => :destroy
-  has_many :notifications, :dependent => :destroy
+  has_many :backers, dependent: :destroy
+  has_many :rewards, dependent: :destroy
+  has_many :updates, dependent: :destroy
+  has_many :project_files, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_one :project_total
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :rewards

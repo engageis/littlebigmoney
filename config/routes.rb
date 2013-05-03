@@ -64,6 +64,8 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
+  
+  resources :project_files, only: [ :index, :create ]
 
   scope ":kind" do
     resources :projects

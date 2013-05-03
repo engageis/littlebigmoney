@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require best_in_place
+//= require s3_direct_upload
 //= require ./lib/underscore-min.js
 //= require ./lib/backbone-min.js
 //= require_tree ./lib

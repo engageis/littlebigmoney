@@ -181,6 +181,9 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
 
     $('#project_permalink').focus()
     $('textarea').maxlength()
+
+    $("#myS3Uploader").S3Uploader()
+
     everything_ok();
   }
 })
