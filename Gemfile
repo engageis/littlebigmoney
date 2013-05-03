@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 # For heroku
@@ -77,6 +78,7 @@ gem 'kaminari'
 gem 'carrierwave', '~> 0.7.0'
 gem 'rmagick'
 gem 'fog'
+gem 's3_direct_upload'
 
 # Other Tools
 gem 'feedzirra'
