@@ -12,7 +12,6 @@
 //
 //= require ./lib/jquery-1.7.1.min.js
 //= require jquery_ujs
-//= require foundation
 //= require best_in_place
 //= require s3_direct_upload
 //= require ./lib/underscore-min.js
@@ -24,6 +23,3 @@
 //= require ./app/collections/paginated.js
 //= require_tree ./app
 //= require ./init.js
-
-
-$(document).foundation();

@@ -149,7 +149,7 @@ group :assets do
   gem "compass-rails",      '~> 1.0.2'
   gem 'uglifier',           '~> 1.0.3'
   gem 'semantic-mixins',    '~> 0.1.9'
-  gem 'zurb-foundation',    '~> 4.0.0'
+  gem 'normalize-rails'
 end
 
 
