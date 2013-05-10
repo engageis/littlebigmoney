@@ -8,9 +8,9 @@
         li= link_to t('footer.links.about'), about_path
         / li= link_to t('footer.links.terms'), t('footer.links.terms_link')
 
-    .opendata.large-9.columns
+    .opendata
       .row
-        ul.large-6.columns
+        ul
           li
             span.stat-number= statistics.total_backers
             span.stat-description= t('footer.stats.backers')
@@ -20,7 +20,7 @@
           li
             span.stat-number= number_to_currency statistics.total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
             span.stat-description= t('footer.stats.total_backed')
-        ul.large-6.columns
+        ul
           li
             span.stat-number= statistics.total_users
             span.stat-description= t('footer.stats.users')
@@ -32,7 +32,7 @@
             span.stat-description= t('footer.stats.active_projects')
 
   footer.row
-    .copyrights.large-9.columns.large-offset-3
+    .copyrights
       = link_to "Powered by Engage", "http://engage.is/", target: "_blank", class: "engage footer-logo"
       = link_to "An Iniciative of Fundación Capital", "http://www.fundacioncapital.org/", target: "_blank", class: "fundacion-capital footer-logo"
       = link_to "Sponsored by Ford Foundation", "http://www.fordfoundation.org/", target: "_blank", class: "ford-foundation footer-logo"

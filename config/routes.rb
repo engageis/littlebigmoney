@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -20,7 +21,7 @@ Catarse::Application.routes.draw do
 
   filter :locale, exclude: /\/auth\//
 
-  root to: 'projects#index'
+  root to: 'home#index'
 
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
