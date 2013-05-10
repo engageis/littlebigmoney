@@ -317,7 +317,7 @@ en:
     header:
       blog: blog
       help: help
-      signup: "sign up"
+      signup: "join"
       signin: login
       explore: explore
       submit_project: submit

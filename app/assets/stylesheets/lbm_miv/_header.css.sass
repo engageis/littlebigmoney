@@ -1,75 +1,43 @@
 #logo
   +image-replace("logo.png")
-  margin-top: 40px
+  margin: 30px 0 40px
+  float: left
 
 #personal_options
+  background: $navy
   position: absolute
   top: 0
   right: 0
+  z-index: 10
+  color: white
+  padding: 10px 15px 5px
+  nav
+    float: right
+  a
+    padding: 0 5px
+  +decorative-content(before, false)
+    position: absolute
+    left: -30px
+    bottom: 0
+    +triangle(top-right, 20px, $navy)
+    border-left-width: 30px
+
+.header_wrapper
+  background: $lightgray
+  font-size: .7em
+  text-transform: uppercase
+  a
+    color: inherit
+    text-decoration: none
+    &:hover, &:active
+      text-decoration: underline
 
 #header
   position: relative
   .actions
-    +horizontal-list
-    margin-top: 45px
-    text-transform: capitalize
-    font-size: .9em
-    ul
-      padding: 8px
-      background: $clouds
-      box-shadow: 0 1px 2px rgba(black, .1)
-    li
-      margin: 0
-      padding: 0
-    a
-      color: $wetasphalt
-      padding: 5px 30px
-      background: white
-      float: left
-      border: 1px solid darken(whitesmoke, 10%)
-      border-right-width: 0
-      
-      &:hover, &:active
-        background: whitesmoke
-    
-    ul.f-dropdown
-      padding: 0
-      background: none
-      margin: -1px 0 0
-      border-color: darken(whitesmoke, 10%)
-      border-top: none
-      &:before, &:after
-        display: none
-      li
-        float: none
-      a
-        padding: 10px 30px
-        float: none
-        display: block
-        width: auto
-        border-left: none
-        border-right: none
-        border-bottom: none
-
-    li:last-child a
-      border-right-width: 1px
-
-.header_wrapper
-  border-top: 6px solid $clouds
-  +context(".home_page")
-    background: $iceblue image_url("mountains.jpg") repeat-x bottom
-    background: image_url("tree.png") 15px 100% no-repeat, image_url("mountains.jpg") center bottom repeat-x, $iceblue
-    margin-bottom: 70px
-
-#personal_options
-  padding: 5px 15px 10px
-  background: $clouds
-  font-size: .8em
-  a:hover
-    text-decoration: underline
-  nav
     float: right
-  .account_menu
-    text-transform: capitalize
-  .locale_link
-    margin-right: 20px
+    +horizontal-list
+    color: $navy
+    margin-top: 50px
+    a
+      padding-right: 6px
