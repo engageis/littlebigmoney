@@ -195,8 +195,6 @@
         .clearfix
         - if can?(:update, @project)
           h1 Hey Joe!
-        = s3_uploader_form callback_url: project_files_url, callback_param: "project_file[file]", id: "myS3Uploader" do
-            = file_field_tag :file, multiple: true
         #loading= image_tag "loading.gif"
       .clearfix
     .sidebar

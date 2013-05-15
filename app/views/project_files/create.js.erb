@@ -1,5 +1,0 @@
-<% if @project_file.new_record? %>
-  alert("Failed to upload model: <%= j @project_file.errors.full_messages.join(', ').html_safe %>");
-<% else %>
-  $('#project_file').attr('src', '<%= @project_file.file %>')
-<% end %>
