@@ -29,6 +29,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     this.render()
     this.bestInPlaceEvents();
 
+    $("#myS3Uploader").S3Uploader()
 
     // Redirect to #updates anchor in case we come through a link to an update
     if(window.location.search.match(/update_id/)){
