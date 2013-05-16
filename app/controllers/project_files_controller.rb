@@ -1,13 +1,8 @@
 class ProjectFilesController < ApplicationController
-  respond_to :html, :js
-
-  def index
-    respond_with @project_files = ProjectFile.all
-  end
+  inherit_resources
+  belongs_to :project
 
   def create
-    @project_file = ProjectFile.new(params[:project_file])
-    @project_file.save
-    render :action => 'create.js.erb'
+    create! { project_path(resource.project) }
   end
 end
