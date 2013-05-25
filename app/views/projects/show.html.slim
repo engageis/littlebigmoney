@@ -193,11 +193,12 @@
             p
               = @project.about_html.html_safe
         .clearfix
-        - if can?(:update, @project)
-          h1 Hey Joe!
-          = semantic_form_for [@project, ProjectFile.new] do |f|
-            = f.input :file
-            = f.submit
+
+        .project_files
+          - if can?(:update, @project)
+            = semantic_form_for [@project, ProjectFile.new] do |f|
+              = f.input :file
+              = f.submit
         #loading= image_tag "loading.gif"
       .clearfix
     .sidebar
