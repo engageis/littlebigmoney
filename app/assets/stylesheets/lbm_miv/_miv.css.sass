@@ -1,5 +1,6 @@
 body
   font-family: sans-serif
+  color: #8c8c8c
 
 h1, h2, h3, h4, h5, h6
   font-family: $headline-font
@@ -8,8 +9,12 @@ h1, h2, h3, h4, h5, h6
     &:hover
       color: $carrot
 
-#main_content, #header, #footer
+#main_content, #header
   +container
+
+#main_content
+  padding-bottom: 60px
+  box-shadow: 0 0 20px rgba(#8b8b8b,.3)
 
 .button
   box-shadow: 0 0 0 7px $clouds

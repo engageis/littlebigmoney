@@ -1,44 +1,96 @@
 body
-  border-bottom: 64px solid $footerblue
+  border-bottom: 50px solid $footerblue
 
 #footer
-  background: $strongblue
-  color: $clouds
-  padding-top: 30px
-  padding-bottom: 10px
-  margin-top: 40px
-  .info
-    @extend .large-3
-    @extend .columns
-    font-size: .9em
-    ul
-      width: 80%
-      box-shadow: 0 0 0 6px rgba(white,.15), 0 1px 2px rgba(black, .1)
-    a
-      display: block
-      color: $wetasphalt
-      padding: 10px
+  background: $footerblue2
+  color: white
+  position: relative
+  a
+    color: $brightblue
+  .decorative_arrow
+    background: $navy
+    position: absolute
+    $size: 60px
+    +absolute-centering($size)
+    height: $size
+    width: $size
+    border-radius: $size/2
+    top: -$size/2
+    .inner_arrow
+      position: absolute
+      $size: 18px
+      +absolute-centering($size)
+      width: $size
+      height: $size
+      top: 13px
       background: white
-      border: 1px solid darken(whitesmoke, 10%)
-      border-bottom-width: 0
+      +decorative-content(before, false)
+        +triangle(bottom, $size/2, $navy)
+        position: absolute
+        border-left-width: $size/2
+        border-right-width: $size/2
+      +decorative-content(after, false)
+        +triangle(bottom, $size * 0.8, white)
+        position: absolute
+        bottom: -$size*0.8
+        border-left-width: $size * 0.8
+        border-right-width: $size * 0.8
+        margin-left: -5px
       
-      &:hover, &:active
-        background: lighten(whitesmoke, 2%)
-        box-shadow: 0 0 5px rgba(black, .1) inset
 
-    li:last-child a
-      border-bottom-width: 1px
+.footer_wrapper
+  overflow: hidden
+  &.sitemap_area
+    background-color: $navy
+    padding: 20px 0
+  .sitemap, .copyrights
+    width: 900px
+    margin: 0 auto
+    clear: both
+    padding: 0 70px
+  .sitemap
+    font:
+      family: serif
+      style: italic
+    & > section
+      float: left
+    h5
+      font-size: 1.3em
+      margin: 10px 0
+    .links_list
+      width: 260px
+    ul
+      font-size: .9em
+      list-style-position: inside
+      padding: 0
+      &.first_sitemap, &.second_sitemap
+        float: left
+        width: 130px
+    .contact_links
+      width: 450px
+    .social_links
+      float: right
+      li
+        list-style: none
+        float: left
+      .social-link
+        +sprite-replace("social-facebook")
+        float: left
+        margin: 0 4px
+        &.twitter
+          +sprites-sprite-position("social-twitter")
+        &.vimeo
+          +sprites-sprite-position("social-vimeo")
+  
+  .copyrights
+    +clearfix
+    padding: 10px 0 0
+    .imaginamos
+      float: left
+      font-size: .7em
+    .sponsors
+      float: right
 
-.footer_menu
-  @extend .row
-
-.opendata
-  ul
-    font-size: 1.6em
-  .stat-number
-    color: $lightblue
-    font-weight: bold
-    margin-right: .8em
 
 .footer-logo
   float: left

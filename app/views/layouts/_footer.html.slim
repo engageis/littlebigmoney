@@ -1,38 +1,52 @@
 #footer
-  nav.footer_menu
-    .info
-      ul
-        li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
-        li= link_to t('footer.links.policy'), t('footer.links.policy_link')
-        li= link_to t('footer.links.faq'), 'http://suporte.catarse.me/', :target => '_blank'
-        li= link_to t('footer.links.about'), about_path
-        / li= link_to t('footer.links.terms'), t('footer.links.terms_link')
-
-    .opendata
-      .row
+  .decorative_arrow
+    .inner_arrow
+  / section.useless_menu
+  /   = link_to "About the team", "#"
+  /   |  | 
+  /   = link_to t('footer.links.faq'), '#'
+  /   |  | 
+  /   = link_to "Facebook", "#"
+  /   |  | 
+  /   = link_to "Twitter", "#"
+  .footer_wrapper.sitemap_area
+    nav.sitemap
+      section.social_links
+        h5 Follow Us
         ul
-          li
-            span.stat-number= statistics.total_backers
-            span.stat-description= t('footer.stats.backers')
-          li
-            span.stat-number= statistics.total_backs
-            span.stat-description= t('footer.stats.backs')
-          li
-            span.stat-number= number_to_currency statistics.total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
-            span.stat-description= t('footer.stats.total_backed')
+          li= link_to "Follow us on Twitter", "#", class: "twitter social-link"
+          li= link_to "Find us on Facebook", "#", class: "facebook social-link"
+          li= link_to "Watch our Vimeo videos", "#", class: "vimeo social-link"
+      section.links_list
+        h5 Sitemap
+        ul.first_sitemap
+          li= link_to "Home", root_url
+          li= link_to t('footer.links.about'), about_path
+          li= link_to "How it works", "#"
+          li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
+        ul.second_sitemap
+          li= link_to t('footer.links.policy'), t('footer.links.policy_link')
+          li= link_to t('footer.links.terms'), t('footer.links.terms_link')
+      section.contact_links
+        h5 Contact Us
         ul
-          li
-            span.stat-number= statistics.total_users
-            span.stat-description= t('footer.stats.users')
-          li
-            span.stat-number= statistics.total_projects_success
-            span.stat-description= t('footer.stats.funded_projects')
-          li
-            span.stat-number= statistics.total_projects_online
-            span.stat-description= t('footer.stats.active_projects')
+          li 57(1) 602 5530 / 50(7) 282 7447
+          li 
+            | Paula Rodriguez - LittleBigMoney Coordinator: 
+            = link_to "pr@fundacioncapital.org", "mailto:pr@fundacioncapital.org"
+          li 
+            | Yves Mouri - President and Executive Director: 
+            = link_to "ym@fundacioncapital.org", "mailto:ym@fundacioncapital.org"
 
-  footer.row
+  .footer_wrapper
     .copyrights
-      = link_to "Powered by Engage", "http://engage.is/", target: "_blank", class: "engage footer-logo"
-      = link_to "An Iniciative of Fundación Capital", "http://www.fundacioncapital.org/", target: "_blank", class: "fundacion-capital footer-logo"
-      = link_to "Sponsored by Ford Foundation", "http://www.fordfoundation.org/", target: "_blank", class: "ford-foundation footer-logo"
+      section.imaginamos
+        p
+         | &copy; 2011 ACE INTERNACIONAL Todos los derechos reservados
+         br/
+         | Diseño Web. 
+         span#imaginamos_diseno www.imaginamos.com
+      section.sponsors
+        / = link_to "Powered by Engage", "http://engage.is/", target: "_blank", class: "engage footer-logo"
+        = link_to "An Iniciative of Fundación Capital", "http://www.fundacioncapital.org/", target: "_blank", class: "fundacion-capital footer-logo"
+        = link_to "Sponsored by Ford Foundation", "http://www.fordfoundation.org/", target: "_blank", class: "ford-foundation footer-logo"
