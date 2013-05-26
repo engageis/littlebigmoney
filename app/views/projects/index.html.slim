@@ -33,17 +33,17 @@
       .projects.row
         / - @expiring.each_with_index do |item,i|
           / = render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-        - 3.times do
+        /- 3.times do
           = render 'layouts/static_invest'
 
-    / .recents_projects.list.projects_list
-    /   .list_title
-    /     .title
-    /       h2= t('sections.recents.title')
-    /   .projects.row
-    /     - @recent.each_with_index do |item,i|
-    /       = render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-    /   .explore_link
-    /     = link_to t('main.links.recents'), explore_path()+'#recent'
+      .recents_projects.list.projects_list
+        .list_title
+         .title
+           h2= t('sections.recents.title')
+        .projects.row
+         - @recent.each_with_index do |item,i|
+           = render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+        .explore_link
+         = link_to t('main.links.recents'), explore_path()+'#recent'
 
   = render 'layouts/sidebar'
