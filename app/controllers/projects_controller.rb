@@ -88,6 +88,10 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
+    # http = Net::HTTP.new("#{root_url}/#{params[:permalink]}",80)
+    # response = http.request_head('/')
+    # raise response
+    # render :json => {:available => response == 404}.to_json
     project = Project.where("permalink = ?", params[:permalink])
     render :json => {:available => project.empty?}.to_json
   end
