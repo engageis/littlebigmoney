@@ -182,7 +182,7 @@
                 - if app_context == 'invest' and current_user
                   #amount_to_invest
                     | U$: 
-                    = semantic_form_for [@project, @possible_investor], format: :json, remote: true do |f|
+                    = semantic_form_for [@project, @possible_investor] do |f|
                       = f.input :amount, placeholder: 'eg.: 4000'
                       = f.submit
                 ul
