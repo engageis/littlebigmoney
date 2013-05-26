@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def app_kind
+    if request.subdomain.match(/invest|donate/)
+      request.subdomain
+    else
+      nil
+    end
+  end
+
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
     if current_user.nil?
