@@ -39,6 +39,7 @@ Catarse::Application.routes.draw do
       resources :updates, only: [ :index, :create, :destroy ]
       resources :rewards, only: [ :index, :create, :update, :destroy ]
       resources :project_files, only: [ :index, :create ]
+      resources :possible_investors, only: [ :create, :update ]
       resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
         member do
           match 'credits_checkout'
