@@ -10,7 +10,8 @@
   right: 0
   z-index: 10
   color: white
-  padding: 10px 15px 5px
+  padding: 6px 25px 9px 0
+  height: 13px
   nav
     float: right
   a
@@ -19,14 +20,25 @@
     display: none
   +decorative-content(before, false)
     position: absolute
-    left: -30px
-    bottom: 0
-    +triangle(top-right, 20px, $navy)
-    border-left-width: 30px
+    left: -53px
+    top: 0
+    +triangle(top-right, 11px, $navy)
+    border-left-width: 12px
+    z-index: -1
+  +decorative-content(after, false)
+    position: absolute
+    left: -45px
+    top: 0
+    width: 45px
+    height: 28px
+    background: $navy
+    border-radius: 0 0 0 100%
+    z-index: -1
 
 .header_wrapper
   background: $lightgray
   font-size: .7em
+  font-family: $headline-font
   text-transform: uppercase
   a
     color: inherit
