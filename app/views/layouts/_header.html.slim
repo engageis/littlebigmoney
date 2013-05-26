@@ -5,9 +5,6 @@
     nav.actions
       ul
         li
-          = link_to t("layouts.header.explore"), explore_path, class: "explore dropdown", "data-dropdown" => "drop_explore"
-          |  | 
-        li
           = link_to "Donation Projects", explore_path
           |  | 
         li
@@ -27,9 +24,6 @@
   - else
     nav.actions
       ul
-        li
-          = link_to t("layouts.header.explore"), explore_path, class: "explore dropdown", "data-dropdown" => "drop_explore"
-          |  | 
         li
           = link_to "Donation Projects", explore_path
           |  | 
