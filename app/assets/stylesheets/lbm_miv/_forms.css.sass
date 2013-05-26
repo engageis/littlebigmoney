@@ -1,0 +1,16 @@
+input
+  background: $lightgray
+  color: #333
+  padding: 5px 8px
+  border: 1px solid lighten($warmgray, 10%)
+  box-shadow: 0 1px 3px rgba(black,.1) inset
+  outline: none
+  &:focus
+    border-color: darken($warmgray, 10%)
+
+form.search
+  input[type=text]
+    text-align: center
+  input[type=submit]
+    +context('.js')
+      display: none
