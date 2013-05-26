@@ -21,6 +21,14 @@ Catarse::Application.routes.draw do
 
   filter :locale, exclude: /\/auth\//
 
+  constraints subdomain: 'invest' do
+    root to: 'projects#index', kind: 'invest'
+  end
+
+  constraints subdomain: 'donate' do
+    root to: 'projects#index', kind: 'donate'
+  end
+
   root to: 'home#index'
 
   # Static Pages
@@ -32,9 +40,6 @@ Catarse::Application.routes.draw do
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
 
-  match "/donate" => "projects#index", kind: 'donate'
-  match "/invest" => "projects#index", kind: 'invest'
-
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
@@ -45,7 +50,7 @@ Catarse::Application.routes.draw do
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
   end
-  
+
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
