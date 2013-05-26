@@ -1,8 +1,7 @@
 CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "search", "updateSearch")
-    CATARSE.router.route(":name", "category", this.category)
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "search", 'updateSearch')
     CATARSE.router.route("search/*search", "search", this.search)
     CATARSE.router.route("", "index", this.index)
     this.render()
@@ -25,28 +24,18 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
   }),
 
   search: function(search){
-    //search = decodeURIComponent(search);
-    console.log(search)
-    //if(this.$('.section_header .replaced_header')) {
-      //this.$('.section_header .replaced_header').remove();
-    //}
-    //this.$('.section_header .original_title').fadeOut(300, function() {
-      //$('.section_header').append('<div class="replaced_header"></div>');
-      //$('.section_header .replaced_header').html('<h1><span>Explore</span> / '+ search +'</h1>');
-    //})
-    //this.selectItem("")
-    this.initializeView({
-      pg_search: "&" + search
-    })
-    //var input = this.$('#search')
-    //if(input.val() != search)
-      //input.val(search)
+    this.initializeView(_this.getObjectFromUrl(search))
+
+    // Update text on search field
+    var input = this.$('#search')
+    if(search.q && input.val() != search.q)
+      input.val(search)
   },
 
-  //updateSearch: function(){
-    //var search = encodeURIComponent(this.$('#search').val())
-    //CATARSE.router.navigate("search/" + encodeURIComponent(search), true)
-  //},
+  updateSearch: function(){
+    var search = encodeURIComponent(this.$('#search').val())
+    CATARSE.router.navigate("search/q=" + search, true)
+  },
 
   index: function(){
     _this.selectItem("recommended")
@@ -77,6 +66,18 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   render: function(){
     this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
+  },
+
+  getObjectFromUrl: function(query) {
+    var data = query.split("&")
+    var result = {}
+    for(var i=0; i<data.length; i++) {
+      var item = data[i].split("=")
+      if(item[0] == 'q')
+        item[0] = 'pg_search';
+      result[item[0]] = item[1]
+    }
+    return result
   }
 
 })
