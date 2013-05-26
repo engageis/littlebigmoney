@@ -51,6 +51,22 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    update! do
+      if @project.investment?
+        @title = @project.name
+        @rewards = @project.rewards.includes(:project).order(:minimum_value).all
+        @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
+        @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
+        @possible_investor = PossibleInvestor.where('user_id = ? and project_id = ?', current_user.id, @project.id).first
+        unless @possible_investor
+          @possible_investor = PossibleInvestor.new
+        end
+      end
+      return render :show if @project.errors.any?
+    end
+  end
+
   def show
     begin
       if params[:permalink].present?

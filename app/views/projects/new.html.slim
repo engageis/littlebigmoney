@@ -66,13 +66,20 @@
               p.inline-hints= t('formtastic.hints.project.category')
 
             .input
-              /.bootstrap-alert
-                span
-                .alert
-                  .important= t('.tags_important', :href => "http://www.catarse.me/explore").html_safe
               = form.label :country, "Country"
               = form.select :country, ['Colombia', 'Peru']
-              / p.inline-hints= t('formtastic.hints.project.category')
+
+            .input
+              = form.label :enterpreneur_type, "Enterpreneur Type"
+              = form.select :enterpreneur_type, ['Women', 'Men', 'Youth']
+
+            .input
+              = form.label :area, "Area"
+              = form.select :area, ['Rural', 'Urban']
+
+            .input
+              = form.label :impact, "Impact"
+              = form.select :impact, ['Social', 'Environmental']
 
             .input
               .bootstrap-alert

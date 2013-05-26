@@ -101,6 +101,16 @@
                     = form.input :headline, as: :string, required: false
                   - if can? :update, @project, :category
                     = form.input :category, as: :select, required: false
+                  - if can? :update, @project, :country
+                    li.select.input
+                      = form.label :country, "Country", class: "label"
+                      = form.select :country, ['Colombia', 'Peru']
+                  - if can? :update, @project, :enterpreneur_type
+                    = form.input :enterpreneur_type, collection: ['Women', 'Men', 'Youth'], required: false
+                  - if can? :update, @project, :area
+                    = form.input :area, collection: ['Rural', 'Urban'], required: false
+                  - if can? :update, @project, :impact
+                    = form.input :impact, collection: ['Social', 'Environmental'], required: false
                   - if can? :update, @project, :video_url
                     = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
                   - if can? :update, @project, :uploaded_image
