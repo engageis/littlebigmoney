@@ -35,11 +35,13 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     }
 
     if($('body').hasClass('invest')){
-      window.FB.Event.subscribe('edge.create',
-        function(response) {
-          alert('We need to do it!!!!!!!!!!!!!!: ' + response);
-        }
-      );
+      $(document).live("facebook:ready", function(){
+        window.FB.Event.subscribe('edge.create',
+          function(response) {
+            alert('We need to do it!!!!!!!!!!!!!!: ' + response);
+          }
+        );
+      });
     }
 
   },
