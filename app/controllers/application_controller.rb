@@ -2,6 +2,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  layout :choose_layout
+
+  def choose_layout
+    if request.subdomain.match(/invest|donate/)
+      request.subdomain
+    else
+      'application'
+    end
+  end
+
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
     if current_user.nil?
@@ -31,7 +41,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # We use this method only to make stubing easier 
+  # We use this method only to make stubing easier
   # and remove FB templates from acceptance tests
   def render_facebook_sdk
     render_to_string(partial: 'layouts/facebook_sdk').html_safe
@@ -77,7 +87,7 @@ class ApplicationController < ActionController::Base
       new_locale = (current_user.locale if current_user) || I18n.default_locale
       begin
         return redirect_to params.merge(locale: new_locale)
-      rescue ActionController::RoutingError 
+      rescue ActionController::RoutingError
         logger.info "Could not redirect with params #{params.inspect} in set_locale"
       end
     end
