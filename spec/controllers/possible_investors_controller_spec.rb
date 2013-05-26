@@ -7,10 +7,10 @@ describe PossibleInvestorsController do
 
     before do
       controller.stubs(:current_user).returns(current_user)
-      post :create, project_id: project.id, possible_investor: { amount: 100 }, format: :json
+      post :create, project_id: project.id, possible_investor: { amount: 100 }
     end
 
-    it { response.should be_success }
+    it { response.should redirect_to(project) }
     it { PossibleInvestor.last.project.should eq project }
     it { PossibleInvestor.last.user.should eq current_user }
     it { PossibleInvestor.last.amount.should eq 100 }
