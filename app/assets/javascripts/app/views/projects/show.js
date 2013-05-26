@@ -38,7 +38,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       $(document).live("facebook:ready", function(){
         window.FB.Event.subscribe('edge.create',
           function(response) {
-            alert('We need to do it!!!!!!!!!!!!!!: ' + response);
+            $('#amount_to_invest').slideDown();
           }
         );
       });
