@@ -24,12 +24,13 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
   }),
 
   search: function(search){
-    this.initializeView(_this.getObjectFromUrl(search))
+    search = _this.getObjectFromUrl(search)
+    this.initializeView(search)
 
     // Update text on search field
     var input = this.$('#search')
-    if(search.q && input.val() != search.q)
-      input.val(search)
+    if(search.pg_search && input.val() != search.pg_search)
+      input.val(search.pg_search)
   },
 
   updateSearch: function(){
@@ -65,7 +66,7 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
   },
 
   render: function(){
-    this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
+    this.$('.search input').timedKeyup(this.updateSearch, 1000)
   },
 
   getObjectFromUrl: function(query) {
