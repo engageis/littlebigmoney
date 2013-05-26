@@ -10,8 +10,12 @@
           h4= t('.subtitle')
 
       #explore_results
-        .results &nbsp;
-        #loading= image_tag "loading.gif"
+        .results
+          .projects
+            - @recommended.each_with_index do |item,i|
+              = render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+
+        #loading.hidden= image_tag "loading.gif"
 
     .sidebar
       .content
