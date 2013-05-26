@@ -355,6 +355,10 @@ en:
       waiting_funds: waiting
       not_reached_goal: waiting
   projects:
+    index_header:
+      subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
+      subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
+      title: "Make the projects you believe in happen"
     index:
       categories: Categories
       expiring: "Final countdown"
