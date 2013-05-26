@@ -58,6 +58,9 @@ class Ability
       backer.user == current_user
     end
 
+    # NOTE: Possible investors
+    can [:create, :update], :possible_investors if current_user.persisted?
+
     # NOTE: When admin can access all things ;)
     can :access, :all if current_user.admin?
   end
