@@ -51,7 +51,7 @@ var CATARSE = {
     },
 
     trackOnMixPanel: function(target, event, text, options){
-    
+
       var self = this;
 
       $(target).on(event, function(){
@@ -61,10 +61,10 @@ var CATARSE = {
         var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
         var opt     = options || {};
 
-        var default_options = { 
-          'page name':  document.title, 
-          'user_id':    usr, 
-          'project':    ref, 
+        var default_options = {
+          'page name':  document.title,
+          'user_id':    usr,
+          'project':    ref,
           'url':        window.location
         };
 
@@ -127,11 +127,6 @@ var CATARSE = {
         Backbone.history.start()
     }
   },
-  explore:{
-    index: function(){
-      window.view = new CATARSE.ExploreIndexView({el: $("body") });
-    }
-  },
   adm: {
     users:{
       index: function(){
@@ -152,6 +147,9 @@ var CATARSE = {
     }
   },
   projects: {
+    index: function(){
+      window.view = new CATARSE.ProjectsIndexView({el: $("body") });
+    },
     show: function(){
       window.view = new CATARSE.ProjectsShowView({el: $("body") });
     },

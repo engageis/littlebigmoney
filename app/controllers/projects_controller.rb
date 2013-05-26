@@ -14,21 +14,14 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-        collection_projects = Project.by_kind(app_context).recommended_for_home
-        unless collection_projects.empty?
-          if current_user and current_user.recommended_project
-            @recommended_project = current_user.recommended_project
-            collection_projects = collection_projects.where("id != ? AND category_id != ?", current_user.recommended_project.id, @recommended_project.category_id)
-          end
-          @first_project, @second_project, @third_project = collection_projects.all
-        end
 
-        project_ids = collection_projects.map{|p| p.id }
-        project_ids << @recommended_project.id if @recommended_project
+        @categories = Category.with_projects.order(:name_pt).all
 
-        @expiring = Project.by_kind(app_context).expiring_for_home(project_ids)
-        @recent = Project.by_kind(app_context).recent_for_home(project_ids)
-        @blog_posts = blog_posts
+        # Just to know if we should present the menu entries, the actual projects are fetched via AJAX
+        @recommended = Project.by_kind(app_context).visible.not_expired.recommended.limit(3)
+        @expiring = Project.by_kind(app_context).visible.expiring.limit(3)
+        @recent = Project.by_kind(app_context).visible.recent.not_expired.limit(3).order('created_at DESC')
+        @successful = Project.by_kind(app_context).visible.successful.limit(3)
       end
 
       format.json do
