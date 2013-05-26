@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-        collection_projects = Project.by_kind(app_kind).recommended_for_home
+        collection_projects = Project.by_kind(app_context).recommended_for_home
         unless collection_projects.empty?
           if current_user and current_user.recommended_project
             @recommended_project = current_user.recommended_project
@@ -26,13 +26,13 @@ class ProjectsController < ApplicationController
         project_ids = collection_projects.map{|p| p.id }
         project_ids << @recommended_project.id if @recommended_project
 
-        @expiring = Project.by_kind(app_kind).expiring_for_home(project_ids)
-        @recent = Project.by_kind(app_kind).recent_for_home(project_ids)
+        @expiring = Project.by_kind(app_context).expiring_for_home(project_ids)
+        @recent = Project.by_kind(app_context).recent_for_home(project_ids)
         @blog_posts = blog_posts
       end
 
       format.json do
-        @projects = apply_scopes(Project).by_kind(app_kind).visible.order_for_search
+        @projects = apply_scopes(Project).by_kind(app_context).visible.order_for_search
         respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
