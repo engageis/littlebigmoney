@@ -1,96 +1,145 @@
-CATARSE.projects.index = Backbone.View.extend({
-  el: 'body',
-
-
-  // The right-way to bind events using backbone ;)
-  events: {
-    'mouseover  #press_img': 'doSomething',
-    'mouseleave #press_img': 'doSomethingAgain'
-  },
+CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this);
-
-    // This div (#twitter) has an data attribute called 'data-username'
-    // And we get the user from this
-    this.twitter          = $('#twitter');
-    this.twitter_username = this.twitter.data('username');
-
-    // Getting the 2 latest tweets
-    this.twitter_url      = "https://api.twitter.com/1/statuses/user_timeline.json?callback=?&count=2";
-
-
-    // Fetching the latest tweets
-    this.fetchLatestTweets();
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
+    CATARSE.router.route(":name", "category", this.category)
+    CATARSE.router.route("recommended", "recommended", this.recommended)
+    CATARSE.router.route("expiring", "expiring", this.expiring)
+    CATARSE.router.route("recent", "recent", this.recent)
+    CATARSE.router.route("successful", "successful", this.successful)
+    CATARSE.router.route("search/*search", "search", this.search)
+    CATARSE.router.route("", "index", this.index)
+    this.render()
+    _this = this;
   },
 
-  populateTwitterBlock: function(data) {
-    var data = data;
-    var name = $('<h4/>', { class: 'name'});
-    var link = $('<a/>', {
-      href: 'http://twitter.com/' + this.twitter_username,
-      text: 'Follow ' + this.twitter_username,
-      'class':            'twitter-follow-button',
-      'data-show-count':  false,
-      'data-button':      'blue',
-      'data-width':       '224px'
-
-    });
-
-    // Append Profile name & Populate it
-    this.twitter.append(name);
-    this.twitter.children('.name').text(this.twitter_username);
-
-    // Append the tweets' text
-    for ( var i = 0, len = data.length; i < len; i++){
-      this.twitter.append('<p class="text">' +data[i].text+ '</p>');
+  ProjectView: CATARSE.ModelView.extend({
+    template: function(){
+      return $('#project_template').html()
     }
+  }),
 
-    // Finally, append a "Follow" button/link
-    this.twitter.append(link);
+  ProjectsView: CATARSE.PaginatedView.extend({
+    template: function(){
+      return $('#projects_template').html()
+    },
+    emptyTemplate: function(){
+      return $('#empty_projects_template').html()
+    }
+  }),
 
-    // Reloading so twttr can change the buttons for us
-    twttr.widgets.load();
+  search: function(search){
+    search = decodeURIComponent(search);
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').remove();
+    }
+    this.$('.section_header .original_title').fadeOut(300, function() {
+      $('.section_header').append('<div class="replaced_header"></div>');
+      $('.section_header .replaced_header').html('<h1><span>Explore</span> / '+ search +'</h1>');
+    })
+    this.selectItem("")
+    this.initializeView({
+      pg_search: search
+    })
+    var input = this.$('#search')
+    if(input.val() != search)
+      input.val(search)
   },
 
-
-  fetchLatestTweets: function() {
-    var self = this;
-
-    // Make a get request to twitter API
-    $.getJSON(self.twitter_url, {screen_name: self.twitter_username}, function(data) {
-      self.populateTwitterBlock(data);
-    });
+  updateSearch: function(){
+    var search = encodeURIComponent(this.$('#search').val())
+    CATARSE.router.navigate("search/" + encodeURIComponent(search), true)
   },
 
-
-  /**
-   * These methods below are doin' something that I don't recognize, but I refactored them.
-   * Probably aren't being used, but who knows.
-   */
-  doSomething: function(event) {
-    var regex     = /\/(\w+)_pb.png\?*\d*$/;
-    var extension = '.png'
-    this.testAndChangeSrcAttribute($(event.target), regex, extension);
+  index: function(){
+    _this.changeReplacedTitle()
+    _this.selectItem("recommended")
+    _this.initializeView({
+      recommended: true,
+      not_expired: true
+    })
   },
 
-  doSomethingAgain: function(event) {
-    var regex     =  /\/(\w+).png\?*\d*$/;
-    var extension =  '_pb.png';
-    this.testAndChangeSrcAttribute($(event.target), regex, extension);
-
+  recommended: function(){
+    this.replaceTitleBy("recommended")
+    this.selectItem("recommended")
+    this.initializeView({
+      recommended: true,
+      not_expired: true
+    })
   },
 
-  testAndChangeSrcAttribute: function(object, regex, extension){
-    var src = regex.exec(object.attr('src'));
-    if (src) {
-      src  = src[1];
-      object.attr('src', '/assets/press/' + src + extension);
-    } else {
-      return
+  expiring: function(){
+    this.replaceTitleBy("expiring")
+    this.selectItem("expiring")
+    this.initializeView({
+      expiring: true
+    })
+  },
+
+  recent: function(){
+    this.replaceTitleBy("recent")
+    this.selectItem("recent")
+    this.initializeView({
+      recent: true,
+      not_expired: true
+    })
+  },
+
+  successful: function(){
+    this.replaceTitleBy("successful")
+    this.selectItem("successful")
+    this.initializeView({
+      successful: true
+    })
+  },
+
+  category: function(name){
+    this.replaceTitleBy(name)
+    this.selectItem(name)
+    this.initializeView({
+      by_category_id: this.selectedItem.data("id")
+    })
+  },
+
+  initializeView: function(search){
+    if(this.projectsView)
+      this.projectsView.destroy()
+    this.projectsView = new this.ProjectsView({
+      modelView: this.ProjectView,
+      collection: new CATARSE.Projects({search: search}),
+      loading: this.$("#loading"),
+      el: this.$("#explore_results .results")
+    })
+  },
+
+  changeReplacedTitle: function() {
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').fadeOut(300, function(){
+        $(this).remove();
+        $('.section_header .original_title').fadeIn(300);
+      });
     }
   },
 
+  replaceTitleBy: function(name) {
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').remove();
+    }
+    this.$('.section_header .original_title').fadeOut(300, function() {
+      $('.section_header').append('<div class="replaced_header"></div>');
+      $('.section_header .replaced_header').html('<h1><span>Explore</span> '+$('.sidebar a[href=#' + name + ']').text()+'</h1>');
+    })
+  },
 
-});
+  selectItem: function(name) {
+    this.selectedItem = $('.sidebar a[href=#' + name + ']')
+    $('.sidebar .selected').removeClass('selected')
+    this.selectedItem.addClass('selected')
+  },
 
+  render: function(){
+    this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
+  }
+
+})

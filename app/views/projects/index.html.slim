@@ -1,49 +1,46 @@
-- if current_page?('/')
-  = content_for :bellow_header do
-    .row.home_header
-      h1 Connect, share & empower
-      div
-        p.callout Little Big Money connects you with small business that are looking for help to growth. Do you want to be part of the change?
-        p
-          = link_to "Donate", url_for(kind: :donate, controller: :projects, action: :index), class: 'button'
-          = link_to "Follow up Businesses", url_for(kind: :invest, controller: :projects, action: :index), class: 'button'
-
-      div
-        iframe{src="http://player.vimeo.com/video/54044367?title=0&amp;byline=0&amp" width="430" height="242" frameborder="0" class="right vimeo-iframe" webkitAllowFullScreen mozallowfullscreen allowFullScreen}
+- content_for :js_templates do
+  = render :partial => 'project_js'
 
 #page_content
-  .main
-    .selected_projects.list_title.projects_list
-      = link_to "view all", explore_path()+"#recommended", class: "explore_link right"
-      .list_title
-        .title
-          h2 Projects for donation
-      .projects.row
-        = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
-        = render :partial => 'project', :locals => {:project => @second_project } if @second_project
-        = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
-        / - 3.times do
-        /   = render 'layouts/static_donate'
+  .container
+    .main
+      .section_header
+        .original_title
+          h1= t('.title')
+          h4= t('.subtitle')
 
-    .expiring_projects.list.projects_list
-      = link_to "view all", explore_path()+'#expiring', class: "explore_link right"
-      .list_title
-        .title
-          h2 Projects to watch for investment
-      .projects.row
-        / - @expiring.each_with_index do |item,i|
-          / = render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-        /- 3.times do
-          = render 'layouts/static_invest'
+      #explore_results
+        .results &nbsp;
+        #loading= image_tag "loading.gif"
 
-      .recents_projects.list.projects_list
-        .list_title
-         .title
-           h2= t('sections.recents.title')
-        .projects.row
-         - @recent.each_with_index do |item,i|
-           = render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
-        .explore_link
-         = link_to t('main.links.recents'), explore_path()+'#recent'
+    .sidebar
+      .content
+        - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+          section.highlights
+            h2= t('.quick_explore')
+            ul#explore_quick
+              - unless @recommended.empty?
+                li
+                  a href='#recommended'
+                    = t('.recommended')
+              - unless @expiring.empty?
+                li.no_margin
+                  a href='#expiring'
+                    = t('.expiring')
+              - unless @recent.empty?
+                li
+                  a href='#recent'
+                    = t('.recent')
+              - unless @successful.empty?
+                li.no_margin
+                  a href='#successful'
+                    = t('.successful')
 
-  = render 'layouts/sidebar'
+        - unless @categories.empty?
+          section.categories
+            h2= t('.categories')
+            ul#explore_categories
+              - @categories.each_with_index do |category, index|
+                li class="#{(index%2==1 ? 'no_margin':'')}"
+                  a href="##{category.to_s.parameterize}" data-id=category.id
+                    = category
