@@ -74,6 +74,12 @@ class ProjectsController < ApplicationController
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
+        if @project.investment?
+          @possible_investor = PossibleInvestor.where('user_id = ? and project_id = ?', current_user.id, @project.id).first
+          unless @possible_investor
+            @possible_investor = PossibleInvestor.new
+          end
+        end
       }
     rescue ActiveRecord::RecordNotFound
       return render_404
