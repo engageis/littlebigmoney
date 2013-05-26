@@ -1,6 +1,5 @@
 #footer
   .decorative_arrow
-    .inner_arrow
   / section.useless_menu
   /   = link_to "About the team", "#"
   /   |  | 
@@ -21,7 +20,7 @@
         h5 Sitemap
         ul.first_sitemap
           li= link_to "Home", root_url
-          li= link_to t('footer.links.about'), about_path
+          li= link_to_global t('footer.links.about'), "about"
           li= link_to "How it works", "#"
           li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
         ul.second_sitemap
