@@ -129,16 +129,14 @@ class ProjectsController < ApplicationController
 
   private
   def update_fikes_count
-    if @project.investment?
-      begin
-        fql = "SELECT total_count FROM link_stat WHERE url='%s'"
-        facebook_query_url = "https://api.facebook.com/method/fql.query?format=json&query=#{URI.encode(fql % project_by_slug_url(@project.permalink, :locale => ''))}"
-        facebook_data = JSON.parse(open(facebook_query_url).read)
-        total_count = facebook_data.first["total_count"]
-        @project.update_column(:likes, total_count.to_i) if total_count
-      rescue
-        Rails.logger.info 'Unable to fetch facebook total likes count'
-      end
+    begin
+      fql = "SELECT total_count FROM link_stat WHERE url='%s'"
+      facebook_query_url = "https://api.facebook.com/method/fql.query?format=json&query=#{URI.encode(fql % project_by_slug_url(@project.permalink, :locale => ''))}"
+      facebook_data = JSON.parse(open(facebook_query_url).read)
+      total_count = facebook_data.first["total_count"]
+      @project.update_column(:likes, total_count.to_i) if total_count
+    rescue
+      Rails.logger.info 'Unable to fetch facebook total likes count'
     end
   end
 end
