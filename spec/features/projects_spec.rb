@@ -6,6 +6,8 @@ describe "Projects" do
   let(:project){ FactoryGirl.build(:project) }
 
   before {
+    Capybara.app_host = "http://donate.lvh.me:#{Capybara.current_session.server.port}"
+
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
     ProjectsController.any_instance.stubs(:last_tweets).returns([])

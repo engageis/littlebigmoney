@@ -9,7 +9,7 @@
         .clearfix
         = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
           = form.inputs do
-            = form.hidden_field :kind, value: "donate"
+            = form.hidden_field :kind, value: app_context
             = form.semantic_fields_for current_user do |f|
               .input
                 = f.label :email, "#{t('activerecord.attributes.user.email')} *"

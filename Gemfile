@@ -25,7 +25,7 @@ gem 'schema_plus'
 gem 'schema_associations'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'bce4d8c'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '19470d1'
 
 # Payment engine using PagosOnline
 gem 'pagosonline', git: 'git://github.com/sagmor/pagosonline.git'
@@ -109,14 +109,14 @@ group :production do
   gem 'heroku-deflater', '~> 0.4.1'
 
   # Enables memcachier env vars to work with dalli
-  # If you are not using memcachier you should 
+  # If you are not using memcachier you should
   # comment this line and configure dalli manually
   gem 'memcachier'
 
   # Enables dalli as cache provider for rails using memcache
   # If you are not using a memcache server for your cache you should
   # comment out this line and comment out the line
-  #    config.cache_store = :dalli_store 
+  #    config.cache_store = :dalli_store
   # in config/production.rb
   gem 'dalli'
 end
