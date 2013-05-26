@@ -1,5 +1,11 @@
 require 'sidekiq/web'
 
+class Subdomain
+  def self.matches?(request)
+    request.subdomain.match(/invest|donate/)
+  end
+end
+
 Catarse::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
@@ -21,54 +27,50 @@ Catarse::Application.routes.draw do
 
   filter :locale, exclude: /\/auth\//
 
+  constraints(Subdomain) do
+    root to: 'projects#index'
+
+    match "/explore" => "explore#index", :as => :explore
+    match "/explore#:quick" => "explore#index", :as => :explore_quick
+    match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
+    match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
+
+    resources :projects do
+      resources :updates, only: [ :index, :create, :destroy ]
+      resources :rewards, only: [ :index, :create, :update, :destroy ]
+      resources :project_files, only: [ :index, :create ]
+      resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
+        member do
+          match 'credits_checkout'
+          post 'update_info'
+        end
+      end
+      collection do
+        get 'vimeo'
+        get 'check_slug'
+      end
+      member do
+        put 'pay'
+        get 'embed'
+        get 'video_embed'
+      end
+    end
+
+    match "/reward/:id" => "rewards#show", :as => :reward
+    match "/:permalink" => "projects#show", as: :project_by_slug
+  end
+
   root to: 'home#index'
 
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
-  match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
   match "/guidelines_backers" => "static#guidelines_backers", :as => :guidelines_backers
-  match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
 
-  match "/donate" => "projects#index", kind: 'donate'
-  match "/invest" => "projects#index", kind: 'invest'
-
-  match "/explore" => "explore#index", :as => :explore
-  match "/explore#:quick" => "explore#index", :as => :explore_quick
-  match "/credits" => "credits#index", :as => :credits
-
-  match "/reward/:id" => "rewards#show", :as => :reward
-  resources :posts, only: [:index, :create]
-
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
-  end
-  
-  resources :projects do
-    resources :updates, only: [ :index, :create, :destroy ]
-    resources :rewards, only: [ :index, :create, :update, :destroy ]
-    resources :project_files, only: [ :index, :create ]
-    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
-      member do
-        match 'credits_checkout'
-        post 'update_info'
-      end
-    end
-    collection do
-      get 'vimeo'
-      get 'check_slug'
-    end
-    member do
-      put 'pay'
-      get 'embed'
-      get 'video_embed'
-    end
-  end
-
-  scope ":kind" do
-    resources :projects
   end
 
   resources :users do
@@ -84,12 +86,6 @@ Catarse::Application.routes.draw do
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
-  resources :credits, only: [:index] do
-    collection do
-      get 'buy'
-      post 'refund'
-    end
-  end
 
   namespace :adm do
     resources :projects, only: [ :index, :update ] do
@@ -109,13 +105,10 @@ Catarse::Application.routes.draw do
         put 'change_reward'
       end
     end
-    resources :users, only: [ :index ]
 
     namespace :reports do
       resources :backer_reports, only: [ :index ]
     end
   end
 
-  match "/mudancadelogin" => "users#set_email", as: :set_email_users
-  match "/:permalink" => "projects#show", as: :project_by_slug
 end
