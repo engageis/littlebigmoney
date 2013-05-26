@@ -86,7 +86,6 @@ Catarse::Application.routes.draw do
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
-
   namespace :adm do
     resources :projects, only: [ :index, :update ] do
       member do
@@ -106,9 +105,12 @@ Catarse::Application.routes.draw do
       end
     end
 
+    resources :users, only: [ :index ]
     namespace :reports do
       resources :backer_reports, only: [ :index ]
     end
   end
+
+  match "/mudancadelogin" => "users#set_email", as: :set_email_users
 
 end
