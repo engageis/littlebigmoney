@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   def show
     begin
       if params[:permalink].present?
-        @project = Project.find_by_permalink! params[:permalink]
+        @project = Project.by_kind(app_context).find_by_permalink!(params[:permalink])
       else
         return redirect_to project_by_slug_path(resource.permalink)
       end
