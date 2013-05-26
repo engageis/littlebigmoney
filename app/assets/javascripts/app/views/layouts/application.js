@@ -82,8 +82,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
   },
 
   flash: function() {
-    setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
-    if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
+    if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp() }, 5500)
     $(window).click(function(){ this.$('.flash').slideUp() })
   },
 
