@@ -66,6 +66,8 @@ class ProjectsController < ApplicationController
         return redirect_to project_by_slug_path(resource.permalink)
       end
 
+      update_fikes_count
+
       show!{
         @title = @project.name
         @rewards = @project.rewards.includes(:project).order(:minimum_value).all
@@ -123,6 +125,21 @@ class ProjectsController < ApplicationController
     rewards = params[:project][:rewards_attributes]
     rewards.each do |r|
       rewards.delete(r[0]) unless Reward.new(r[1]).valid?
+    end
+  end
+
+  private
+  def update_fikes_count
+    if @project.investment?
+      begin
+        fql = "SELECT total_count FROM link_stat WHERE url='%s'"
+        facebook_query_url = "https://api.facebook.com/method/fql.query?format=json&query=#{URI.encode(fql % project_by_slug_url(@project.permalink, :locale => ''))}"
+        facebook_data = JSON.parse(open(facebook_query_url).read)
+        total_count = facebook_data.first["total_count"]
+        @project.update_column(:likes, total_count.to_i) if total_count
+      rescue
+        Rails.logger.info 'Unable to fetch facebook total likes count'
+      end
     end
   end
 end

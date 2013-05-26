@@ -125,6 +125,16 @@ class Project < ActiveRecord::Base
     self.state_machine.states.map &:name
   end
 
+  def donation?
+    return true if kind == 'donate'
+    false
+  end
+
+  def investment?
+    return true if kind == 'invest'
+    false
+  end
+
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end
@@ -230,7 +240,7 @@ class Project < ActiveRecord::Base
   def in_time_to_wait?
     Time.now < 4.weekdays_from(expires_at)
   end
-  
+
   def pending_backers_reached_the_goal?
     (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
   end
@@ -264,7 +274,7 @@ class Project < ActiveRecord::Base
       transition online: :waiting_funds,      if: ->(project) {
         project.expired? && project.in_time_to_wait? && project.pending_backers_reached_the_goal?
       }
-      
+
       transition waiting_funds: :successful,  if: ->(project) {
         project.reached_goal? && !project.in_time_to_wait?
       }
@@ -273,7 +283,7 @@ class Project < ActiveRecord::Base
         project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
     end
-    
+
     after_transition online: :failed, do: :after_transition_of_online_to_failed
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
@@ -281,11 +291,11 @@ class Project < ActiveRecord::Base
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
     after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
   end
-  
+
   def after_transition_of_any_to_failed_or_successful
     notify_observers :sync_with_mailchimp
   end
-  
+
   def after_transition_of_online_to_failed
     notify_observers :notify_users
   end

@@ -33,6 +33,17 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     if(window.location.search.match(/update_id/)){
       window.location.hash = 'updates';
     }
+
+    if($('body').hasClass('invest')){
+      $(document).live("facebook:ready", function(){
+        window.FB.Event.subscribe('edge.create',
+          function(response) {
+            alert('We need to do it!!!!!!!!!!!!!!: ' + response);
+          }
+        );
+      });
+    }
+
   },
 
   events: {

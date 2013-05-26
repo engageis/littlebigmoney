@@ -21,6 +21,18 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe '#investment?' do
+    before { project.kind ='invest' }
+    it { project.investment?.should be_true }
+    it { project.donation?.should be_false }
+  end
+
+  describe '#donation?' do
+    before { project.kind = 'donate' }
+    it { project.donation?.should be_true }
+    it { project.investment?.should be_false }
+  end
+
   describe '.state_names' do
     let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed] }
 
@@ -61,7 +73,7 @@ describe Project do
     subject { Project.between_created_at(start_at, ends_at) }
 
     before do
-      @project_01 = FactoryGirl.create(:project, created_at: '19/01/2013') 
+      @project_01 = FactoryGirl.create(:project, created_at: '19/01/2013')
       @project_02 = FactoryGirl.create(:project, created_at: '23/01/2013')
       @project_03 = FactoryGirl.create(:project, created_at: '26/01/2013')
     end
@@ -83,7 +95,7 @@ describe Project do
       @project_03.reload
       @project_04.reload
     end
-    
+
 
     it 'should turn state to waiting funds' do
       @project_01.waiting_funds?.should be_true
@@ -108,11 +120,11 @@ describe Project do
       @user = backer.user
       @project = backer.project
       # Another backer with same project and user should not create duplicate results
-      FactoryGirl.create(:backer, user: @user, project: @project, confirmed: true) 
+      FactoryGirl.create(:backer, user: @user, project: @project, confirmed: true)
       # Another backer with other project and user should not be in result
-      FactoryGirl.create(:backer, confirmed: true) 
+      FactoryGirl.create(:backer, confirmed: true)
       # Another backer with different project and same user but not confirmed should not be in result
-      FactoryGirl.create(:backer, user: @user, confirmed: false) 
+      FactoryGirl.create(:backer, user: @user, confirmed: false)
     end
     subject{ Project.backed_by(@user.id) }
     it{ should == [@project] }
@@ -466,21 +478,21 @@ describe Project do
 
   describe '#pending_backers_reached_the_goal?' do
     let(:project) { FactoryGirl.create(:project, goal: 200) }
-    
+
     before { project.stubs(:pleged) { 100 } }
-    
+
     subject { project.pending_backers_reached_the_goal? }
-    
+
     context 'when reached the goal with pending backers' do
       before { 2.times { FactoryGirl.create(:backer, project: project, value: 120, confirmed: false, payment_token: 'ABC') } }
-      
+
       it { should be_true }
     end
-    
+
     context 'when dont reached the goal with pending backers' do
       before { 2.times { FactoryGirl.create(:backer, project: project, value: 30, confirmed: false, payment_token: 'ABC') } }
-      
-      it { should be_false }      
+
+      it { should be_false }
     end
   end
 
@@ -524,7 +536,7 @@ describe Project do
     end
 
     describe '#approve' do
-      subject do 
+      subject do
         project.expects(:after_transition_of_draft_to_online)
         project.approve
         project
@@ -560,13 +572,13 @@ describe Project do
         before do
           subject.approve
         end
-        
+
         context 'when project is expired and the sum of the pending backers dont reached the goal' do
           before do
             backer = FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
             subject.finish
           end
-                    
+
           its(:failed?) { should be_true }
         end
 
@@ -584,7 +596,7 @@ describe Project do
             project_total = mock()
             project_total.stubs(:pledged).returns(30000.0)
             subject.stubs(:project_total).returns(project_total)
-            subject.finish            
+            subject.finish
           end
 
           context "and pass the waiting fund time" do
