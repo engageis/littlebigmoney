@@ -1,44 +1,68 @@
 #header
   h1
     = link_to Configuration[:company_name], root_path, id: "logo", title: "Home"
-  nav.actions
-    ul
-      li
-        = link_to t("layouts.header.explore"), explore_path, class: "explore dropdown", "data-dropdown" => "drop_explore"
-        |  | 
-      li
-        = link_to "Donation Projects", explore_path
-        |  | 
-      li
-        = link_to "Investment Projects", explore_path
-        |  | 
-      li
-        = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
-        |  | 
-      li
-        = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-        |  | 
-      li
-        = link_to "Expert", "#"
-        |  | 
-      li
-        = link_to "Partners", "#"
+  - if app_context
+    nav.actions
+      ul
+        li
+          = link_to t("layouts.header.explore"), explore_path, class: "explore dropdown", "data-dropdown" => "drop_explore"
+          |  | 
+        li
+          = link_to "Donation Projects", explore_path
+          |  | 
+        li
+          = link_to "Investment Projects", explore_path
+          |  | 
+        li
+          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+          |  | 
+        li
+          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
+          |  | 
+        li
+          = link_to "Expert", "#"
+          |  | 
+        li
+          = link_to "Partners", "#"
+  - else
+    nav.actions
+      ul
+        li
+          = link_to t("layouts.header.explore"), explore_path, class: "explore dropdown", "data-dropdown" => "drop_explore"
+          |  | 
+        li
+          = link_to "Donation Projects", explore_path
+          |  | 
+        li
+          = link_to "Investment Projects", explore_path
+          |  | 
+        li
+          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+          |  | 
+        li
+          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
+          |  | 
+        li
+          = link_to "Expert", "#"
+          |  | 
+        li
+          = link_to "Partners", "#"
 
 #personal_options
   nav.account_menu
     - if current_user
+      | Welcome 
+      span.user_name= current_user.name
+      |  | 
       = link_to "#", class: "my_profile_link dropdown", "data-dropdown" => "drop_profile" do
-        //= image_tag(current_user.display_image, size: "15x15", class: "profile_picture")
         span.current_user_name= t("layouts.header.account")
-      ul#drop_profile.f-dropdown
-        li= link_to t("layouts.header.profile"), current_user
-        li
-          = link_to t("layouts.user.my_credits"), user_path(current_user, anchor: "credits")
-          .small (#{current_user.display_credits})
-        - if current_user.admin?
-          - for menu, path in Adm::BaseController.menu do
-            li= link_to menu, path
-        li= link_to t("layouts.user.logout"), destroy_user_session_path, method: :delete
+      |  | 
+      = link_to t("layouts.user.my_credits"), user_path(current_user, anchor: "credits")
+      |  | 
+      = link_to t("layouts.user.logout"), destroy_user_session_path, method: :delete
+      /- if current_user.admin?
+        - for menu, path in Adm::BaseController.menu do
+          li= link_to menu, path
     - else
       = link_to t("layouts.header.signup"), new_user_session_path(active_register: true)
       |  | 
@@ -47,7 +71,3 @@
     - if request.method == "GET"
       = link_to "English", url_for(locale: :en), class: "locale_link" unless I18n.locale == :en
       = link_to "Español", url_for(locale: :es), class: "locale_link" unless I18n.locale == :es
-
-
-- if content_for? :bellow_header
-  = yield :bellow_header

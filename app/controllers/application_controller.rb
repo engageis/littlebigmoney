@@ -1,16 +1,7 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout :choose_layout
   helper_method :app_context
-
-  def choose_layout
-    if request.subdomain.match(/invest|donate/)
-      request.subdomain
-    else
-      'application'
-    end
-  end
 
   def app_context
     if request.subdomain.match(/invest|donate/)

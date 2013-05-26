@@ -4,39 +4,37 @@ body
 #footer
   background: $footerblue2
   color: white
-  position: relative
   a
     color: $brightblue
-  .decorative_arrow
+  +decorative-content(before)
     background: $navy
-    position: absolute
     $size: 60px
     +absolute-centering($size)
     height: $size
     width: $size
     border-radius: $size/2
     top: -$size/2
-    .inner_arrow
+  .decorative_arrow
+    position: absolute
+    $size: 18px
+    +absolute-centering($size)
+    width: $size
+    height: $size
+    top: -17px
+    background: white
+    +decorative-content(before, false)
+      +triangle(bottom, $size/2, $navy)
       position: absolute
-      $size: 18px
-      +absolute-centering($size)
-      width: $size
-      height: $size
-      top: 13px
-      background: white
-      +decorative-content(before, false)
-        +triangle(bottom, $size/2, $navy)
-        position: absolute
-        border-left-width: $size/2
-        border-right-width: $size/2
-      +decorative-content(after, false)
-        +triangle(bottom, $size * 0.8, white)
-        position: absolute
-        bottom: -$size*0.8
-        border-left-width: $size * 0.8
-        border-right-width: $size * 0.8
-        margin-left: -5px
-      
+      border-left-width: $size/2
+      border-right-width: $size/2
+    +decorative-content(after, false)
+      +triangle(bottom, $size * 0.8, white)
+      position: absolute
+      bottom: -$size*0.8
+      border-left-width: $size * 0.8
+      border-right-width: $size * 0.8
+      margin-left: -5px
+    
 
 .footer_wrapper
   overflow: hidden
@@ -66,6 +64,12 @@ body
       &.first_sitemap, &.second_sitemap
         float: left
         width: 130px
+        a:link, a:visited
+          color: white !important
+          text-decoration: none
+        a:hover
+          color: $brightblue !important
+          text-decoration: underline
     .contact_links
       width: 450px
     .social_links
