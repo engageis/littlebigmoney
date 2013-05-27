@@ -96,7 +96,6 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
       this.dropDownOpened = false;
       $dropdown.hide();
     }
-
   },
 
   newsletterModal: function() {
