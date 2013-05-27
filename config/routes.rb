@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 class Subdomain
   def self.matches?(request)
-    request.subdomain.match(/invest|donate/)
+    request.subdomains.first and request.subdomains.first.match(/invest|donate/)
   end
 end
 
@@ -34,8 +34,6 @@ Catarse::Application.routes.draw do
   constraints(Subdomain) do
     root to: 'projects#index'
 
-    match "/explore" => "explore#index", :as => :explore
-    match "/explore#:quick" => "explore#index", :as => :explore_quick
     match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
     match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
 

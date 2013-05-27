@@ -1,7 +1,8 @@
 CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   events: {
-    'click section.highlights a': 'highlights'
+    'click section.highlights a': 'highlights',
+    'click section.by_category_id a, section.by_country a, section.by_area a, section.by_impact a, section.by_entrepreneur_type a': 'setParams',
   },
 
   initialize: function() {
@@ -35,6 +36,28 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
     var input = this.$('#search')
     if(search.pg_search && input.val() != search.pg_search)
       input.val(search.pg_search)
+    _this.updateActives()
+  },
+
+  updateActives: function(){
+    var params = _this.getParams()
+    $('.highlights a').removeClass('active')
+    if(params.recommended)
+      $(".highlights a[data-search=recommended]").addClass('active')
+    else if(params.expiring)
+      $(".highlights a[data-search=expiring]").addClass('active')
+    else if(params.recent)
+      $(".highlights a[data-search=recent]").addClass('active')
+    else if(params.successful)
+      $(".highlights a[data-search=successful]").addClass('active')
+
+    keys = ['category_id', 'country', 'area', 'impact', 'entrepreneur_type']
+
+    _.each(keys, function(key){
+      $('.by_' + key + ' a').removeClass('active')
+      if(params['by_' + key])
+        $(".by_" + key + " a[data-search=" + params['by_' + key] + "]").addClass('active')
+    })
   },
 
   highlights: function(event){
@@ -47,8 +70,24 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
       params['q'] = params.pg_search
       delete params.pg_search
     }
-    params[$(event.target).data('search')] = true
+    if(!this.$(event.target).hasClass('active')){
+      params[$(event.target).data('search')] = true
+    }
     CATARSE.router.navigate("search/" + $.param(params), true)
+    _this.updateActives()
+    return false
+  },
+
+  setParams: function(event){
+    var params = _this.getParams()
+    if(this.$(event.target).hasClass('active')){
+      // FIXME
+      delete params[$(event.target).parents('section').attr('class')]
+    } else {
+      params[$(event.target).parents('section').attr('class')] = $(event.target).data('search')
+    }
+    CATARSE.router.navigate("search/" + $.param(params), true)
+    _this.updateActives()
     return false
   },
 
@@ -94,7 +133,10 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
     }
 
     hash = hash.replace(/#search?\//, '')
-    return _this.getObjectFromUrl(hash)
+    var params = _this.getObjectFromUrl(hash)
+    if(params.pg_search == '')
+      delete params.pg_search
+    return params
   },
 
   getObjectFromUrl: function(query) {

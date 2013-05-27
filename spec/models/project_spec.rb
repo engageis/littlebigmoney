@@ -177,34 +177,15 @@ describe Project do
     it{ should be_empty }
   end
 
-  describe ".by_country" do
-    before do
-      @project_01 = FactoryGirl.create(:project, country: 'chile')
-      @project_02 = FactoryGirl.create(:project, country: 'peru')
-      @project_03 = FactoryGirl.create(:project)
-      @project_04 = FactoryGirl.create(:project)
-    end
-    subject{ Project.by_country('colombia') }
-    it{ should include(@project_03, @project_04) }
-    it{ should_not include(@project_01, @project_02) }
-  end
-
-  describe "kind scopes" do
-    before do
-      @project_01 = FactoryGirl.create(:project, kind: 'invest')
-      @project_02 = FactoryGirl.create(:project, kind: 'invest')
-      @project_03 = FactoryGirl.create(:project)
-      @project_04 = FactoryGirl.create(:project)
-    end
-    context ".as_donate" do
-      subject{ Project.as_donate }
-      it{ should include(@project_03, @project_04) }
-      it{ should_not include(@project_01, @project_02) }
-    end
-    context ".as_invest" do
-      subject{ Project.as_invest }
-      it{ should include(@project_01, @project_02) }
-      it{ should_not include(@project_03, @project_04) }
+  %w( country permalink area impact entrepreneur_type ).each do | key |
+    describe ".by_#{key}" do
+      before do
+        @project_01 = FactoryGirl.create(:project, "#{key}" => 'value1')
+        @project_02 = FactoryGirl.create(:project, "#{key}" => 'value2')
+      end
+      subject{ Project.send("by_#{key}", "value1") }
+      it{ should include(@project_01) }
+      it{ should_not include(@project_02) }
     end
   end
 

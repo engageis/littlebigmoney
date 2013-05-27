@@ -47,5 +47,15 @@ aside#sidebar.filter
       ul#explore_categories
         - @categories.each_with_index do |category, index|
           li class="#{(index%2==1 ? 'no_margin':'')}"
-            a href="##{category.to_s.parameterize}" data-id=category.id
+            a href="##{category.to_s.parameterize}" data-search=category.id
               = category
+
+  - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], entrepreneur_type: ['Women', 'Men', 'Youth']}
+  - default_values.keys.each do |key|
+    section class="by_#{key}"
+      h4= t(".#{key}")
+      ul id="explore_#{key.to_s.pluralize}"
+        - default_values[key].each do |val|
+          li
+            a href="##{val.to_s.parameterize}" data-search=val
+              = val
