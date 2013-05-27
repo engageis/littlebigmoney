@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 class Subdomain
   def self.matches?(request)
-    request.subdomain.match(/invest|donate/)
+    request.subdomains.first and request.subdomains.first.match(/invest|donate/)
   end
 end
 

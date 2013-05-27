@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :app_context
 
   def app_context
-    if request.subdomain.match(/invest|donate/)
-      request.subdomain
+    if request.subdomains.first and request.subdomains.first.match(/invest|donate/)
+      request.subdomains.first
     else
       nil
     end
