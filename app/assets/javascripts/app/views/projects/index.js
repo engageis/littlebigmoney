@@ -2,7 +2,7 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   events: {
     'click section.highlights a': 'highlights',
-    'click section.by_category_id a': 'byCategoryId'
+    'click section.by_category_id a, section.by_country a, section.by_enterpreneur_type a, section.by_area a, section.by_impact a, section.by_enterpreneur_type a': 'setParams',
   },
 
   initialize: function() {
@@ -51,10 +51,13 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
     else if(params.successful)
       $(".highlights a[data-search=successful]").addClass('active')
 
-    $('.by_category_id a').removeClass('active')
-    if(params.by_category_id)
-      $(".by_category_id a[data-id=" + params.by_category_id + "]").addClass('active')
+    keys = ['category_id', 'country', 'area', 'impact', 'enterpreneur_type']
 
+    _.each(keys, function(key){
+      $('.by_' + key + ' a').removeClass('active')
+      if(params['by_' + key])
+        $(".by_" + key + " a[data-search=" + params['by_' + key] + "]").addClass('active')
+    })
   },
 
   highlights: function(event){
@@ -73,9 +76,9 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
     return false
   },
 
-  byCategoryId: function(event){
+  setParams: function(event){
     var params = _this.getParams()
-    params['by_category_id'] = $(event.target).data('id')
+    params[$(event.target).parents('section').attr('class')] = $(event.target).data('search')
     CATARSE.router.navigate("search/" + $.param(params), true)
     _this.updateAtives()
     return false
