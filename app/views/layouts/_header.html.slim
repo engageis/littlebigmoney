@@ -5,10 +5,10 @@
     nav.actions
       ul
         li
-          = link_to "Donation Projects", explore_path
+          = link_to "Donation Projects", projects_path(subdomain: 'donate')
           |  | 
         li
-          = link_to "Investment Projects", explore_path
+          = link_to "Investment Projects", projects_path(subdomain: 'invest')
           |  | 
         li
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
