@@ -47,7 +47,7 @@ aside#sidebar.filter
       ul#explore_categories
         - @categories.each_with_index do |category, index|
           li class="#{(index%2==1 ? 'no_margin':'')}"
-            a href="##{category.to_s.parameterize}" data-id=category.id
+            a href="##{category.to_s.parameterize}" data-search=category.id
               = category
 
   - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], enterpreneur_type: ['Women', 'Men', 'Youth']}
