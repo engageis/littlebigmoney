@@ -18,8 +18,8 @@
 
 aside#sidebar
   = form_tag root_path(anchor: "search"), method: 'GET', class: 'search' do
-    = text_field_tag :search, nil, autocomplete: "off"
     = submit_tag "Search"
+    = text_field_tag :search, nil, autocomplete: "off"
   - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
     section.highlights
       h4= t('.quick_explore')
