@@ -51,11 +51,11 @@ aside#sidebar.filter
               = category
 
   - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], enterpreneur_type: ['Women', 'Men', 'Youth']}
-  - %w( country area impact enterpreneur_type ).each do |key|
+  - default_values.keys.each do |key|
     section class="by_#{key}"
       h4= t(".#{key}")
-      ul id="explore_#{key.pluralize}"
-        - default_values[key.to_sym].each do |val|
+      ul id="explore_#{key.to_s.pluralize}"
+        - default_values[key].each do |val|
           li
             a href="##{val.to_s.parameterize}" data-search=val
               = val
