@@ -50,7 +50,7 @@ aside#sidebar.filter
             a href="##{category.to_s.parameterize}" data-search=category.id
               = category
 
-  - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], enterpreneur_type: ['Women', 'Men', 'Youth']}
+  - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], entrepreneur_type: ['Women', 'Men', 'Youth']}
   - default_values.keys.each do |key|
     section class="by_#{key}"
       h4= t(".#{key}")

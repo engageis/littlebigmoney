@@ -52,7 +52,7 @@ class Project < ActiveRecord::Base
     where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
-  %w( country state id permalink category_id area impact enterpreneur_type ).each do |key|
+  %w( country state id permalink category_id area impact entrepreneur_type ).each do |key|
     scope "by_#{key}", ->(value) { where("#{key} = ?", value) }
   end
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
