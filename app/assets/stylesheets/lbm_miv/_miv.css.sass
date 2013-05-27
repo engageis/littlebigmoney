@@ -54,18 +54,20 @@ h1, h2, h3, h4, h5, h6
     color: inherit
     text-decoration: none
     +decorative-content
-      width: 6px
-      height: 6px
-      border-radius: 6px
+      $size: 6px
+      width: $size
+      height: $size
+      border-radius: $size
       border: 1px solid $warmgray
       left: -15px
       top: 4px
     &:hover, &.active
       +decorative-content(before, false)
+        $size: 4px
         position: absolute
-        width: 4px
-        height: 4px
-        border-radius: 4px
+        width: $size
+        height: $size
+        border-radius: $size
         background-color: darken($warmgray, 15%)
         left: -13px
         top: 6px
