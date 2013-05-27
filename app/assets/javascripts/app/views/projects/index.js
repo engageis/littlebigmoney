@@ -2,7 +2,7 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   events: {
     'click section.highlights a': 'highlights',
-    'click section.by_category_id a, section.by_country a, section.by_entrepreneur_type a, section.by_area a, section.by_impact a, section.by_entrepreneur_type a': 'setParams',
+    'click section.by_category_id a, section.by_country a, section.by_area a, section.by_impact a, section.by_entrepreneur_type a': 'setParams',
   },
 
   initialize: function() {
@@ -78,7 +78,12 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   setParams: function(event){
     var params = _this.getParams()
-    params[$(event.target).parents('section').attr('class')] = $(event.target).data('search')
+    if(this.$(event.target).hasClass('active')){
+      // FIXME
+      delete params[$(event.target).parents('section').attr('class')]
+    } else {
+      params[$(event.target).parents('section').attr('class')] = $(event.target).data('search')
+    }
     CATARSE.router.navigate("search/" + $.param(params), true)
     _this.updateAtives()
     return false

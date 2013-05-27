@@ -116,6 +116,14 @@ h1, h2, h3, h4, h5, h6
   &.error
     background-color: rgb(236, 145, 145)
 
+.project
+  .cover 
+    img
+      +filter(sepia(100%) contrast(1.2) brightness(0.9))
+      +transition(all .5s)
+      &:hover
+        +filter(sepia(0%) contrast(1) brightness(1))
+
 +keyframes(alert-in)
   0%
     +opacity(0)
