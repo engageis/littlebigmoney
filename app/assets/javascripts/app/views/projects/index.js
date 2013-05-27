@@ -2,7 +2,7 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   events: {
     'click section.highlights a': 'highlights',
-    'click section.by_category_id a, section.by_country a, section.by_enterpreneur_type a, section.by_area a, section.by_impact a, section.by_enterpreneur_type a': 'setParams',
+    'click section.by_category_id a, section.by_country a, section.by_entrepreneur_type a, section.by_area a, section.by_impact a, section.by_entrepreneur_type a': 'setParams',
   },
 
   initialize: function() {
@@ -51,7 +51,7 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
     else if(params.successful)
       $(".highlights a[data-search=successful]").addClass('active')
 
-    keys = ['category_id', 'country', 'area', 'impact', 'enterpreneur_type']
+    keys = ['category_id', 'country', 'area', 'impact', 'entrepreneur_type']
 
     _.each(keys, function(key){
       $('.by_' + key + ' a').removeClass('active')
