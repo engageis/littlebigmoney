@@ -177,7 +177,7 @@ describe Project do
     it{ should be_empty }
   end
 
-  %w( country permalink area impact enterpreneur_type ).each do | key |
+  %w( country permalink area impact entrepreneur_type ).each do | key |
     describe ".by_#{key}" do
       before do
         @project_01 = FactoryGirl.create(:project, "#{key}" => 'value1')
