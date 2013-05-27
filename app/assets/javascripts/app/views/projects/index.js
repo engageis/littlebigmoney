@@ -1,5 +1,9 @@
 CATARSE.ProjectsIndexView = Backbone.View.extend({
 
+  events: {
+    'click section.highlights a': 'highlights'
+  },
+
   initialize: function() {
     _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "search", 'updateSearch')
     CATARSE.router.route("search/*search", "search", this.search)
@@ -33,6 +37,21 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
       input.val(search.pg_search)
   },
 
+  highlights: function(event){
+    var params = _this.getParams()
+    delete params.recommended
+    delete params.expiring
+    delete params.recent
+    delete params.successful
+    if(params.pg_search){
+      params['q'] = params.pg_search
+      delete params.pg_search
+    }
+    params[$(event.target).data('search')] = true
+    CATARSE.router.navigate("search/" + $.param(params), true)
+    return false
+  },
+
   updateSearch: function(){
     var search = encodeURIComponent(this.$('#search').val())
     CATARSE.router.navigate("search/q=" + search, true)
@@ -46,7 +65,6 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
       //_this.recent()
     //}
   },
-
 
   initializeView: function(search){
     if(this.projectsView)
@@ -67,6 +85,16 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
 
   render: function(){
     this.$('.search input').timedKeyup(this.updateSearch, 1000)
+  },
+
+  getParams: function(){
+    var hash = window.location.hash
+    if(hash == '#' || hash == '' || hash == '#search/' || hash == '#search'){
+      return {}
+    }
+
+    hash = hash.replace(/#search?\//, '')
+    return _this.getObjectFromUrl(hash)
   },
 
   getObjectFromUrl: function(query) {
