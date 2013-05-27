@@ -76,8 +76,8 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   search: function(event) {
     var query = this.$(event.target).find("#search").val()
-    if(!($('#main_content').data("controller-name") == "explore" && $('#main_content').data("action") == "index") && query.length > 0)
-      location.href = "/explore#search/" + query
+    if(!($('#main_content').data("controller-name") == "projects" && $('#main_content').data("action") == "index") && query.length > 0)
+      location.href = "/#search/q=" + query
     return false
   },
 
