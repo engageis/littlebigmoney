@@ -52,10 +52,9 @@ class Project < ActiveRecord::Base
     where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
-  scope :by_state, ->(state) { where(state: state) }
-  scope :by_id, ->(id) { where(id: id) }
-  scope :by_permalink, ->(p) { where(permalink: p) }
-  scope :by_category_id, ->(id) { where(category_id: id) }
+  %w( country state id permalink category_id area impact enterpreneur_type ).each do |key|
+    scope "by_#{key}", ->(value) { where("#{key} = ?", value) }
+  end
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :order_table, ->(sort) {
@@ -102,10 +101,7 @@ class Project < ActiveRecord::Base
   }
 
   # LBM SCOPES
-  scope :by_country, ->(country) { where(country: country) }
   scope :by_kind, ->(kind) { where(kind: kind) if kind.present? }
-  scope :as_invest, where(kind: :invest)
-  scope :as_donate, where(kind: :donate)
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink, :country, :kind
