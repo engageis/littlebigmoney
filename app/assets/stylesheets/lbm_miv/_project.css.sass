@@ -17,6 +17,9 @@
       &:hover
         +filter(sepia(0%) contrast(1) brightness(1))
   
+  .black_box
+    display: none
+
   .status_bar
     display: block
     background: white
@@ -37,3 +40,31 @@
         right: -5px
         background: darken($carrot, 10%)
         border-radius: 5px
+
+  .info_bar
+    ul
+      +clearfix
+      margin: 0
+    li
+      float: left
+      width: 31%
+      background: darken($warmgray,20%)
+      margin-right: 2px
+      border: 1px solid darken($warmgray,20%)
+      text-align: center
+      text-transform: uppercase
+      .info_desc
+        color: white
+        font-size: 10px
+      h6
+        background: lighten($warmgray, 10%)
+        font-size: 14px
+        margin: 0
+        height: 20px
+        span
+          font-size: 10px
+        padding: 5px 0
+
+ul.collection_list
+  padding: 0
+  list-style: none
