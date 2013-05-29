@@ -1,0 +1,39 @@
+.project
+  width: 210px
+  float: left
+  margin: 5px
+  .box
+    background: white
+    border: 1px solid $warmgray
+    padding: 5px 7px
+  ul
+    list-style: none
+    padding: 0
+
+  .cover 
+    img
+      +filter(sepia(100%) contrast(1.2) brightness(0.9))
+      +transition(all .5s)
+      &:hover
+        +filter(sepia(0%) contrast(1) brightness(1))
+  
+  .status_bar
+    display: block
+    background: white
+    width: 97%
+    height: 10px
+    margin: 5px 0
+    border: 1px solid $warmgray
+    border-radius: 5px
+    overflow: hidden
+    .progress
+      width: 40%
+      height: 100%
+      display: block
+      background: $carrot
+      +decorative-content
+        width: 10px
+        height: 10px
+        right: -5px
+        background: darken($carrot, 10%)
+        border-radius: 5px

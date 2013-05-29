@@ -58,9 +58,11 @@ class ProjectsController < ApplicationController
         @rewards = @project.rewards.includes(:project).order(:minimum_value).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
-        @possible_investor = PossibleInvestor.where('user_id = ? and project_id = ?', current_user.id, @project.id).first
-        unless @possible_investor
-          @possible_investor = PossibleInvestor.new
+        if current_user
+          @possible_investor = PossibleInvestor.where('user_id = ? and project_id = ?', current_user.id, @project.id).first
+          unless @possible_investor
+            @possible_investor = PossibleInvestor.new
+          end
         end
       end
       return render :show if @project.errors.any?
@@ -83,7 +85,7 @@ class ProjectsController < ApplicationController
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
-        if @project.investment?
+        if @project.investment? && current_user
           @possible_investor = PossibleInvestor.where('user_id = ? and project_id = ?', current_user.id, @project.id).first
           unless @possible_investor
             @possible_investor = PossibleInvestor.new
