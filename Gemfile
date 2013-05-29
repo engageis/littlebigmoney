@@ -29,7 +29,7 @@ gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_expr
 
 # Payment engine using PagosOnline
 gem 'pagosonline', git: 'git://github.com/sagmor/pagosonline.git'
-# gem 'catarse_pagosonline', path: '../catarse_pagosonline'
+gem 'catarse_pagosonline', github: 'gustavoguichard/catarse_pagosonline'
 
 # Payment engine using Moip
 # gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: 'fdb0c2c'

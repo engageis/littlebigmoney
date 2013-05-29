@@ -17,6 +17,14 @@ GIT
       rails (~> 3.2.6)
 
 GIT
+  remote: git://github.com/gustavoguichard/catarse_pagosonline.git
+  revision: 8981fcde94e369145e20c5176828cb13f1bd78cf
+  specs:
+    catarse_pagosonline (0.1.10)
+      pagosonline
+      rails (~> 3.2.6)
+
+GIT
   remote: git://github.com/ncri/validation_reflection.git
   revision: 60320e6beb088808fd625a8d958dbd0d2661d494
   specs:
@@ -474,6 +482,7 @@ DEPENDENCIES
   carrierwave (~> 0.7.0)
   carrierwave_direct
   catarse_mailchimp!
+  catarse_pagosonline!
   catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-rails (~> 1.0.2)
