@@ -28,23 +28,23 @@
           - unless project.user.address_state.blank?
             | /
             = project.user.address_state
-  .info_bar
-    .status_bar
-      .progress style="width: #{project.display_progress}%;"
-    ul
-      li
-        - if project.in_time?
-          h6
-            = project.time_to_go[:time]
-            |  
-            span =project.time_to_go[:unit]
-          span.info_desc= "#{project.remaining_text}"
-        - else
-          h6= I18n.t("project.display_status.#{project.display_status}").capitalize
-          span.info_desc= project.display_expires_at
-      li
-        h6= "#{project.progress}%"
-        span.info_desc= "#{t('projects.project.reached')}"
-      li
-        h6= "#{project.display_pledged}"
-        span.info_desc= "#{t('projects.project.backed')}"
+    .info_bar
+      .status_bar
+        .progress style="width: #{project.display_progress}%;"
+      ul
+        li
+          - if project.in_time?
+            h6
+              = project.time_to_go[:time]
+              |  
+              span =project.time_to_go[:unit]
+            span.info_desc= "#{project.remaining_text}"
+          - else
+            h6= I18n.t("project.display_status.#{project.display_status}").capitalize
+            span.info_desc= project.display_expires_at
+        li
+          h6= "#{project.progress}%"
+          span.info_desc= "#{t('projects.project.reached')}"
+        li
+          h6= "#{project.display_pledged}"
+          span.info_desc= "#{t('projects.project.backed')}"
