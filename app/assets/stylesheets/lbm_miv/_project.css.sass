@@ -4,13 +4,25 @@
   margin: 5px
   .box
     background: white
-    border: 1px solid $warmgray
+    border: 1px solid $midgray
     padding: 5px 7px
   ul
     list-style: none
     padding: 0
 
+  .project_content
+    .project_name
+      font-family: $headline-font
+      a
+        text-decoration: none
+    .author
+      margin-top: 5px
+      font-size: 12px
+    .description
+      font-size: 12px
+
   .cover 
+    margin-bottom: 5px
     img
       +filter(sepia(100%) contrast(1.2) brightness(0.9))
       +transition(all .5s)
@@ -26,7 +38,7 @@
     width: 97%
     height: 10px
     margin: 5px 0
-    border: 1px solid $warmgray
+    border: 1px solid $midgray
     border-radius: 5px
     overflow: hidden
     .progress
