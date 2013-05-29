@@ -2,7 +2,7 @@
 |Olá, #{backer.user.name}!
 br
 br
-|Infelizmente o projeto #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
+|Infelizmente o projeto #{link_to(backer.project.name, "#{backer.project.kind}.#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
 br
 br
 |Vimos no nosso banco de dados que você iniciou há alguns dias o processo de apoio para o projeto. 

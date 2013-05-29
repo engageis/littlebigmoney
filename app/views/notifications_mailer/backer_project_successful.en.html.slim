@@ -2,7 +2,7 @@
 |Hi, #{backer.user.name}!
 br
 br
-  |The project #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you backed was funded successfully on #{Configuration[:company_name].downcase}! Time to celebrate o/
+  |The project #{link_to(backer.project.name, "#{backer.project.kind}.#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you backed was funded successfully on #{Configuration[:company_name].downcase}! Time to celebrate o/
 br
 br
 |The project had, including you, #{backer.project.total_backers} marvellous backers, raised #{backer.project.display_pledged} and reached #{backer.project.progress}% of its goal =D
