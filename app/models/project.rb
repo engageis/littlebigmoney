@@ -100,6 +100,10 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?)", user_id)
   }
 
+  scope :backed_by_or_possible_invested_by, ->(user_id){
+    where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?) OR (id IN (SELECT project_id FROM possible_investors c WHERE c.user_id = ?))", user_id, user_id)
+  }
+
   # LBM SCOPES
   scope :by_kind, ->(kind) { where(kind: kind) if kind.present? }
 
