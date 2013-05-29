@@ -15,4 +15,9 @@ class PossibleInvestorsController < ApplicationController
   def update
     update! { project_path(@possible_investor.project) }
   end
+
+  def destroy
+    Unsubscribe.where(notification_type_id: NotificationType.where(name: 'updates').first, project: Project.find(params[:project_id])).delete
+    destroy!
+  end
 end
