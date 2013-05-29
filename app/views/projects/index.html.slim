@@ -26,7 +26,7 @@ aside#sidebar.filter
       ul#explore_quick
         - unless @recommended.empty?
           li
-            a href='#recommended' data-search='recommended'
+            a href='#recommended' data-search='recommended' class="active"
               = t('.recommended')
         - unless @expiring.empty?
           li.no_margin
