@@ -1,7 +1,7 @@
 class PossibleInvestorsController < ApplicationController
   load_and_authorize_resource only: [ :create, :update ]
   inherit_resources
-  actions :create, :update
+  actions :create, :update, :destroy
 
   def create
     @possible_investor = PossibleInvestor.new(amount: params[:possible_investor][:amount])
