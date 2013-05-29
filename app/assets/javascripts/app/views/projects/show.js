@@ -41,6 +41,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
             $('#amount_to_invest').slideDown();
           }
         );
+        window.FB.Event.subscribe('edge.remove',
+          function(response) {
+            // Remover possible investor
+          }
+        );
       });
     }
 
