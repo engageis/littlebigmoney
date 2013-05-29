@@ -43,7 +43,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
         );
         window.FB.Event.subscribe('edge.remove',
           function(response) {
-            // Remover possible investor
+            $removeLink = $('a#destroy_possible', '#amount_to_invest');
+            if($removeLink.length > 0){
+              $removeLink.trigger('click');
+              alert("You just unsubscribed the project!");
+            }
           }
         );
       });

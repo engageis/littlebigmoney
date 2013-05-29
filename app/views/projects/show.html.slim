@@ -193,7 +193,7 @@
                   #amount_to_invest
                     | U$: 
                     = semantic_form_for [@project, @possible_investor] do |f|
-                      = link_to "Unlike", project_possible_investor(@project, @possible_investor), id: "destroy_possible", method: :destroy, remote: true if @possible_investor.persisted?
+                      = link_to "Unlike", project_possible_investor_url(@project, @possible_investor), id: "destroy_possible", method: :delete, remote: true, style: "display: none;" if @possible_investor.persisted?
                       = f.input :amount, placeholder: 'eg.: 4000'
                       = f.submit
                 ul
