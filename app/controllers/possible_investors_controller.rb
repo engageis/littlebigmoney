@@ -17,7 +17,8 @@ class PossibleInvestorsController < ApplicationController
   end
 
   def destroy
-    Unsubscribe.where(notification_type_id: NotificationType.where(name: 'updates').first, project: Project.find(params[:project_id])).delete
+    unsubscribe = Unsubscribe.where(notification_type_id: NotificationType.where(name: 'updates').first, project_id: Project.find(params[:project_id])).first
+    Unsubscribe.delete(unsubscribe.id) if unsubscribe
     destroy!
   end
 end

@@ -37,7 +37,6 @@ describe "Projects" do
       FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit projects_path(:locale => :pt)
-      sleep 3
     end
     it "should show recommended projects" do
       recommended = all(".collection_list .project")
@@ -49,7 +48,7 @@ describe "Projects" do
     before do
       FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
-      visit explore_path(anchor: :search) + '/Lorem'
+      visit projects_path(anchor: :search) + '/q=Lorem'
       sleep 4
     end
     it "should show recommended projects" do
