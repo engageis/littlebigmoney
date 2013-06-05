@@ -17,27 +17,11 @@ describe "Projects" do
     ::Configuration[:company_name] = 'Catarse'
   }
 
-
   describe "home" do
-    # WE NEED TO DEFINE THE HTML STRUCTURE FIRST
-    before do
-      FactoryGirl.create(:project, state: 'online', online_days: 30)
-      FactoryGirl.create(:project, state: 'online', online_days: -30)
-      visit root_path(:locale => :pt)
-    end
-
-    # it "should show recent projects" do
-    #   recent = all(".selected_projects.projects_list .projects .curated_project")
-    #   recent.should have(1).items
-    # end
-  end
-
-  describe "explore" do
     before do
       FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit projects_path(:locale => :pt)
-      sleep 3
     end
     it "should show recommended projects" do
       recommended = all(".collection_list .project")
@@ -49,7 +33,7 @@ describe "Projects" do
     before do
       FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
-      visit explore_path(anchor: :search) + '/Lorem'
+      visit projects_path(anchor: :search) + '/q=Lorem'
       sleep 4
     end
     it "should show recommended projects" do

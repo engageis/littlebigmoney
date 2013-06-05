@@ -5,10 +5,10 @@
     nav.actions
       ul
         li
-          = link_to "Donation Projects", explore_path
+          = link_to "Donate", projects_url(subdomain: 'donate.staging')
           |  | 
         li
-          = link_to "Investment Projects", explore_path
+          = link_to "Invest", projects_url(subdomain: 'invest.staging')
           |  | 
         li
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
@@ -25,10 +25,10 @@
     nav.actions
       ul
         li
-          = link_to "Donation Projects", explore_path
+          = link_to "Donate", projects_url(subdomain: 'donate.staging')
           |  | 
         li
-          = link_to "Investment Projects", explore_path
+          = link_to "Invest", projects_url(subdomain: 'invest.staging')
           |  | 
         li
           = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"

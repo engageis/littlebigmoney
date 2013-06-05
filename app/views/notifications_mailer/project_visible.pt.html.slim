@@ -5,7 +5,7 @@ br
 |Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora! Agora é começar a fazer a barrinha verde subir :D
 br
 br
-= link_to(project.name, project_by_slug_url(project.permalink))
+= link_to(project.name, project_by_slug_url(project.permalink, subdomain: project.kind))
 br
 br
 |Antes de mais nada, Preencha as informações do link a seguir para receber a comunicação do #{Configuration[:company_name]} exclusiva para realizadores: #{link_to 'http://eepurl.com/pDZ6r', 'http://eepurl.com/pDZ6r'}

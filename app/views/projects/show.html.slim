@@ -36,7 +36,7 @@
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
     .section_header
       h1= @project.name
-      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category, explore_path(:anchor => @project.category.to_s.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category, root_path(:anchor => "search/by_category_id=#{@project.category.id}")), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
         = link_to '#about', :id => 'about_link', :class => 'selected' do
@@ -193,6 +193,7 @@
                   #amount_to_invest
                     | U$: 
                     = semantic_form_for [@project, @possible_investor] do |f|
+                      = link_to "Unlike", project_possible_investor_url(@project, @possible_investor), id: "destroy_possible", method: :delete, remote: true, style: "display: none;" if @possible_investor.persisted?
                       = f.input :amount, placeholder: 'eg.: 4000'
                       = f.submit
                 ul

@@ -10,8 +10,7 @@
         #review_text
           - if @backer.payment_method == 'MoIP' && @backer.payment_id
             = t('.moip_message', code: @backer.payment_id).html_safe
-            br
-            br
+            br/ 
           = t("projects.back_project.display_status.#{@project.display_status}", :goal => @project.display_goal, :date => @project.display_expires_at)
         .share
             h2= t('.text_subtitle')

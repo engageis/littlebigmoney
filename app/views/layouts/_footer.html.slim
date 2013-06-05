@@ -1,25 +1,17 @@
 #footer
   .decorative_arrow
-  / section.useless_menu
-  /   = link_to "About the team", "#"
-  /   |  | 
-  /   = link_to t('footer.links.faq'), '#'
-  /   |  | 
-  /   = link_to "Facebook", "#"
-  /   |  | 
-  /   = link_to "Twitter", "#"
   .footer_wrapper.sitemap_area
     nav.sitemap
       section.social_links
         h5 Follow Us
         ul
-          li= link_to "Follow us on Twitter", "#", class: "twitter social-link"
-          li= link_to "Find us on Facebook", "#", class: "facebook social-link"
-          li= link_to "Watch our Vimeo videos", "#", class: "vimeo social-link"
+          li= link_to "Follow us on Twitter", "https://twitter.com/LBigMoney", class: "twitter social-link", target: :blank
+          li= link_to "Find us on Facebook", "https://www.facebook.com/LittleBigMoney", class: "facebook social-link", target: :blank
+          li= link_to "Watch our Vimeo videos", "http://vimeo.com/user14817381", class: "vimeo social-link", target: :blank
       section.links_list
         h5 Sitemap
         ul.first_sitemap
-          li= link_to "Home", root_url
+          li= link_to_global "Home", :root
           li= link_to_global t('footer.links.about'), :about
           li= link_to "How it works", "#"
           li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"

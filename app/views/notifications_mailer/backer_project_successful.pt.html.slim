@@ -2,7 +2,7 @@
 |Olá, #{backer.user.name}!
 br
 br
- |O projeto #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no #{Configuration[:company_name]}! Hora de comemorar o/
+ |O projeto #{link_to(backer.project.name, "#{backer.project.kind}.#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no #{Configuration[:company_name]}! Hora de comemorar o/
 br
 br
 |O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D

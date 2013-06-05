@@ -26,7 +26,7 @@ Catarse::Application.routes.draw do
   end
 
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
-  # mount CatarsePagosonline::Engine => "/", :as => "catarse_pagosonline"
+  mount CatarsePagosonline::Engine => "/", :as => "catarse_pagosonline"
   # mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
   filter :locale, exclude: /\/auth\//
@@ -41,7 +41,7 @@ Catarse::Application.routes.draw do
       resources :updates, only: [ :index, :create, :destroy ]
       resources :rewards, only: [ :index, :create, :update, :destroy ]
       resources :project_files, only: [ :index, :create ]
-      resources :possible_investors, only: [ :create, :update ]
+      resources :possible_investors, only: [ :create, :update, :destroy ]
       resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
         member do
           match 'credits_checkout'

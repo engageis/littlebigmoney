@@ -10,7 +10,7 @@
 
       #explore_results
         .results
-          .projects
+          .collection_list
             - @recommended.each_with_index do |item,i|
               = render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
 
@@ -26,7 +26,7 @@ aside#sidebar.filter
       ul#explore_quick
         - unless @recommended.empty?
           li
-            a href='#recommended' data-search='recommended'
+            a href='#recommended' data-search='recommended' class="active"
               = t('.recommended')
         - unless @expiring.empty?
           li.no_margin
