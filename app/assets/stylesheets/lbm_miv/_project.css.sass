@@ -7,7 +7,7 @@
     //overflow: hidden
     background: white
     border: 1px solid $midgray
-    padding: 5px 7px
+    //padding: 5px 7px
     height: 100%
   ul
     list-style: none
@@ -15,11 +15,12 @@
 
   .project_content
     height: 128px
+    padding: 5px
     .project_name
       border-left-width: 2px
       border-left-style: solid
       font-family: $headline-font
-      padding-left: 8px
+      padding-left: 5px
 
       a
         text-decoration: none
@@ -31,6 +32,7 @@
 
   .cover 
     margin-bottom: 5px
+    padding: 3px
     img
       +filter(sepia(100%) contrast(1.2) brightness(0.9))
       +transition(all .5s)
@@ -45,7 +47,7 @@
     background: white
     width: 97%
     height: 10px
-    margin: 5px 0
+    margin: 8px 0 4px 2px
     border: 1px solid $midgray
     border-radius: 5px
     overflow: hidden
@@ -62,9 +64,13 @@
         border-radius: 5px
 
   .info_bar
+    background-color: rgb(241, 241, 241)
+    padding-top: 3px
     ul
       +clearfix
       margin: 0
+      padding-left: 6px
+      padding-bottom: 6px
     li
       float: left
       width: 27%
@@ -80,7 +86,7 @@
       h6
         //background: lighten($warmgray, 10%)
         font-size: 14px
-        color: $warmgray
+        color: $carrot
         margin: 0
         height: 20px
         span

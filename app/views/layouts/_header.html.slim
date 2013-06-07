@@ -4,34 +4,23 @@
   - if app_context
     nav.actions
       ul
-        li
+        li.menu_item
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
-
-          |  | 
-        li
+          
+        li.menu_item
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
-
-          |  | 
-        li
+        
+        li.menu_item
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
-
-          |  | 
-        li
+          
+        li.menu_item
           = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
-
-          |  | 
-        li
+          
+        li.menu_item
           = link_to "Expert", "#"
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
-
-          |  | 
-        li
+          
+        li.menu_item
           = link_to "Partners", "#"
-          = image_tag("menu_item01.png", :alt => "home image", :class => "menu_item")
 
   - else
     nav.actions
