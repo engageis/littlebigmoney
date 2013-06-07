@@ -59,15 +59,30 @@
     font-size: 13px
     +horizontal-list
     color: $warmgray
-    margin-top: 50px
-    a
-      padding-right: 6px
-      &:hover
-        color: $carrot
+    margin-top: 30px
+    
+    ul
+      li
+        width: 105px
+        text-align: center
+        border-right: 1px solid $warmgray
+        padding: 10px 0
 
-.menu_item
-//+decorative-content(after, false)
-  //width: 20px
-  //height: 20px
-  //background-color: red
+        a
+          text-align: center
+          display: block
+          margin-bottom: 14px
 
+
+    #donate
+      background: url("sprites/menu-icon-pledger.png") no-repeat
+    #invest
+      background: url("sprites/menu-icon-investor.png") no-repeat
+    #submit
+      background: url("sprites/menu-icon-enterpreneur.png") no-repeat
+    #support
+      background: url("sprites/menu-icon-enterpreneur.png") no-repeat
+    #expert
+      background: url("sprites/menu-icon-enterpreneur.png") no-repeat
+    #partners
+      background: url("sprites/menu-icon-partner.png") no-repeat

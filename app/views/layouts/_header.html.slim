@@ -4,24 +4,28 @@
   - if app_context
     nav.actions
       ul
-        li.menu_item
+        li#donate
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-          
-        li.menu_item
-          = link_to "Invest", projects_url(subdomain: 'invest.staging')
-        
-        li.menu_item
-          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
-          
-        li.menu_item
-          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          
-        li.menu_item
-          = link_to "Expert", "#"
-          
-        li.menu_item
-          = link_to "Partners", "#"
 
+        li
+          = link_to "Invest", projects_url(subdomain: 'invest.staging')
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "invest"
+        
+        li
+          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "submit"
+
+        li
+          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "support"
+
+        li
+          = link_to "Expert", "#"
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "expert"
+
+        li
+          = link_to "Partners", "#"
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "partners"
   - else
     nav.actions
       ul
