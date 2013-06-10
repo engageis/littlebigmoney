@@ -4,8 +4,9 @@
   - if app_context
     nav.actions
       ul
-        li#donate
+        li
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
+          = image_tag ("sprites/menu-icon-enterpreneur.png"), id: "donate"
 
         li
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
