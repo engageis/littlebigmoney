@@ -16,46 +16,46 @@
 
         #loading.hidden= image_tag "loading.gif"
 
-aside#sidebar.filter
-  = form_tag root_path(anchor: "search"), method: 'GET', class: 'search' do
-    = submit_tag "Search"
-    = text_field_tag :search, nil, autocomplete: "off", placeholder: 'Search'
-  - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
-    section.highlights
-      h4= t('.quick_explore')
-      ul#explore_quick
-        - unless @recommended.empty?
-          li
-            a href='#recommended' data-search='recommended' class="active"
-              = t('.recommended')
-        - unless @expiring.empty?
-          li.no_margin
-            a href='#expiring' data-search='expiring'
-              = t('.expiring')
-        - unless @recent.empty?
-          li
-            a href='#recent' data-search='recent'
-              = t('.recent')
-        - unless @successful.empty?
-          li.no_margin
-            a href='#successful' data-search='successful'
-              = t('.successful')
+  aside#sidebar.filter
+    = form_tag root_path(anchor: "search"), method: 'GET', class: 'search' do
+      = submit_tag "Search"
+      = text_field_tag :search, nil, autocomplete: "off", placeholder: 'Search'
+    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+      section.highlights
+        h4= t('.quick_explore')
+        ul#explore_quick
+          - unless @recommended.empty?
+            li
+              a href='#recommended' data-search='recommended' class="active"
+                = t('.recommended')
+          - unless @expiring.empty?
+            li.no_margin
+              a href='#expiring' data-search='expiring'
+                = t('.expiring')
+          - unless @recent.empty?
+            li
+              a href='#recent' data-search='recent'
+                = t('.recent')
+          - unless @successful.empty?
+            li.no_margin
+              a href='#successful' data-search='successful'
+                = t('.successful')
 
-  - unless @categories.empty?
-    section.by_category_id
-      h4= t('.categories')
-      ul#explore_categories
-        - @categories.each_with_index do |category, index|
-          li class="#{(index%2==1 ? 'no_margin':'')}"
-            a href="##{category.to_s.parameterize}" data-search=category.id
-              = category
+    - unless @categories.empty?
+      section.by_category_id
+        h4= t('.categories')
+        ul#explore_categories
+          - @categories.each_with_index do |category, index|
+            li class="#{(index%2==1 ? 'no_margin':'')}"
+              a href="##{category.to_s.parameterize}" data-search=category.id
+                = category
 
-  - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], entrepreneur_type: ['Women', 'Men', 'Youth']}
-  - default_values.keys.each do |key|
-    section class="by_#{key}"
-      h4= t(".#{key}")
-      ul id="explore_#{key.to_s.pluralize}"
-        - default_values[key].each do |val|
-          li
-            a href="##{val.to_s.parameterize}" data-search=val
-              = val
+    - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban'], impact: ['Social', 'Environmental'], entrepreneur_type: ['Women', 'Men', 'Youth']}
+    - default_values.keys.each do |key|
+      section class="by_#{key}"
+        h4= t(".#{key}")
+        ul id="explore_#{key.to_s.pluralize}"
+          - default_values[key].each do |val|
+            li
+              a href="##{val.to_s.parameterize}" data-search=val
+                = val
