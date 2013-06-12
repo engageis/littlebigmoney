@@ -9,7 +9,18 @@ body.donate
       a
         color: $carrot
 
-.project_name
-  border-left-color: $carrot
-
+  .project_name
+    border-left-color: $carrot
   
+  #header
+    ul li:hover
+      color: $carrot
+      border-right-color: $carrot
+  
+  .status_bar .progress
+    background: $carrot
+    &:after
+      background: darken($carrot, 10%)
+
+  .info_bar h6
+    color: $carrot

@@ -63,51 +63,36 @@
     
     ul
       li
-        width: 105px
         text-align: center
         border-right: 1px solid $warmgray
-        padding: 10px 0
+        padding: 0
+        +decorative-content
+          +sprite-replace("menu-icon-pledger")
+          bottom: 0
+          left: 50%
+          margin-left: -10px
         &:hover
-          color: $carrot
+          color: $warmgray
+          border-right: 1px solid $warmgray
           cursor: pointer
-          border-right: 1px solid $carrot
-
-        &#donate
-          background: url("sprites/menu-icon-pledger.png") no-repeat bottom
-          padding-bottom: 30px
+        &#donate:hover:after
+          +sprites-sprite-position("menu-icon-pledger-hover")
+        &#invest:after
+          +sprites-sprite-position("menu-icon-investor")
+        &#invest:hover:after
+          +sprites-sprite-position("menu-icon-investor-hover")
+        &#submit:after, &#support:after, &#expert:after
+          +sprites-sprite-position("menu-icon-enterpreneur")
+        &#submit:hover:after, &#support:hover:after, &#expert:hover:after
+          +sprites-sprite-position("menu-icon-enterpreneur-hover")
+        &#partners:after
+          +sprites-sprite-position("menu-icon-partner")
+        &#partners:hover:after
+          +sprites-sprite-position("menu-icon-partner-hover")
+        
+        a
+          display: block
+          width: 105px
+          padding: 10px 0 30px
           &:hover
-            background: url("sprites/menu-icon-pledger-hover.png") no-repeat bottom
-
-        &#invest
-          background: url("sprites/menu-icon-investor.png") no-repeat bottom
-          padding-bottom: 30px
-          &:hover
-            background: url("sprites/menu-icon-investor-hover.png") no-repeat bottom
-
-        &#submit
-          background: url("sprites/menu-icon-enterpreneur.png") no-repeat bottom
-          padding-bottom: 30px
-          &:hover
-            background: url("sprites/menu-icon-enterpreneur-hover.png") no-repeat bottom
-
-
-        &#support
-          background: url("sprites/menu-icon-enterpreneur.png") no-repeat bottom
-          padding-bottom: 30px
-          &:hover
-            background: url("sprites/menu-icon-enterpreneur-hover.png") no-repeat bottom
-
-        &#expert
-          background: url("sprites/menu-icon-enterpreneur.png") no-repeat bottom
-          padding-bottom: 30px          
-          &:hover
-            background: url("sprites/menu-icon-enterpreneur-hover.png") no-repeat bottom
-
-        &#partners
-          background: url("sprites/menu-icon-partner.png") no-repeat bottom
-          padding-bottom: 30px
-          &:hover
-            background: url("sprites/menu-icon-partner-hover.png") no-repeat bottom
-
-
-    
+            text-decoration: none
