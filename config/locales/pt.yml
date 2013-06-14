@@ -488,12 +488,14 @@ pt:
         link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
-        backers: Apoiadores
-        comments: Comentários
-        updates: Novidades
+        backers: Pledgers
+        comments: Activity
+        updates: Impact
         edit: Edição
         reports: Relatórios
         add_reward: 'Adicionar recompensa'
+        development_plan: Development Plan
+        impact: Impact
       share:
         embed: embed
         embed_title: "Incorpore este projeto no seu site"
