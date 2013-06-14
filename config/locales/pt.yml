@@ -44,6 +44,7 @@ pt:
     goal:
       subtitle: "atingidos de %{total}"
   project_by: "projeto por"
+  advised_by: "Technical advisor"
   tell_about_this_back: "Conte para o mundo sobre o seu apoio!"
   share_my_backs: "Confira o projeto "
   tell_about_this_project: "Conte para o mundo sobre o seu projeto!"

@@ -257,6 +257,19 @@
             p.backer= t('count_backed_projects', :total => @project.user.total_backs)
             p.city
               | #{@project.user.address_city}
+
+        #advisor_profile
+          h3= t('advised_by')
+          .avatar = @project.user.display_image_html :width => 80, :height => 80
+          .personal_info
+            p.name
+             = link_to @project.user.display_name, user_path(@project.user)
+            #bio
+              p= @project.user.bio
+          #city
+            p.backer= t('count_backed_projects', :total => @project.user.total_backs)
+            p.city
+              | #{@project.user.address_city}
         .user_social
           ul
             - if @project.user.facebook_link

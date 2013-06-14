@@ -1,9 +1,11 @@
 .project_image
   float: left
   padding-right: 20px
+
   img
     +filter(sepia(100%) contrast(1.2) brightness(0.9))
     +transition(all .5s)
+    border-radius: 10px
 
 .section_header
   h1, h4
@@ -22,7 +24,6 @@
 
   nav a
     color: white
-    margin-left: 10px
     margin-right: 5px
     padding: 6px 15px
     background-color: $warmgray
@@ -48,45 +49,76 @@
 
 .sidebar
   float: left
-  width: 270px
+  width: 312px
   margin-left: 5px
   background-color: white
   border: 1px solid #e7e6e6
   border-radius: 10px 0 0 10px
 
-  .statistics
-    padding: 5px 25px
-
-  .not_reached_goal
-    background: rgb(248, 248, 248)
-    padding: 5px 25px
-    font-family: futura
-    border-top: 1px dotted rgb(255, 133, 0)
-    margin: 26px 0
-    border-bottom: 1px dotted rgb(255, 133, 0)
+  p
     font-size: 14px
-    color: rgb(255, 133, 0)
-
-  fieldset
-    border: 0
-
-  input
-    margin: 0 auto
-    padding: 17px 20px
-    background-color: rgb(255, 133, 0)
-    color: white
-    font-size: 18px
-    border-radius: 5px
-    border: none
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif
 
   .info
+    .statistics, .not_reached_goal, #creator_profile, .bootstrap-twitter, #advisor_profile
+      padding: 5px 25px
+    
     .statistics
       font-family: Futura, "Trebuchet MS", Arial, sans-serif
-        margin-bottom: 5px
+      margin-bottom: 5px
       p
         font-size: 45px
         margin: 0
         color: $carrot
+
+    .not_reached_goal
+      background: rgb(248, 248, 248)
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif
+      border-top: 1px dotted $pumpkin
+      margin: 26px 0
+      border-bottom: 1px dotted $pumpkin
+      font-size: 14px
+      color: rgb(255, 133, 0)
+
+    fieldset
+      border: 0
+
+    input
+      margin: 0 auto
+      padding: 24px 44px
+      background-color: rgb(255, 133, 0)
+      color: white
+      font-size: 18px
+      border-radius: 5px
+      border: none
+
+    #creator_profile
+      .avatar
+        float: left
+        padding-right: 15px
+        .avatar_wrapper
+          border-radius: 10px
+
+      .personal_info
+        .name
+          font-family: Futura, "Trebuchet MS", Arial, sans-serif
+          color: $pumpkin
+          margin-bottom: 2px
+      #city
+        margin-top: 3px
+
+    #advisor_profile
+      .avatar
+        float: left
+        padding-right: 15px
+        .avatar_wrapper
+          border-radius: 10px
+    a
+      text-decoration: none
+
+
+
+
 
 
 iframe
