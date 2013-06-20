@@ -89,6 +89,7 @@
 
     fieldset
       border: 0
+      margin-left: 13px
 
     input
       margin: 0 auto
@@ -112,7 +113,7 @@
         p
           font-size: 12px
           font-family: arial
-          
+
       .avatar
         float: left
         padding-right: 15px
@@ -175,6 +176,21 @@ input[type=submit]
     background: $pumpkin
     +transition(all .2s)
 
+input[type=text]
+  background: white
+  border-radius: 4px
+  float: right
+
+
+#project_reports
+  margin-bottom: 20px
+  font-family: futura
+  
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+
 ol
   list-style: none
   font-family: Futura, "Trebuchet MS", Arial, sans-serif
@@ -189,6 +205,19 @@ ol
 
 fieldset
   border: none
+  padding: 0
+  margin: 0
+
+#project_file_file_input
+  background: white
+  border: 1px dotted $carrot
+  padding: 10px 5px
+  border-radius: 5px
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif
+
+  .label
+    margin-top: 7px
+    margin-left: 10px
 
 label
   float: left
@@ -199,6 +228,14 @@ iframe
   height: 365px
 
 .tips
+  border-top: 1px solid #eee
+  margin-top: 40px
+  border-bottom: 1px solid #eee
+  margin-bottom: 40px
+  padding-bottom: 30px
+  padding-top: 14px
+  margin-right: 45px
+
   img
     float: left
     margin-right: 28px
