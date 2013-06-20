@@ -93,7 +93,7 @@
     input
       margin: 0 auto
       padding: 24px 44px
-      background-color: rgb(255, 133, 0)
+      background-color: $carrot
       color: white
       font-size: 18px
       border-radius: 5px
@@ -101,12 +101,18 @@
 
       &:hover
         +transition(all .2s)
-        background-color: scale-lightness($pumpkin, -10%)
+        background-color: scale-lightness($pumpkin, -5%)
         cursor: pointer
 
     #creator_profile
       h3
         margin-bottom: 3px
+
+      .bio
+        p
+          font-size: 12px
+          font-family: arial
+          
       .avatar
         float: left
         padding-right: 15px
@@ -140,20 +146,65 @@
 
   ul
     float: right
-    text-decoration: none
+    list-style: none
 
     #embed_link
+      border-radius: 5px
       background: white
-      padding: 10px 20px
+      padding: 5px 15px
       text-decoration: none
       color: #000
       font-size: 15px
 
+      &:hover
+        background-color: #555
 
 
+.file.input.optional
+  list-style: none
+
+input[type=submit]
+  background: $carrot
+  color: white
+  border-radius: 5px
+  padding: 8px 12px
+  border: none
+  margin-top: 5px
+
+  &:hover
+    background: $pumpkin
+    +transition(all .2s)
+
+ol
+  list-style: none
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif
+  margin: 0
+  padding: 0
+
+  li
+    display: block
+    float: left
+    width: 100%
+    margin-bottom: 5px
+
+fieldset
+  border: none
+
+label
+  float: left
+  margin-right: 25px
 
 iframe
   width: 580px
   height: 365px
+
+.tips
+  img
+    float: left
+    margin-right: 28px
+
+  p 
+    display: block  
+    font-size: 13px
 
 
