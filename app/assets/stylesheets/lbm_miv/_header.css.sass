@@ -56,8 +56,43 @@
   margin-bottom: 35px
   .actions
     float: right
+    font-size: 13px
     +horizontal-list
-    color: $navy
-    margin-top: 50px
-    a
-      padding-right: 6px
+    color: $warmgray
+    margin-top: 15px
+    
+    ul
+      li
+        text-align: center
+        border-right: 1px solid $warmgray
+        padding: 0
+        +decorative-content
+          +sprite-replace("menu-icon-pledger")
+          bottom: 0
+          left: 50%
+          margin-left: -10px
+        &:hover
+          color: $warmgray
+          border-right: 1px solid $warmgray
+          cursor: pointer
+        &#donate:hover:after
+          +sprites-sprite-position("menu-icon-pledger-hover")
+        &#invest:after
+          +sprites-sprite-position("menu-icon-investor")
+        &#invest:hover:after
+          +sprites-sprite-position("menu-icon-investor-hover")
+        &#submit:after, &#support:after, &#expert:after
+          +sprites-sprite-position("menu-icon-enterpreneur")
+        &#submit:hover:after, &#support:hover:after, &#expert:hover:after
+          +sprites-sprite-position("menu-icon-enterpreneur-hover")
+        &#partners:after
+          +sprites-sprite-position("menu-icon-partner")
+        &#partners:hover:after
+          +sprites-sprite-position("menu-icon-partner-hover")
+        
+        a
+          display: block
+          width: 105px
+          padding: 10px 0 30px
+          &:hover
+            text-decoration: none
