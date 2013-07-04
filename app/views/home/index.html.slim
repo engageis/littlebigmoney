@@ -7,7 +7,7 @@
         .decorative
         h2 invest
 
-    .invest_logo= image_tag "logo-invest.png"
+    = link_to "Invest", projects_url(subdomain: 'invest.staging'), class: "invest_logo"
     .highlight
       h4 crece con los nuevos emprendedores
 
@@ -17,6 +17,6 @@
         .decorative
         h2 donate
 
-    .donate_logo= image_tag "logo-donate.png"
+    = link_to "Donate", projects_url(subdomain: 'donate.staging'), class: "donate_logo"
     .highlight
       h4 una pequeña donación, una gran ayuda
