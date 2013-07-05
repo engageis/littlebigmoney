@@ -5,3 +5,59 @@ body.donate, body.invest
       background: $warmgray
     &:before
       border-top-color: $warmgray
+
+.carrousel
+  margin: 0
+  padding: 0
+  float: left
+  width: 100%
+
+  .category_block
+    float: left
+    list-style: none
+    position: relative
+    overflow: hidden
+    box-shadow: 0 0 2px 1px #ccc
+    margin-bottom: 30px
+    margin-right: 20px
+
+    &:last
+      margin-right: 20px
+
+    a
+      display: block
+      height: 185px
+      width: 300px
+      text-decoration: none
+
+      img
+        height: 185px
+        width: 300px
+
+
+      .category_count
+        background-color: $carrot
+        letter-spacing: 1px
+        padding: 3px 8px
+        color: #fff
+        font-size: 12px
+        top: 0
+        right: 0
+        position: absolute
+        border-radius: 0 0 0 10px
+
+      .category_label
+        background-color: rgba(255, 255, 255, 0.8)
+        bottom: 0
+        left: 0
+        width: 296px
+        height: 60px
+        padding: 5px 10px
+        position: absolute
+
+        h4
+          margin: 0
+
+        p
+          font-size: 12px
+          color: #555
