@@ -13,32 +13,20 @@
         li#submit
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
           
-        li#support
-          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          
-        li#expert
-          = link_to "Expert", "#"
-
-        li#partners
-          = link_to "Partners", "#"
           
   - else
     nav.actions
       ul
         li
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-          |  | 
+       
         li
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
-          |  | 
+           
         li
           = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          |  | 
-        li
-          = link_to "Expert", "#"
-          |  | 
-        li
-          = link_to "Partners", "#"
+           
+
 
 #personal_options
   nav.account_menu
