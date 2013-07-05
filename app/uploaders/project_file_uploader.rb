@@ -11,7 +11,7 @@ class ProjectFileUploader < CarrierWave::Uploader::Base
   # if Rails.env.production? and Configuration[:aws_access_key]
   #   include CarrierWaveDirect::Uploader
   # else
-  storage :file
+  storage :fog
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
