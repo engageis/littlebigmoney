@@ -2,7 +2,7 @@ body
   border-bottom: 50px solid $footerblue
 
 #footer
-  background: $footerblue2
+  background: $navy
   color: white
   a
     color: $brightblue
@@ -38,14 +38,11 @@ body
 
 .footer_wrapper
   overflow: hidden
-  &.sitemap_area
-    background-color: $navy
-    padding: 20px 0
   .sitemap, .copyrights
     width: 900px
     margin: 0 auto
     clear: both
-    padding: 0 70px
+    padding: 30px 70px 0
   .sitemap
     font:
       family: serif
@@ -86,23 +83,11 @@ body
         &.vimeo
           +sprites-sprite-position("social-vimeo")
   
-  .copyrights
-    +clearfix
-    padding: 10px 0 0
-    .imaginamos
-      float: left
-      font-size: .7em
-    .sponsors
-      float: right
+  .sponsors
+    float: right
 
 
 .footer-logo
   float: left
   &.fundacion-capital
     +image-replace("logo-fundacion.png")
-    margin-right: 2em
-  &.ford-foundation
-    +image-replace("logo-ford.png")
-  &.engage
-    +image-replace("logo-engage.png")
-    float: right
