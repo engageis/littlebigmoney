@@ -1,6 +1,7 @@
 .project_image
   float: left
   padding-right: 20px
+  margin-left: 10px
 
   img
     +filter(sepia(100%) contrast(1.2) brightness(0.9))
@@ -11,6 +12,8 @@
   margin-right: 40px
 
 .section_header
+  margin-top: 40px
+
   h1, h4
     color: $carrot
     margin: 0
@@ -27,19 +30,20 @@
 
   nav a
     color: white
-    margin-right: 5px
-    padding: 6px 15px
+    //margin-right: 5px
+    padding: 6px 20px
     background-color: $warmgray
     text-decoration: none
     font-size: 13px
     font-family: Futura, "Trebuchet MS", Arial, sans-serif
-    border-radius: 5px 0 0 0
+    border-radius: 5px 5px 0 0
+    margin-left: 10px
 
   nav a.selected
     color: #000
     background: #e7e7e7
     border: 1px #dfdfdf solid
-    padding: 10px 15px 6px
+    padding: 5px 20px 6px
 
     &:hover
       background: $carrot
@@ -56,7 +60,7 @@
 
 .sidebar
   float: left
-  width: 312px
+  width: 314px
   margin-left: 5px
   background-color: white
   border: 1px solid #e7e6e6
@@ -178,7 +182,18 @@ input[type=submit]
 input[type=text]
   background: white
   border-radius: 4px
-  float: right
+  float: left
+
+.inline-hints
+  font-size: 11px
+  float: left
+  width: 56%
+  color: rgb(180, 180, 180)
+  
+fieldset
+  border: none
+  padding: 0
+  margin: 0
 
 
 #project_reports
@@ -200,16 +215,12 @@ ol
     display: block
     float: left
     width: 100%
-    margin-bottom: 5px
+    margin-bottom: 20px
 
-fieldset
-  border: none
-  padding: 0
-  margin: 0
+
 
 #project_file_file_input
   background: white
-  border: 1px dotted $carrot
   padding: 10px 5px
   border-radius: 5px
   font-family: Futura, "Trebuchet MS", Arial, sans-serif
