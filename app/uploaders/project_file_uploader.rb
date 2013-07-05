@@ -8,11 +8,11 @@ class ProjectFileUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   process :set_content_type
 
-  if Rails.env.production? and Configuration[:aws_access_key]
-    include CarrierWaveDirect::Uploader
-  else
-    storage :file
-  end
+  # if Rails.env.production? and Configuration[:aws_access_key]
+  #   include CarrierWaveDirect::Uploader
+  # else
+  storage :fog
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
