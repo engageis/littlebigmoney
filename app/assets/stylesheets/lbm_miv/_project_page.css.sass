@@ -32,7 +32,7 @@
     color: white
     //margin-right: 5px
     padding: 6px 20px
-    background-color: $warmgray
+    background-color: rgba(185, 185, 185, 0.75)
     text-decoration: none
     font-size: 13px
     font-family: Futura, "Trebuchet MS", Arial, sans-serif
@@ -41,9 +41,10 @@
 
   nav a.selected
     color: #000
-    background: #e7e7e7
+    background: #fff
     border: 1px #dfdfdf solid
     padding: 5px 20px 6px
+    border-bottom: 1px white solid
 
     &:hover
       background: $carrot
@@ -162,38 +163,6 @@
 
       &:hover
         background-color: #555
-
-
-.file.input.optional
-  list-style: none
-
-input[type=submit]
-  background: $carrot
-  color: white
-  border-radius: 5px
-  padding: 8px 12px
-  border: none
-  margin-top: 5px
-
-  &:hover
-    background: $pumpkin
-    +transition(all .2s)
-
-input[type=text]
-  background: white
-  border-radius: 4px
-  float: left
-
-.inline-hints
-  font-size: 11px
-  float: left
-  width: 56%
-  color: rgb(180, 180, 180)
-  
-fieldset
-  border: none
-  padding: 0
-  margin: 0
 
 
 #project_reports
