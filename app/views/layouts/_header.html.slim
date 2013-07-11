@@ -25,20 +25,14 @@
   - else
     nav.actions
       ul
-        li
+        li#donate
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-          |  | 
-        li
+        li#invest
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
-          |  | 
-        li
-          = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          |  | 
-        li
-          = link_to "Expert", "#"
-          |  | 
-        li
-          = link_to "Partners", "#"
+
+        li#submit
+          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+
 
 #personal_options
   nav.account_menu

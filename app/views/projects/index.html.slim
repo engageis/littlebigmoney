@@ -2,11 +2,46 @@
   = render :partial => 'project_js'
 
 #page_content
+
+  ul.carrousel
+      //h2 Featured categories
+      li.category_block
+        =link_to "#" do 
+          =image_tag('cover-example.jpg')
+          .category_count
+            span 
+              | 04 projects
+          .category_label
+            h4 Manufacturing
+            p.description
+              | Não conheci pessoalmente dois homens de meu tempo que mais admirei e com os quais
+      li.category_block
+        =link_to "#" do 
+          =image_tag('cover-example.jpg')
+          .category_count
+            span 
+              | 04 projects
+          .category_label
+            h4 Manufacturing
+            p.description
+              | Não conheci pessoalmente dois homens de meu tempo que mais admirei e com os quais.
+      li.category_block
+        =link_to "#" do 
+          =image_tag('cover-example.jpg')
+          .category_count
+            span 
+              | 04 projects
+          .category_label
+            h4 Manufacturing
+            p.description
+              | Não conheci pessoalmente dois homens de meu tempo que mais admirei e com os quais.
+
   .container
     .main
       .section_header
         .original_title
-          h2= t('.title')
+          //h2= t('.title')
+          h2 Explore projects for donation
 
       #explore_results
         .results
