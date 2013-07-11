@@ -16,36 +16,49 @@ body
     padding: 30px 70px 0
   .sitemap
     font:
-      family: Arial, sans-serif
+      family: Futura, Helvetica, Arial, sans-serif
     h5
       font-size: 18px
       margin: 10px 0
     .links_list
+      width: 29%
+      float: left
+      margin-top: 25px
     ul
-      font-size: .9em
+      font-size: 1.2em
       padding: 0
       list-style: none
-      &.first_sitemap, &.second_sitemap
+      li
+        margin-bottom: 7px
+        height: 30px
         a:link, a:visited
           color: white !important
           text-decoration: none
         a:hover
           color: $brightblue !important
-          text-decoration: underline
+          text-decoration: none
     .contact_links
-    .social_links, .links_list
-      width: 29%
+
+    .social_links, 
+      width: 30%
       float: left
+      margin-top: 24px
       li
         list-style: none
+        width: 100%
+
+        a
+          float: left
+        p
+          font-size: 15px
+          margin-top: 20px
+
+
       .social-link
         +sprite-replace("social-facebook")
-        float: left
-        margin: 0 4px
+
         &.twitter
           +sprites-sprite-position("social-twitter")
-        &.vimeo
-          +sprites-sprite-position("social-vimeo")
 
   .sponsors
     float: right

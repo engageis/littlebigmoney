@@ -1,21 +1,26 @@
 #footer
   .footer_wrapper.sitemap_area
     nav.sitemap
-      section.social_links
-        h5 Nuestra comunidade
-        ul
-          li= link_to "Follow us on Twitter", "https://twitter.com/LBigMoney", class: "twitter social-link", target: :blank
-          li= link_to "Find us on Facebook", "https://www.facebook.com/LittleBigMoney", class: "facebook social-link", target: :blank
-          li= link_to "Watch our Vimeo videos", "http://vimeo.com/user14817381", class: "vimeo social-link", target: :blank
+
       section.links_list
-        h5 Sitemap
-        ul.first_sitemap
+        ul
           li= link_to "About us", "#"
           li= link_to "How it works", "#" 
           li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
           li= link_to "F.A.Q.", "#" 
           li= link_to t('footer.links.policy'), t('footer.links.policy_link')
           li= link_to t('footer.links.terms'), t('footer.links.terms_link')
+      section.social_links
+        //h5 Nuestra comunidade
+        ul
+          li
+            = link_to "Follow us on Twitter", "https://twitter.com/LBigMoney", class: "twitter social-link", target: :blank
+            p follow us on @littlebigmoney
+          li
+            = link_to "Find us on Facebook", "https://www.facebook.com/LittleBigMoney", class: "facebook social-link", target: :blank
+            p Find us on Facebook
+            iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fengageis&amp;width=250&amp;height=258&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;show_border=true&amp;header=false&amp;appId=382314001854404" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:258px;" allowTransparency="true"
+
       section.blog_list
         .blog
           ul.posts
