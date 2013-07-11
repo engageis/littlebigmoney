@@ -16,22 +16,16 @@ body
     padding: 30px 70px 0
   .sitemap
     font:
-      family: serif
-      style: italic
-    & > section
-      float: left
+      family: Arial, sans-serif
     h5
-      font-size: 1.3em
+      font-size: 18px
       margin: 10px 0
     .links_list
-      width: 260px
     ul
       font-size: .9em
-      list-style-position: inside
       padding: 0
+      list-style: none
       &.first_sitemap, &.second_sitemap
-        float: left
-        width: 130px
         a:link, a:visited
           color: white !important
           text-decoration: none
@@ -39,12 +33,11 @@ body
           color: $brightblue !important
           text-decoration: underline
     .contact_links
-      width: 450px
-    .social_links
-      float: right
+    .social_links, .links_list
+      width: 29%
+      float: left
       li
         list-style: none
-        float: left
       .social-link
         +sprite-replace("social-facebook")
         float: left
