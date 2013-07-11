@@ -6,35 +6,6 @@ body
   color: white
   a
     color: $brightblue
-  +decorative-content(before)
-    background: $navy
-    $size: 60px
-    +absolute-centering($size)
-    height: $size
-    width: $size
-    border-radius: $size/2
-    top: -$size/2
-  .decorative_arrow
-    position: absolute
-    $size: 18px
-    +absolute-centering($size)
-    width: $size
-    height: $size
-    top: -17px
-    background: white
-    +decorative-content(before, false)
-      +triangle(bottom, $size/2, $navy)
-      position: absolute
-      border-left-width: $size/2
-      border-right-width: $size/2
-    +decorative-content(after, false)
-      +triangle(bottom, $size * 0.8, white)
-      position: absolute
-      bottom: -14px
-      border-left-width: $size * 0.8
-      border-right-width: $size * 0.8
-      margin-left: -5px
-    
 
 .footer_wrapper
   overflow: hidden
@@ -82,7 +53,7 @@ body
           +sprites-sprite-position("social-twitter")
         &.vimeo
           +sprites-sprite-position("social-vimeo")
-  
+
   .sponsors
     float: right
 
