@@ -6,55 +6,63 @@
       ul
         li.donate_menu_item
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-          
+
         li.invest_menu_item
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
-           
+
         li.submit_menu_item
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
-          
+
         li.support_menu_item
           = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
-          
+
         li.expert_menu_item
           = link_to "Expert", "#"
 
         li.partners_menu_item
           = link_to "Partners", "#"
-          
+
   - else
     nav.actions
       ul
         li.donate_menu_item
-          = link_to "Donate", projects_url(subdomain: 'donate.staging')
+          = link_to projects_url(subdomain: 'donate.staging') do
+            span.icon.heart-empty
+            | Donate
         li.invest_menu_item
-          = link_to "Invest", projects_url(subdomain: 'invest.staging')
+          = link_to projects_url(subdomain: 'invest.staging') do
+            span.icon.line-graph
+            | Invest
         li.submit_menu_item
-          = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+          = link_to guidelines_start_path, class:  "submit_project" do
+            span.icon.upload-cloud
+            = t("layouts.header.submit_project")
         li.how_it_works_menu_item
-          = link_to "How it works", guidelines_start_path, class:  "submit_project"
+          = link_to guidelines_start_path, class:  "submit_project" do
+            span.icon.map
+            | How it works
 
 
 #personal_options
   nav.account_menu
     - if current_user
-      | Welcome 
+      | Welcome
       span.user_name= current_user.name
-      |  | 
+      |  |
       = link_to "#", class: "my_profile_link dropdown", "data-dropdown" => "drop_profile" do
         span.current_user_name= t("layouts.header.account")
-      |  | 
+      |  |
       = link_to t("layouts.user.my_credits"), user_path(current_user, anchor: "credits")
-      |  | 
+      |  |
       = link_to t("layouts.user.logout"), destroy_user_session_path, method: :delete
       /- if current_user.admin?
         - for menu, path in Adm::BaseController.menu do
           li= link_to menu, path
     - else
       = link_to t("layouts.header.signup"), new_user_session_path(active_register: true)
-      |  | 
+      |  |
       = link_to t("layouts.header.signin"), new_user_session_path
-    |  | 
+    |  |
     - if request.method == "GET"
       = link_to "English", url_for(locale: :en), class: "locale_link" unless I18n.locale == :en
       = link_to "Español", url_for(locale: :es), class: "locale_link" unless I18n.locale == :es
