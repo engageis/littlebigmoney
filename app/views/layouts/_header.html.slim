@@ -4,34 +4,35 @@
   - if app_context
     nav.actions
       ul
-        li#donate
+        li.donate_menu_item
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
           
-        li#invest
+        li.invest_menu_item
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
            
-        li#submit
+        li.submit_menu_item
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
           
-        li#support
+        li.support_menu_item
           = link_to "Support", "#", class: "dropdown", "data-dropdown" => "drop_support"
           
-        li#expert
+        li.expert_menu_item
           = link_to "Expert", "#"
 
-        li#partners
+        li.partners_menu_item
           = link_to "Partners", "#"
           
   - else
     nav.actions
       ul
-        li#donate
+        li.donate_menu_item
           = link_to "Donate", projects_url(subdomain: 'donate.staging')
-        li#invest
+        li.invest_menu_item
           = link_to "Invest", projects_url(subdomain: 'invest.staging')
-
-        li#submit
+        li.submit_menu_item
           = link_to t("layouts.header.submit_project"), guidelines_start_path, class:  "submit_project"
+        li.how_it_works_menu_item
+          = link_to "How it works", guidelines_start_path, class:  "submit_project"
 
 
 #personal_options

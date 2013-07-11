@@ -59,40 +59,34 @@
     font-size: 13px
     +horizontal-list
     color: $warmgray
-    margin-top: 15px
+    margin-top: 45px
     
     ul
       li
-        text-align: center
-        border-right: 1px solid $warmgray
-        padding: 0
-        +decorative-content
-          +sprite-replace("menu-icon-pledger")
-          bottom: 0
-          left: 50%
-          margin-left: -10px
-        &:hover
-          color: $warmgray
-          border-right: 1px solid $warmgray
-          cursor: pointer
-        &#donate:hover:after
-          +sprites-sprite-position("menu-icon-pledger-hover")
-        &#invest:after
-          +sprites-sprite-position("menu-icon-investor")
-        &#invest:hover:after
-          +sprites-sprite-position("menu-icon-investor-hover")
-        &#submit:after, &#support:after, &#expert:after
-          +sprites-sprite-position("menu-icon-enterpreneur")
-        &#submit:hover:after, &#support:hover:after, &#expert:hover:after
-          +sprites-sprite-position("menu-icon-enterpreneur-hover")
-        &#partners:after
-          +sprites-sprite-position("menu-icon-partner")
-        &#partners:hover:after
-          +sprites-sprite-position("menu-icon-partner-hover")
-        
         a
           display: block
-          width: 105px
-          padding: 10px 0 30px
+          padding: 5px 0 5px 30px
+          margin-right: 40px
           &:hover
             text-decoration: none
+            color: $warmgray
+            &:after
+              +sprites-sprite-position("menu-icon-pledger-hover")
+          +decorative-content
+            +sprite-replace("menu-icon-pledger")
+            left: 0
+            top: 4px
+        &.donate_menu_item a:hover:after
+          +sprites-sprite-position("menu-icon-pledger-hover")
+        &.invest_menu_item a:after
+          +sprites-sprite-position("menu-icon-investor")
+        &.invest_menu_item a:hover:after
+          +sprites-sprite-position("menu-icon-investor-hover")
+        &.submit_menu_item a:after, &.support_menu_item a:after, &.expert_menu_item a:after
+          +sprites-sprite-position("menu-icon-enterpreneur")
+        &.submit_menu_item a:hover:after, &.support_menu_item a:hover:after, &.expert_menu_item a:hover:after
+          +sprites-sprite-position("menu-icon-enterpreneur-hover")
+        &.partners_menu_item a:after
+          +sprites-sprite-position("menu-icon-partner")
+        &.partners_menu_item a:hover:after
+          +sprites-sprite-position("menu-icon-partner-hover")        
