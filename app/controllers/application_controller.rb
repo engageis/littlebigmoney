@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
                 :render_twitter
   before_filter :set_locale
   before_filter :force_http
+  before_filter :fetch_posts
 
   # TODO: Change this way to get the opendata
   before_filter do
@@ -54,7 +55,20 @@ class ApplicationController < ActionController::Base
     render_to_string(partial: 'layouts/facebook_like', locals: options).html_safe
   end
 
+  def blog_posts
+    Blog.fetch_last_posts.inject([]) do |total,item|
+      total << item if total.size < 2
+      total
+    end
+  rescue
+    []
+  end
+
   private
+  def fetch_posts
+    @blog_posts ||= blog_posts
+  end
+
   def statistics
     @statistics ||= Statistics.first
   end

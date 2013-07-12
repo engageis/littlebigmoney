@@ -24,14 +24,11 @@
       section.blog
         h5 Recent posts
         ul.posts
-          li
-            h6 Protestos e Financiamento Coletivo
-            span por Little Big Money
-            p A onda de protestos que tomou o país nas últimas semanas é histórica, um momento que ficará eternizado na memória de todos que ...
-          li
-            h6 Protestos e Financiamento Coletivo
-            span por Little Big Money
-            p A onda de protestos que tomou o país nas últimas semanas é histórica, um momento que ficará eternizado na memória de todos que ...
+          - @blog_posts.each do |post|
+            li
+              h6= link_to post.title, post.url, target: '_blank'
+              span por Little Big Money
+              p= strip_tags truncate(post.summary, length: 200)
 
 
   .footer_wrapper

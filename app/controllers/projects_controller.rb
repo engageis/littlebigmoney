@@ -127,15 +127,6 @@ class ProjectsController < ApplicationController
     render :layout => 'embed'
   end
 
-  def blog_posts
-    Blog.fetch_last_posts.inject([]) do |total,item|
-      total << item if total.size < 2
-      total
-    end
-  rescue
-    []
-  end
-
   # Just to fix a minor bug,
   # when user submit the project without some rewards.
   def validate_rewards_attributes

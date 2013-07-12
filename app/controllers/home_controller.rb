@@ -4,4 +4,5 @@ class HomeController < ApplicationController
     # TODO @GG add correct filter here!
     @projects = Project.limit(4)
   end
+
 end
