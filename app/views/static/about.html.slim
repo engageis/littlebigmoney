@@ -1,32 +1,21 @@
 = content_for :title, t('.title')
 #page_content
   .container
-    .static_default
-      .title
-        h1= t('.title')
-        //h2= t('.subtitle')
-        //h3= t('.introduction')
-      ul.team
+    .about_content
+      //= image_tag('about_header')
+      //h1= t(',title')
+      #about_lbm
+        h1 Why we started Little Big Money
+        blockquote We want to give enterpreneurs the opportunityto take control of raising funds from their own network of friends, family, customers and strangers
+        p Having founded, and worked for several entrepreneurial businesses we understand how difficult it can be to raise money to start and grow a small business. The task of securing investment is a notoriously perplexing and sometimes sluggish process that can be a struggle at the best of times. In today’s economic climate this has become even more challenging.
+        
+        p We want to give entrepreneurs the opportunity to take control of raising funding from their own network of friends, family, customers and strangers.
 
-        li
-          = image_tag('catarse/team_luis.jpg')
-          h4.namesp= t('.name_one')
-          span= t('.title_one')
-          p= t('.text_one')
-        li
-          = image_tag('catarse/team_diego.jpg')
-          h4.namesp= t('.name_two')
-          span= t('.title_two')
-          p= t('.text_two')
-        li
-          = image_tag('catarse/team_luciana.jpg')
-          h4.namesp= t('.name_three')
-          span= t('.title_three')
-          p= t('.text_three')
-        li
-          = image_tag('catarse/team_renato.jpg')
-          h4.namesp= t('.name_four')
-          span= t('.title_four')
-          p= t('.text_four')
-
-    .clearfix
+        p We also want to give ordinary people the opportunity to become an armchair Dragon and build their own investment portfolio supporting exciting new British businesses. Crowdcube is authorised and regulated by the Financial Conduct Authority (No. 572026).
+    aside
+      nav#about_menu
+        ul
+          li Lorem ipsum...
+          li Lorem ipsum...
+          li Lorem ipsum...
+          li Lorem ipsum...
