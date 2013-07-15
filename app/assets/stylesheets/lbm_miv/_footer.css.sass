@@ -10,6 +10,9 @@ body
 .footer_wrapper
   overflow: hidden
   padding-bottom: 20px
+  &.logo_area
+    background: rgba(white,.1)
+    margin-top: 2em
   .sitemap, .copyrights
     width: 900px
     margin: 0 auto
@@ -88,3 +91,11 @@ body
   float: left
   &.fundacion-capital
     +image-replace("logo-fundacion.png")
+
+form.newsletter_form
+  input[type=submit]
+    padding: 6px 12px
+    border-radius: 0 4px 4px 0
+    margin-top: 0
+  input[type=text]
+    border-radius: 4px 0 0 4px
