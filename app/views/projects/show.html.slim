@@ -58,7 +58,7 @@
             = t('.menu.edit')
           = link_to '#reports', :id => 'reports_link' do
             = t('.menu.reports')
-    .main
+    .main.project_show
       #project_content
         - if can? :update, @project
           #project_reports.content.hide
