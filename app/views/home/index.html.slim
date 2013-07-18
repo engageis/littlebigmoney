@@ -1,8 +1,21 @@
 section.homeBanner
   #homebanner
-    section.slide= image_tag "home-banner.png"
     section.slide
-      | Ho
+      = link_to image_tag("home-banner.png"), "#"
+    - [@donate_banner_projects, @invest_banner_projects].each do | projects_array |
+      - if projects_array.count >= 3
+        section.slide class="#{projects_array.first.kind}_slide"
+          .featured_banner_project
+            - main_proj = projects_array.first
+            figure.proj_img= image_tag(main_proj.display_image)
+            figcaption.description
+              h4.proj_title
+                = main_proj.name
+              p.proj_desc= truncate(main_proj.headline, length: 140)
+
+          - projects_array.each_with_index do | project, i |
+            .banner_project class="#{"active" if i == 0}" data-name="#{project.name}" data-description="#{truncate(project.headline, length: 140)}"
+              = link_to image_tag(project.display_image), "#", itemprop: 'image'
 
   a.next.button#prevBannerSlide href="#" ‹
   a.next.button#nextBannerSlide href="#" ›
