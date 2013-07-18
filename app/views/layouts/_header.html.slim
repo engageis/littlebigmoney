@@ -51,11 +51,11 @@
 #personal_options
   nav.account_menu
     - if current_user
-      | Welcome 
-      span.user_name= current_user.name
+      = t('layouts.login.welcome_html', name: current_user.name)
       |  |
-      = link_to "#", class: "my_profile_link dropdown", "data-dropdown" => "drop_profile" do
-        span.current_user_name= t("layouts.header.account")
+      /= link_to "#", class: "my_profile_link dropdown", "data-dropdown" => "drop_profile" do
+        /span.current_user_name= t("layouts.header.account")
+      = link_to t("layouts.header.account"), current_user
       |  |
       = link_to t("layouts.user.my_credits"), user_path(current_user, anchor: "credits")
       |  |

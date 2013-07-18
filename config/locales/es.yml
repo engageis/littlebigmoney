@@ -64,6 +64,8 @@ es:
       opendata: "estatísticas bacanas"
       social: "curtiu o catarse?"
       newsletter: "receba nossa newsletter"
+      recent_posts: "Recent posts"
+      by_lbm: "por Little Big Money"
     stats:
       backers: Apoiadores
       backs: Apoios
@@ -72,14 +74,14 @@ es:
       funded_projects: "Projetos bem-sucedidos"
       active_projects: "Projetos no ar agora"
     links:
-      how_works: "Ajuda"
-      faq: "FAQ/Ajuda"
-      about: "Quem Somos"
-      terms: "Termos de Uso"
-      policy: "Política de Privacidade"
+      about: "¿Quiénes somos?"
+      how_works: "¿Cómo funciona?"
+      faq: "Preguntas Frecuentes"
+      terms: "Condiciones de uso"
+      policy: "Política de privacidad"
       terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso'
       policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade'
-      contact: Contato
+      contact: "Contacto"
   main:
     links:
       selected: "explore mais projetos selecionados"
@@ -273,14 +275,14 @@ es:
       login_with_twitter: "entre com sua conta do twitter"
       login_with_linkedin: "entre com sua conta do linkedin"
       remember_me: "Lembre-se de mim e mantenha-me conectado."
+      welcome_html: "Bienvenido <span class='user_name'>%{name}</span>"
     header:
-      blog: blog
-      help: ajuda
-      faq: FAQ
+      blog: "Blog"
+      help: "Ayuda"
       signup: cadastre-se
       signin: login
       explore: explore
-      how_works: "Como funciona"
+      how_works: "¿Cómo funciona?"
       submit_project: envie
       profile: "meu perfil"
       account: "minha conta"
