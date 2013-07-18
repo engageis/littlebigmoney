@@ -10,11 +10,11 @@ section.homeBanner
             figure.proj_img= image_tag(main_proj.display_image)
             figcaption.description
               h4.proj_title
-                = main_proj.name
+                = link_to main_proj.name, project_url(main_proj.id, subdomain: "#{main_proj.kind}.staging")
               p.proj_desc= truncate(main_proj.headline, length: 140)
 
           - projects_array.each_with_index do | project, i |
-            .banner_project class="#{"active" if i == 0}" data-name="#{project.name}" data-description="#{truncate(project.headline, length: 140)}"
+            .banner_project class="#{"active" if i == 0}" data-name="#{project.name}" data-description="#{truncate(project.headline, length: 140)}" data-link="#{project_url(main_proj.id, subdomain: "#{main_proj.kind}.staging")}"
               = link_to image_tag(project.display_image), "#", itemprop: 'image'
 
   a.next.button#prevBannerSlide href="#" ‹

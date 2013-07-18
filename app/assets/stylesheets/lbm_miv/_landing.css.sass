@@ -30,7 +30,35 @@
   .slide
     width: 950px
     height: 320px
-    background: cyan
+    background: #333
+  
+  .invest_slide
+    background: $blue
+  .donate_slide
+    background: $carrot
+
+  .featured_banner_project
+    float: left
+    width: 66%
+    position: relative
+
+    figcaption
+      position: absolute
+      z-index: 100
+      bottom: 50px
+      right: 0
+      background: rgba(0,0,0,.75)
+      padding: 10px 20px
+      color: white
+
+  .banner_project
+    float: left
+    width: 33%
+    margin: -7px 0 7px 4px
+    +opacity(.6)
+    +transition(.3s)
+    &:hover
+      +opacity(1)
 
 .main_call
   text-align: center
