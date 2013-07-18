@@ -49,7 +49,7 @@
 #personal_options
   nav.account_menu
     - if current_user
-      | Welcome
+      | Welcome 
       span.user_name= current_user.name
       |  |
       = link_to "#", class: "my_profile_link dropdown", "data-dropdown" => "drop_profile" do

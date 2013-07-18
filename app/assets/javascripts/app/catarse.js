@@ -146,6 +146,11 @@ var CATARSE = {
       }
     }
   },
+  home: {
+    index: function(){
+      window.view = new CATARSE.HomeIndexView({el: $("body") });
+    }
+  },
   projects: {
     index: function(){
       window.view = new CATARSE.ProjectsIndexView({el: $("body") });

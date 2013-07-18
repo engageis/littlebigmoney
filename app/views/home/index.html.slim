@@ -1,24 +1,29 @@
-#homebanner= image_tag "home-banner.png"
+section.homeBanner
+  #homebanner
+    section.slide= image_tag "home-banner.png"
+    section.slide
+      | Ho
 
+  a.next.button#prevBannerSlide href="#" ‹
+  a.next.button#nextBannerSlide href="#" ›
+.main_call
+  h2= t ".main_call_html"
 .project_links
-  #invest_link
-
-
-    .invest_logo
-      = link_to projects_url(subdomain: 'invest.staging') do
-        = image_tag "logo-invest.png"
-
-    .highlight
-      h4 crece con los nuevos emprendedores
-
   #donate_link
-
     .donate_logo
       = link_to projects_url(subdomain: 'donate.staging') do
         = image_tag "logo-donate.png"
 
     .highlight
-      h4 una pequeña donación, una gran ayuda
+      h4= t ".donate_slogan"
+
+  #invest_link
+    .invest_logo
+      /= link_to projects_url(subdomain: 'invest.staging') do
+      = image_tag "logo-invest.png"
+
+    .highlight
+      h4= t ".invest_slogan"
 
 .highlighted_projects
   h2 Highlighted projects

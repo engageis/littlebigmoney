@@ -1,4 +1,9 @@
 en:
+  home:
+    index:
+      invest_slogan: "(COMING SOON) Grows with the new entrepreneurs"
+      donate_slogan: "A little donation, a big help"
+      main_call_html: "<strong>LittleBigMoney</strong> (LBM) is the first platform of the region in collective micro-investment (crowdfunding) for the funding and development of SMEs"
   backs_to_confirm: "%{count} backers in time to confirm."
   backer_report_to_project_owner:
     reward_description: 'Reward description'
