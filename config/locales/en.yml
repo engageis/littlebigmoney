@@ -54,6 +54,8 @@ en:
       opendata: "nice statistics"
       social: "do you like Catarse?"
       newsletter: "receive our newsletter"
+      recent_posts: "Recent posts"
+      by_lbm: "by Little Big Money"
     stats:
       backers: Backers
       backs: Backs
@@ -62,9 +64,9 @@ en:
       funded_projects: "Successful projects"
       active_projects: "Projects on air now"
     links:
-      about: "Who are we"
+      about: "About us"
       how_works: "How It works"
-      faq: F.A.Q./Help
+      faq: "F.A.Q."
       terms: "Terms of use"
       policy: "Privacy Policy"
       terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
@@ -303,6 +305,7 @@ en:
       login_with_twitter: "sign in with your twitter account"
       login_with_linkedin: "sign in with your linkedin account"
       remember_me: "Remember me and keep me connected."
+      welcome_html: "Welcome <span class='user_name'>%{name}</span>"
     header:
       blog: blog
       help: help

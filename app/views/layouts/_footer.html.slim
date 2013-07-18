@@ -4,10 +4,10 @@
 
       section.links_list
         ul
-          li= link_to "About us", "#"
-          li= link_to "How it works", "#" 
+          li= link_to t('footer.links.about'), "#"
+          li= link_to t('footer.links.how_works'), "#"
           li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
-          li= link_to "F.A.Q.", "#" 
+          li= link_to t('footer.links.faq'), "#" 
           li= link_to t('footer.links.policy'), t('footer.links.policy_link')
           li= link_to t('footer.links.terms'), t('footer.links.terms_link')
       section.social_links
@@ -21,18 +21,17 @@
             .fb-like-box data-href="https://www.facebook.com/LittleBigMoney" data-width="292" data-show-faces="true" data-colorscheme="dark" data-stream="false" data-show-border="false" data-header="false"
 
       section.blog
-        h5 Recent posts
+        h5= t "footer.titles.recent_posts"
         ul.posts
           - @blog_posts.each do |post|
             li
               h6= link_to post.title, post.url, target: '_blank'
-              span por Little Big Money
+              span= t "footer.titles.by_lbm"
               p= strip_tags truncate(post.summary, length: 200)
         h5= t('sidebar.titles.newsletter')
         = form_tag Configuration['mailchimp_url'], id: 'mailee-form', class: "newsletter_form", method: 'post' do
           = text_field_tag 'EMAIL', nil, placeholder: 'write your email@email.com', label: 'email'
           = submit_tag t('sidebar.buttons.newsletter'), class: "bt small"
-
 
   .footer_wrapper.logo_area
     .copyrights
