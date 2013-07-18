@@ -4,6 +4,9 @@ es:
       invest_slogan: "(EN BREVRE) Crece con los nuevos emprendedores"
       donate_slogan: "Una pequeña donación, una gran ayuda"
       main_call_html: "<strong>LittleBigMoney</strong> (LBM) es la primera plataforma en la región de micro-inversión colectiva (crowdfunding) para el financiamiento y desarrollo de PYMES"
+  common:
+    donate: "Donar"
+    invest: "Invertir (breve)"
   current_update: 'Alteração atual feita em '
   backs_to_confirm: "%{count} apoios em prazo de confirmação."
   no: "Não"
@@ -277,6 +280,7 @@ es:
       signup: cadastre-se
       signin: login
       explore: explore
+      how_works: "Como funciona"
       submit_project: envie
       profile: "meu perfil"
       account: "minha conta"
