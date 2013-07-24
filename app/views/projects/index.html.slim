@@ -51,14 +51,14 @@
 
         #loading.hidden= image_tag "loading.gif"
 
-  aside#sidebar.filter
+  aside#sidebar.filters_sidebar
     = form_tag root_path(anchor: "search"), method: 'GET', class: 'search' do
       = submit_tag "Search"
       = text_field_tag :search, nil, autocomplete: "off", placeholder: 'Search'
     - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
       section.highlights
         h4= t('.quick_explore')
-        ul#explore_quick
+        ul#explore_quick.filters_list
           - unless @recommended.empty?
             li
               a href='#recommended' data-search='recommended' class="active"
@@ -79,7 +79,7 @@
     - unless @categories.empty?
       section.by_category_id
         h4= t('.categories')
-        ul#explore_categories
+        ul#explore_categories.filters_list
           - @categories.each_with_index do |category, index|
             li class="#{(index%2==1 ? 'no_margin':'')}"
               a href="##{category.to_s.parameterize}" data-search=category.id
@@ -89,7 +89,7 @@
     - default_values.keys.each do |key|
       section class="by_#{key}"
         h4= t(".#{key}")
-        ul id="explore_#{key.to_s.pluralize}"
+        ul id="explore_#{key.to_s.pluralize}" class="filters_list"
           - default_values[key].each do |val|
             li
               a href="##{val.to_s.parameterize}" data-search=val
