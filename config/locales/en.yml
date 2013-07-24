@@ -64,6 +64,7 @@ en:
       funded_projects: "Successful projects"
       active_projects: "Projects on air now"
     links:
+      home: "Home"
       about: "About us"
       how_works: "How It works"
       faq: "F.A.Q."
@@ -379,7 +380,10 @@ en:
       recommended: Recommended
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
-      title: "Discover amazing projects"
+      title_donate: "Explore projects for donation"
+      subtitle_donate: "How much where there's muck there's brass ah'll box thi ears. What's that when it's at ooam tell."
+      title_invest: "Explore projects for investment"
+      subtitle_invest: "How much where there's muck there's brass ah'll box thi ears. What's that when it's at ooam tell."
     title: "Explore the projects"
     project_js:
       empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"

@@ -74,6 +74,7 @@ es:
       funded_projects: "Projetos bem-sucedidos"
       active_projects: "Projetos no ar agora"
     links:
+      home: "Home"
       about: "¿Quiénes somos?"
       how_works: "¿Cómo funciona?"
       faq: "Preguntas Frecuentes"
@@ -206,19 +207,6 @@ es:
       backed: levantados
       reached: atingido
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
-  explore:
-    index:
-      categories: Categorias
-      expiring: "Na reta final"
-      quick_explore: "Busca rápida"
-      recent: Recentes
-      recommended: Recomendados
-      subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
-      successful: Bem-sucedidos
-      title: "Encontre projetos incríveis"
-    title: "Explore os projetos"
-    project:
-      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
   formtastic:
     hints:
       backer:
@@ -338,6 +326,20 @@ es:
       waiting_funds: aguardando
       not_reached_goal: aguardando
   projects:
+    index:
+      categories: Categorias
+      expiring: "Na reta final"
+      quick_explore: "Busca rápida"
+      recent: Recentes
+      recommended: Recomendados
+      subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
+      successful: Bem-sucedidos
+      title_donate: "Descubra proyectos para donación"
+      subtitle_donate: "How much where there's muck there's brass ah'll box thi ears. What's that when it's at ooam tell."
+      title_invest: "Descubra proyectos para inversión"
+      subtitle_invest: "How much where there's muck there's brass ah'll box thi ears. What's that when it's at ooam tell."
+    project_js:
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
     box:
       by: por
     admin_fields:
