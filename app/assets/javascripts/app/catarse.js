@@ -115,6 +115,11 @@ var CATARSE = {
       CATARSE.router = new CATARSE.Router()
       CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
       $(".best_in_place").best_in_place();
+      $('.dropdown', '#personal_options').on('click', function(e){
+        var $submenu = $(e.currentTarget).parent().find('.dropdown_profile');
+        $submenu.toggleClass('active');
+        return false;
+      })
 
       CATARSE.MixPanel.initialize();
     },
