@@ -17,9 +17,11 @@
   a
     padding: 0 5px
   .user_name
-    color: darken($lightgray,14%)
-  .f-dropdown
-    display: none
+    color: darken($lightgray,25%)
+  .dropdown_arrow
+    margin-left: 8px
+    top: -2px
+    position: relative
   +decorative-content(before, false)
     position: absolute
     left: -53px
@@ -71,3 +73,24 @@
           &:hover, .icon
             color: $navy
             text-decoration: none
+
+.dropdown_profile
+  position: absolute
+  background: whitesmoke
+  color: #333
+  right: 20px
+  padding: 20px 15px
+  box-shadow: 2px 2px 1px rgba(black,.2)
+  border-radius: 4px
+  list-style: none
+  display: none
+  &.active
+    display: block
+
+  li
+    margin: .3em
+    &.divider
+      display: block
+      height: 4px
+      width: 100%
+      border-top: 1px solid #888

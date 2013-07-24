@@ -33,7 +33,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_credits
-    number_to_currency source.credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.credits, :unit => '$', :precision => 0, :delimiter => '.'
   end
 
   def display_total_of_backs
