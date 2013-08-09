@@ -1,11 +1,5 @@
 require 'sidekiq/web'
 
-class Subdomain
-  def self.matches?(request)
-    request.subdomains.first and request.subdomains.first.match(/invest|donate/)
-  end
-end
-
 Catarse::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
@@ -26,13 +20,14 @@ Catarse::Application.routes.draw do
   # mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
   filter :locale, exclude: /\/auth\//
+  
+  scope "/:kind", :kind => /donate|invest/ do
 
-  constraints(Subdomain) do
-    root to: 'projects#index'
+    root to: 'projects#index', as: :kind
 
     match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
     match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
-
+    
     resources :projects do
       resources :updates, only: [ :index, :create, :destroy ]
       resources :rewards, only: [ :index, :create, :update, :destroy ]
@@ -54,24 +49,24 @@ Catarse::Application.routes.draw do
         get 'video_embed'
       end
     end
-
+    
     match "/reward/:id" => "rewards#show", :as => :reward
     match "/:permalink" => "projects#show", as: :project_by_slug
   end
 
   root to: 'home#index'
-
+  
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/guidelines_backers" => "static#guidelines_backers", :as => :guidelines_backers
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
-
+  
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
   end
-
+  
   resources :users do
     resources :backers, :only => [:index]
     resources :unsubscribes, :only => [:create]
@@ -84,7 +79,7 @@ Catarse::Application.routes.draw do
     end
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
-
+  
   namespace :adm do
     resources :projects, only: [ :index, :update ] do
       member do
@@ -93,9 +88,9 @@ Catarse::Application.routes.draw do
         put 'push_to_draft'
       end
     end
-
+  
     resources :financials, only: [ :index ]
-
+  
     resources :backers, only: [ :index, :update ] do
       member do
         put 'confirm'
@@ -103,13 +98,11 @@ Catarse::Application.routes.draw do
         put 'change_reward'
       end
     end
-
+  
     resources :users, only: [ :index ]
     namespace :reports do
       resources :backer_reports, only: [ :index ]
     end
   end
-
-  match "/mudancadelogin" => "users#set_email", as: :set_email_users
 
 end

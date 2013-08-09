@@ -1,15 +1,6 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :app_context
-
-  def app_context
-    if request.subdomains.first and request.subdomains.first.match(/invest|donate/)
-      request.subdomains.first
-    else
-      nil
-    end
-  end
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']

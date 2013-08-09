@@ -12,7 +12,7 @@
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => '')
+    meta property="og:url" content=project_by_slug_url(@project.kind, @project.permalink, :locale => '')
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
   meta property="og:site_name" content=::Configuration[:company_name]
@@ -194,8 +194,8 @@
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
-                #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: '')
-                - if app_context == 'invest' and current_user
+                #facebook_share= render_facebook_like href: project_by_slug_url(@project.kind, @project.permalink, locale: '')
+                - if params[:kind] == 'invest' and current_user
                   #amount_to_invest
                     | U$: 
                     = semantic_form_for [@project, @possible_investor] do |f|
@@ -239,7 +239,7 @@
               = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.online?
             #pledge
-              = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
+              = form_tag(new_project_backer_path(@project.kind, @project), :method => :get, :id => 'back_project_form') do
                 fieldset
                   = submit_tag t('projects.back_project.submit'), :disabled => (not @project.online?)
         #creator_profile

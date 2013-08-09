@@ -9,7 +9,12 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
-
+  
+  before_filter do
+    return if params[:kind]
+    
+  end
+    
   def index
     index! do |format|
       format.html do
@@ -18,14 +23,14 @@ class ProjectsController < ApplicationController
         @categories = Category.with_projects.order(:name_pt).all
 
         # Just to know if we should present the menu entries, the actual projects are fetched via AJAX
-        @recommended = Project.by_kind(app_context).visible.not_expired.recommended.limit(3)
-        @expiring = Project.by_kind(app_context).visible.expiring.limit(3)
-        @recent = Project.by_kind(app_context).visible.recent.not_expired.limit(3).order('created_at DESC')
-        @successful = Project.by_kind(app_context).visible.successful.limit(3)
+        @recommended = Project.by_kind(params[:kind]).visible.not_expired.recommended.limit(3)
+        @expiring = Project.by_kind(params[:kind]).visible.expiring.limit(3)
+        @recent = Project.by_kind(params[:kind]).visible.recent.not_expired.limit(3).order('created_at DESC')
+        @successful = Project.by_kind(params[:kind]).visible.successful.limit(3)
       end
 
       format.json do
-        @projects = apply_scopes(Project).by_kind(app_context).visible.order_for_search
+        @projects = apply_scopes(Project).by_kind(params[:kind]).visible.order_for_search
         respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
@@ -72,9 +77,9 @@ class ProjectsController < ApplicationController
   def show
     begin
       if params[:permalink].present?
-        @project = Project.by_kind(app_context).find_by_permalink!(params[:permalink])
+        @project = Project.by_kind(params[:kind]).find_by_permalink!(params[:permalink])
       else
-        return redirect_to project_by_slug_path(resource.permalink)
+        return redirect_to project_by_slug_path(resource.kind, resource.permalink)
       end
 
       update_fikes_count

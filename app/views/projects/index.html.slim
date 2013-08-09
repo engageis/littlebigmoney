@@ -40,8 +40,8 @@
 
       .section_header
         .original_title
-          h2= t "projects.index.title_#{app_context}"
-          h5= t "projects.index.subtitle_#{app_context}"
+          h2= t "projects.index.title_#{params[:kind]}"
+          h5= t "projects.index.subtitle_#{params[:kind]}"
 
       #explore_results
         .results
