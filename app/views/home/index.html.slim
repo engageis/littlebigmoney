@@ -10,11 +10,11 @@ section.homeBanner
             figure.proj_img= image_tag(main_proj.display_image)
             figcaption.description
               h4.proj_title
-                = link_to main_proj.name, project_by_slug_url(permalink: main_proj.permalink, subdomain: "#{main_proj.kind}.staging")
+                = link_to main_proj.name, project_by_slug_url(main_proj.kind, main_proj.permalink)
               p.proj_desc= truncate(main_proj.headline, length: 140)
 
           - projects_array.each_with_index do | project, i |
-            .banner_project class="#{"active" if i == 0}" data-name="#{project.name}" data-description="#{truncate(project.headline, length: 140)}" data-link="#{project_by_slug_url(permalink: project.permalink, subdomain: "#{main_proj.kind}.staging")}"
+            .banner_project class="#{"active" if i == 0}" data-name="#{project.name}" data-description="#{truncate(project.headline, length: 140)}" data-link="#{project_by_slug_url(project.kind, project.permalink)}"
               = link_to image_tag(project.display_image), "#", itemprop: 'image'
 
   a.next.button#prevBannerSlide href="#" ‹
@@ -24,7 +24,7 @@ section.homeBanner
 .project_links
   #donate_link
     .donate_logo
-      = link_to projects_url(subdomain: 'donate.staging') do
+      = link_to kind_url(:donate) do
         = image_tag "logo-donate.png"
 
     .highlight
@@ -32,7 +32,7 @@ section.homeBanner
 
   #invest_link
     .invest_logo
-      /= link_to projects_url(subdomain: 'invest.staging') do
+      /= link_to kind_url(:invest) do
       = image_tag "logo-invest.png"
 
     .highlight

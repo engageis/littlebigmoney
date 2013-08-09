@@ -4,20 +4,19 @@
   nav.actions
     ul
       li.menu_item
-        = link_to projects_url(subdomain: 'donate.staging') do
+        = link_to kind_url(:donate) do
           span.icon.heart-empty
           = t "common.donate"
       li.menu_item
-        / = link_to projects_url(subdomain: 'invest.staging') do
         = link_to "#" do
           span.icon.line-graph
           = t "common.invest"
       li.menu_item
-        = link_to guidelines_start_path, class:  "submit_project" do
+        = link_to "#", class:  "submit_project" do
           span.icon.upload-cloud
           = t("layouts.header.submit_project")
       li.menu_item
-        = link_to guidelines_start_path, class:  "submit_project" do
+        = link_to "#", class:  "submit_project" do
           span.icon.map
           = t("layouts.header.how_works")
 
