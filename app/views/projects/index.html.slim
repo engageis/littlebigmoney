@@ -82,7 +82,7 @@
             ul#explore_categories.filters_list
               - @categories.each_with_index do |category, index|
                 li class="#{(index%2==1 ? 'no_margin':'')}"
-                  a href="##{category.to_s.parameterize}" data-search=category.id
+                  // a href="##{category.to_s.parameterize}" data-search=category.id
                     = category
 
         - default_values = {country: ['Colombia', 'Peru'], area: ['Rural', 'Urban', 'Peri-urban'], impact: ['Social', 'Environmental'], entrepreneur_type: ['Women', 'Men', 'Youth']}
