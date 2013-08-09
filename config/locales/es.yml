@@ -262,7 +262,7 @@ es:
       login_with_facebook: "entre com sua conta do facebook"
       login_with_twitter: "entre com sua conta do twitter"
       login_with_linkedin: "entre com sua conta do linkedin"
-      remember_me: "Lembre-se de mim e mantenha-me conectado."
+      remember_me: "Mantenha-me conectado."
       welcome_html: "Bienvenido <span class='user_name'>%{name}</span>"
     header:
       blog: "Blog"
