@@ -76,12 +76,12 @@ h1, h2, h3, h4, h5, h6
   padding: 10px 25px
   position: absolute
   text-shadow: 0 1px 1px white
-  z-index: 100
+  z-index: 9999
   top: 5px
   left: 7px
-  &.success
+  &.success, &.notice
     background-color: rgb(186, 226, 149)
-  &.error
+  &.error, &.alert
     background-color: rgb(236, 145, 145)
 
 +keyframes(alert-in)

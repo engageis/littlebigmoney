@@ -10,11 +10,6 @@ class ProjectsController < ApplicationController
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
   
-  before_filter do
-    return if params[:kind]
-    
-  end
-    
   def index
     index! do |format|
       format.html do
@@ -52,7 +47,7 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new(params[:project])
 
     create!(:notice => t('projects.create.success')) do |success, failure|
-      success.html{ return redirect_to project_by_slug_path(@project.permalink) }
+      success.html{ return redirect_to project_by_slug_path(@project.kind, @project.permalink) }
     end
   end
 
